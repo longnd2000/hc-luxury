@@ -55,7 +55,7 @@ class featured_posts_widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'multiple' => true,
                 'options' => $this->get_all_posts(),
-                'description' => __('Select up to 3 posts. If you leave this empty, the 3 latest posts will be displayed instead.', 'child_theme'),
+                'description' => __('Select up to 4 posts. If you leave this empty, the 4 latest posts will be displayed instead.', 'child_theme'),
                 'label_block' => true,
             ]
         );
@@ -72,15 +72,15 @@ class featured_posts_widget extends \Elementor\Widget_Base
         $args = [
             'post_type' => 'post',
             'post_status' => 'publish',
-            'posts_per_page' => 3,
+            'posts_per_page' => 4,
             'ignore_sticky_posts' => 1,
         ];
 
         if (!empty($selected_posts)) {
             $args['post__in'] = $selected_posts;
             $args['orderby'] = 'post__in';
-            // Limit to 3 in case user selects more
-            $args['posts_per_page'] = 3;
+            // Limit to 4 in case user selects more
+            $args['posts_per_page'] = 4;
         } else {
             $args['orderby'] = 'date';
             $args['order'] = 'DESC';
@@ -109,6 +109,7 @@ class featured_posts_widget extends \Elementor\Widget_Base
                     'excerpt' => wp_trim_words(get_the_excerpt(), 20, '...'),
                     'category_name' => $cat_name,
                     'category_link' => $cat_link,
+                    'date' => get_the_date('d/m/Y'),
                 ];
             }
             wp_reset_postdata();
@@ -139,15 +140,20 @@ class featured_posts_widget extends \Elementor\Widget_Base
                         <?php endif; ?>
                         
                         <div class="fp_main_content">
-                            <?php if ($first_post['category_name']): ?>
-                                <?php if ($first_post['category_link']): ?>
-                                    <a href="<?php echo $first_post['category_link']; ?>" class="fp_category_link">
+                            <div class="fp_meta">
+                                <?php if ($first_post['category_name']): ?>
+                                    <?php if ($first_post['category_link']): ?>
+                                        <a href="<?php echo $first_post['category_link']; ?>" class="fp_category_link">
+                                    <?php endif; ?>
+                                        <span class="fp_category_pill"><?php echo $first_post['category_name']; ?></span>
+                                    <?php if ($first_post['category_link']): ?>
+                                        </a>
+                                    <?php endif; ?>
                                 <?php endif; ?>
-                                    <span class="fp_category"><?php echo $first_post['category_name']; ?></span>
-                                <?php if ($first_post['category_link']): ?>
-                                    </a>
+                                <?php if ($first_post['date']): ?>
+                                    <span class="fp_date"><?php echo $first_post['date']; ?></span>
                                 <?php endif; ?>
-                            <?php endif; ?>
+                            </div>
                             
                             <?php if ($first_post['title']): ?>
                                 <h3 class="fp_title">
@@ -159,8 +165,8 @@ class featured_posts_widget extends \Elementor\Widget_Base
                                 </h3>
                             <?php endif; ?>
                             
-                            <?php if ($first_post['excerpt']): ?>
-                                <p class="fp_excerpt"><?php echo $first_post['excerpt']; ?></p>
+                            <?php if ($first_post['link']): ?>
+                                <a href="<?php echo $first_post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -185,15 +191,20 @@ class featured_posts_widget extends \Elementor\Widget_Base
                             <?php endif; ?>
                             
                             <div class="fp_side_content">
-                                <?php if ($post['category_name']): ?>
-                                    <?php if ($post['category_link']): ?>
-                                        <a href="<?php echo $post['category_link']; ?>" class="fp_category_link">
+                                <div class="fp_meta">
+                                    <?php if ($post['category_name']): ?>
+                                        <?php if ($post['category_link']): ?>
+                                            <a href="<?php echo $post['category_link']; ?>" class="fp_category_link">
+                                        <?php endif; ?>
+                                            <span class="fp_category_pill"><?php echo $post['category_name']; ?></span>
+                                        <?php if ($post['category_link']): ?>
+                                            </a>
+                                        <?php endif; ?>
                                     <?php endif; ?>
-                                        <span class="fp_category"><?php echo $post['category_name']; ?></span>
-                                    <?php if ($post['category_link']): ?>
-                                        </a>
+                                    <?php if ($post['date']): ?>
+                                        <span class="fp_date"><?php echo $post['date']; ?></span>
                                     <?php endif; ?>
-                                <?php endif; ?>
+                                </div>
 
                                 <?php if ($post['title']): ?>
                                     <h4 class="fp_title">
@@ -205,8 +216,8 @@ class featured_posts_widget extends \Elementor\Widget_Base
                                     </h4>
                                 <?php endif; ?>
                                 
-                                <?php if ($post['excerpt']): ?>
-                                    <p class="fp_excerpt"><?php echo $post['excerpt']; ?></p>
+                                <?php if ($post['link']): ?>
+                                    <a href="<?php echo $post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
                                 <?php endif; ?>
                             </div>
                         </div>

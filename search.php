@@ -58,18 +58,21 @@ get_header();
                                 <?php endif; ?>
 
                                 <div class="cs_post_content">
-                                    <?php if (!empty($categories)):
-                                        $cat_name = $categories[0]->name;
-                                        $cat_link = get_category_link($categories[0]->term_id);
-                                    ?>
-                                        <?php if ($cat_link): ?>
-                                            <a href="<?php echo $cat_link; ?>" class="fp_category_link">
+                                    <div class="fp_meta">
+                                        <?php if (!empty($categories)):
+                                            $cat_name = $categories[0]->name;
+                                            $cat_link = get_category_link($categories[0]->term_id);
+                                        ?>
+                                            <?php if ($cat_link): ?>
+                                                <a href="<?php echo $cat_link; ?>" class="fp_category_link">
+                                            <?php endif; ?>
+                                                <span class="fp_category_pill"><?php echo $cat_name; ?></span>
+                                            <?php if ($cat_link): ?>
+                                                </a>
+                                            <?php endif; ?>
                                         <?php endif; ?>
-                                            <span class="fp_category"><?php echo $cat_name; ?></span>
-                                        <?php if ($cat_link): ?>
-                                            </a>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
+                                        <span class="fp_date"><?php echo get_the_date('d/m/Y'); ?></span>
+                                    </div>
 
                                     <?php if ($title): ?>
                                         <h4 class="cs_post_title">
@@ -83,6 +86,12 @@ get_header();
 
                                     <?php if ($excerpt): ?>
                                         <p class="cs_post_excerpt"><?php echo $excerpt; ?></p>
+                                    <?php endif; ?>
+
+                                    <?php if ($link): ?>
+                                        <div class="cs_post_footer">
+                                            <a href="<?php echo $link; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -126,35 +135,37 @@ get_header();
                                 $side_cats = get_the_category();
                                 $side_excerpt = wp_trim_words(get_the_excerpt(), 15, '...');
                         ?>
-                            <div class="lx_archive_side_post">
-                                <div class="lx_archive_side_post_thumb">
-                                    <?php if ($side_img): ?>
-                                        <a href="<?php echo $side_link; ?>">
-                                            <img src="<?php echo $side_img; ?>" alt="<?php echo $side_title; ?>" width="100" height="75">
-                                        </a>
-                                    <?php else: ?>
-                                        <div class="lx_placeholder_thumb"></div>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="lx_archive_side_post_content">
-                                    <div class="lx_archive_side_post_meta">
-                                        <?php if (!empty($side_cats)): 
-                                            $side_cat_name = $side_cats[0]->name;
-                                            $side_cat_link = get_category_link($side_cats[0]->term_id);
-                                        ?>
-                                            <a href="<?php echo $side_cat_link; ?>" class="fp_category_link">
-                                                <span class="fp_category"><?php echo $side_cat_name; ?></span>
-                                            </a>
+                            <div class="fp_side_post">
+                                <?php if ($side_link): ?>
+                                <a href="<?php echo $side_link; ?>" class="fp_side_image_link">
+                                <?php endif; ?>
+                                    <div class="fp_side_image_wrap">
+                                        <?php if ($side_img): ?>
+                                            <img src="<?php echo $side_img; ?>" alt="<?php echo $side_title; ?>">
+                                        <?php else: ?>
+                                            <div class="lx_placeholder_thumb"></div>
                                         <?php endif; ?>
                                     </div>
-                                    
-                                    <h5 class="lx_archive_side_post_title">
-                                        <a href="<?php echo $side_link; ?>"><?php echo $side_title; ?></a>
-                                    </h5>
-                                    
-                                    <?php if ($side_excerpt): ?>
-                                        <p class="lx_archive_side_post_excerpt"><?php echo $side_excerpt; ?></p>
-                                    <?php endif; ?>
+                                <?php if ($side_link): ?>
+                                </a>
+                                <?php endif; ?>
+
+                                <div class="fp_side_content">
+                                    <h3 class="fp_title">
+                                        <?php if ($side_link): ?>
+                                            <a href="<?php echo $side_link; ?>"><?php echo $side_title; ?></a>
+                                        <?php else: ?>
+                                            <?php echo $side_title; ?>
+                                        <?php endif; ?>
+                                    </h3>
+                                    <p class="fp_meta">
+                                        <?php if (!empty($side_cats)): 
+                                            $side_cat_name = $side_cats[0]->name;
+                                        ?>
+                                            <span class="fp_category_pill"><?php echo $side_cat_name; ?></span>
+                                        <?php endif; ?>
+                                        <span class="fp_date"><?php echo get_the_date('d/m/Y'); ?></span>
+                                    </p>
                                 </div>
                             </div>
                         <?php endwhile; wp_reset_postdata(); endif; ?>

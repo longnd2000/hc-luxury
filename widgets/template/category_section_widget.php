@@ -145,20 +145,23 @@ class category_section_widget extends \Elementor\Widget_Base
                                     <?php endif; ?>
 
                                     <div class="cs_post_content">
-                                        <?php 
-                                            $categories = get_the_category();
-                                            if (!empty($categories)):
-                                                $cat_name = $categories[0]->name;
-                                                $cat_link = get_category_link($categories[0]->term_id);
-                                        ?>
-                                            <?php if ($cat_link): ?>
-                                                <a href="<?php echo $cat_link; ?>" class="fp_category_link">
+                                        <div class="fp_meta">
+                                            <?php 
+                                                $categories = get_the_category();
+                                                if (!empty($categories)):
+                                                    $cat_name = $categories[0]->name;
+                                                    $cat_link = get_category_link($categories[0]->term_id);
+                                            ?>
+                                                <?php if ($cat_link): ?>
+                                                    <a href="<?php echo $cat_link; ?>" class="fp_category_link">
+                                                <?php endif; ?>
+                                                    <span class="fp_category_pill"><?php echo $cat_name; ?></span>
+                                                <?php if ($cat_link): ?>
+                                                    </a>
+                                                <?php endif; ?>
                                             <?php endif; ?>
-                                                <span class="fp_category"><?php echo $cat_name; ?></span>
-                                            <?php if ($cat_link): ?>
-                                                </a>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
+                                            <span class="fp_date"><?php echo get_the_date('d/m/Y'); ?></span>
+                                        </div>
 
                                         <?php if ($title): ?>
                                             <h4 class="cs_post_title">
@@ -172,6 +175,10 @@ class category_section_widget extends \Elementor\Widget_Base
 
                                         <?php if ($excerpt): ?>
                                             <p class="cs_post_excerpt"><?php echo $excerpt; ?></p>
+                                        <?php endif; ?>
+
+                                        <?php if ($link): ?>
+                                            <a href="<?php echo $link; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
                                         <?php endif; ?>
                                     </div>
                                 </div>
