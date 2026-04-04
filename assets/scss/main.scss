@@ -1,0 +1,88 @@
+@import "normalize";
+@import "slick";
+
+body {
+  color: #000000;
+  font-family: "Inter", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+// slick custom
+.slick-slider .slick-arrow {
+  background-color: #FA8314 !important;
+  border-radius: 50% !important;
+  width: 32px;
+  height: 32px;
+  z-index: 999;
+
+  &::before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.slick-slider .slick-arrow.slick-prev {
+  left: -40px;
+}
+
+.slick-slider .slick-arrow.slick-next {
+  right: -40px;
+}
+
+.slick-dots li button::before {
+  display: none !important;
+}
+
+.slick-dots li button {
+  background-color: #f0f0f0 !important;
+  border-radius: 50% !important;
+  overflow: hidden;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.slick-dots li.slick-active button {
+  background-color: #FA8314 !important;
+}
+
+// Global layout
+.section_box {
+  width: 100%;
+  padding: 0 4%;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.py_section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+// style web
+@import 'editor';
+@import 'ctf7';
+@import 'style';

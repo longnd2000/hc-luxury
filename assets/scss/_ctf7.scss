@@ -1,0 +1,174 @@
+/* 
+   Contact Form 7 Dedicated Styles 
+   Rule 17: All CF7 customizations must be placed here.
+*/
+
+.wpcf7 {
+    margin-bottom: 16px;
+
+    /* Basic Form Styling */
+    form {
+        position: relative;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 0;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+
+        &:focus {
+            border-color: #FA8314;
+            outline: none;
+        }
+    }
+
+    input[type="submit"] {
+        background-color: #000;
+        color: #fff;
+        border: none;
+        padding: 16px 40px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #333;
+        }
+    }
+
+    /* Validation Errors */
+    .wpcf7-not-valid-tip {
+        font-size: 12px;
+        color: #ff0000;
+        margin-top: -12px;
+        margin-bottom: 12px;
+    }
+
+    .wpcf7-response_output {
+        margin: 20px 0 0;
+        padding: 12px 16px;
+        border: 2px solid #ddd;
+        font-size: 12px;
+    }
+}
+
+/* Consultation Form 1:1 Styling */
+.lx_form_tu_van_box {
+    background: #fff;
+    border: 1px solid #FA8314;
+    border-radius: 12px;
+    padding: 32px 32px 16px;
+    /* Adjusted to multiples of 4 */
+    max-width: 500px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    .lx_form_title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 24px;
+    }
+
+    .lx_form_field {
+        margin-bottom: 16px;
+
+        input[type="text"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fdfdfd;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+
+            &::placeholder {
+                color: #aaa;
+            }
+
+            &:focus {
+                border-color: #FA8314;
+                box-shadow: 0 0 0 3px rgba(250, 131, 20, 0.1);
+                outline: none;
+            }
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        &.lx_form_select {
+            label {
+                display: block;
+                font-size: 12px;
+                font-weight: 500;
+                color: #555;
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    .lx_form_submit {
+        input[type="submit"] {
+            width: 100%;
+            background-color: #FA8314 !important;
+            color: #fff;
+            border: none;
+            padding: 16px;
+            border-radius: 8px !important;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+
+            &:active {
+                transform: scale(0.98);
+            }
+        }
+    }
+
+    /* Main Error/Success Message inside the form */
+    .wpcf7-response-output {
+        margin: 12px 0 0;
+        padding: 12px;
+        border: 1px solid #FA8314;
+        border-radius: 8px;
+        font-size: 12px;
+        text-align: center;
+        background: #FFFBF4;
+    }
+
+    /* CF7 field-specific error message handling */
+    .wpcf7-not-valid-tip {
+        color: #ff4d4d;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    /* Center the loading spinner */
+    .wpcf7-spinner {
+        display: block !important;
+        margin: 12px auto 0 !important;
+        float: none !important;
+    }
+}
