@@ -137,15 +137,17 @@ function register_event_post_type() {
         'show_in_menu'          => true,
         'menu_position'         => 5,
         'menu_icon'             => 'dashicons-calendar-alt',
-        'show_in_admin_bar'     => true,
-        'show_in_nav_menus'     => true,
-        'can_export'            => true,
-        'has_archive'           => true,
+        'has_archive'           => 'event',
+        'rewrite'               => ['slug' => 'event', 'with_front' => false],
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
+        'capability_type'       => 'post',
     ];
     register_post_type('event', $args);
+    
+    // Automatically flush permalinks so the new URL works instantly
+    flush_rewrite_rules();
 }
 add_action('init', 'register_event_post_type', 0);
 
