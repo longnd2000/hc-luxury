@@ -1,58 +1,5 @@
 .editor {
-    font-size: 14px;
-    color: #3E3E3E;
     text-align: justify !important;
-    font-weight: 400;
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-weight: 500 !important;
-        color: #15294B !important;
-        margin-top: 0px !important;
-        margin-bottom: 12px !important;
-    }
-
-    h1 {
-        font-size: 28px !important;
-        font-weight: 600 !important;
-    }
-
-    h2 {
-        font-size: 24px !important;
-        font-weight: 600 !important;
-    }
-
-    h3 {
-        font-size: 20px !important;
-    }
-
-    h4 {
-        font-size: 20px !important;
-    }
-
-    h5 {
-        font-size: 16px !important;
-    }
-
-    h6 {
-        font-size: 16px !important;
-    }
-
-    &>* {
-        &:last-child {
-            margin-bottom: 0px;
-        }
-    }
-
-    a {
-        text-decoration: underline !important;
-        transition: all 0.3s;
-        white-space: inherit;
-    }
 
     ul {
         padding-left: 24px;

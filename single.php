@@ -63,7 +63,7 @@ get_header();
                             </div>
                         <?php endif; ?>
 
-                        <div class="lx_post_body">
+                        <div class="lx_post_body editor">
                             <?php the_content(); ?>
                         </div>
                     </div>
