@@ -33,8 +33,12 @@ These rules are mandatory for all development tasks within this project. Adherin
   - Contact Form 7 styles: `/assets/scss/_ctf7.scss`.
   - Global styles (Layout): `main.scss`.
 - **Naming Conventions**:
-  - Use **snake_case** for all class names (e.g., `.custom_container`).
-  - **Mandatory Prefixing**: Avoid generic class names. Prefix all custom classes with `child-theme_` (e.g., `.child-theme_post_title`) to prevent conflicts.
+  - Use **snake_case** for all class names (e.g., `.lx_custom_container`).
+  - **Mandatory Prefixing**: Avoid generic class names. Prefix all custom classes with **`lx_`** (e.g., `.lx_archive_page_title`) to prevent conflicts.
+  - **Unique Responsibility**: Each class should have a specific, unique name that describes its role, similar to how an ID is used. This prevents style bleeding and makes overrides easier.
+- **Structural Rules (Mandatory)**:
+  - **NO NESTING**: Do not nest child classes inside parent classes in SCSS. All classes must be defined at the top level of the stylesheet to ensure they are independent and easy to modify.
+  - **Class Reuse**: Only reuse existing classes if the style is identical and intended to stay synchronized across different components. Otherwise, create a unique class.
 - **Isolation Policy**:
   - Never apply custom styles to internal content tags (e.g., inside `the_content()`, `.lx_entry_content`). Maintain natural rendering for third-party plugin compatibility.
 

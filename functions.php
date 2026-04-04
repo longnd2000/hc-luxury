@@ -161,3 +161,41 @@ add_filter('acf/settings/load_json', function($paths) {
     $paths[] = CHILD_THEME_PATH . '/acf-json';
     return $paths;
 });
+
+/**
+ * Customize archive query: Set posts_per_page to 10.
+ */
+function child_theme_customize_archive_query($query) {
+    if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_archive())) {
+        $query->set('posts_per_page', 10);
+    }
+}
+add_action('pre_get_posts', 'child_theme_customize_archive_query');
+
+/**
+ * Remove Archive Prefix (Category:, Tag:, etc.)
+ */
+add_filter('get_the_archive_title', function ($title) {
+    if (is_category()) {
+        $title = single_cat_title('', false);
+    } elseif (is_tag()) {
+        $title = single_tag_title('', false);
+    } elseif (is_author()) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif (is_post_type_archive()) {
+        $title = post_type_archive_title('', false);
+    } elseif (is_tax()) {
+        $title = single_term_title('', false);
+    }
+    return $title;
+});
+
+/**
+ * Restrict Search Results to Posts Only
+ */
+function child_theme_search_filter($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_search()) {
+        $query->set('post_type', 'post');
+    }
+}
+add_action('pre_get_posts', 'child_theme_search_filter');
