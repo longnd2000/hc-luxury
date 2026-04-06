@@ -32,6 +32,7 @@ $child_theme_inc_files = [
     '/inc/acf.php',           // ACF JSON sync settings
     '/inc/query.php',         // pre_get_posts modifications
     '/inc/template-tags.php', // Archive title, helpers
+    '/inc/plugins.php',       // Required plugins notice & installer
 ];
 
 foreach ($child_theme_inc_files as $file) {
