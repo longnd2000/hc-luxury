@@ -114,6 +114,7 @@ All hooks, filters, and functions MUST be placed in the appropriate file under `
 
 | File | Domain | What belongs here |
 |---|---|---|
+| `inc/helpers.php` | Debug & Utilities | `write_log()`, utility/helper functions (loaded first) |
 | `inc/enqueue.php` | Assets | `wp_enqueue_scripts`, `admin_enqueue_scripts`, CSS/JS registration |
 | `inc/elementor.php` | Elementor | `elementor/init`, widget loaders, Elementor-specific hooks |
 | `inc/post-types.php` | CPT & Taxonomy | `register_post_type()`, `register_taxonomy()`, related hooks |
@@ -141,3 +142,15 @@ All hooks, filters, and functions MUST be placed in the appropriate file under `
    ```
 6. **Hook attachment**: Each function must have its `add_action()` / `add_filter()` call **immediately after** the function definition, in the same file.
 7. **No logic in functions.php**: `functions.php` must never contain hook callbacks, filters, or business logic — only constants and `require_once` statements.
+
+## 10. Debugging (Mandatory)
+
+- **Standard function**: Always use `write_log()` (defined in `inc/helpers.php`) for debugging. **Never** use `var_dump()`, `print_r()`, `error_log()`, or `echo` for debug output.
+- **Syntax**:
+  ```php
+  write_log($variable);                    // Basic log
+  write_log($variable, 'My Label');         // With label
+  write_log($array_or_object, 'Data');      // Arrays/objects auto-formatted
+  ```
+- **Log location**: `wp-content/debug.log`
+- **Cleanup**: Remove all `write_log()` calls after debugging is complete. Debug logs must never remain in production code.

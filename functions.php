@@ -25,6 +25,7 @@ if (! defined('WIDGETS_PATH')) {
 
 // ── Load Modules ───────────────────────────────────────
 $child_theme_inc_files = [
+    '/inc/helpers.php',       // Debug & utility functions (load first)
     '/inc/enqueue.php',       // CSS, JS, fonts
     '/inc/elementor.php',     // Elementor custom widgets loader
     '/inc/post-types.php',    // Custom Post Types (event, ...)
