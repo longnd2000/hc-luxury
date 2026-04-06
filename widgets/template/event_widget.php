@@ -113,51 +113,7 @@ class event_widget extends \Elementor\Widget_Base
                     $title = get_the_title();
                     $link = get_permalink();
                 ?>
-                    <div class="event_item">
-                        <div class="event_image_wrap">
-                            <?php if ($link): ?><a href="<?php echo $link; ?>"><?php endif; ?>
-                                <?php if ($img): ?>
-                                    <img src="<?php echo $img; ?>" alt="<?php echo $title; ?>" width="400" height="300">
-                                <?php else: ?>
-                                    <div class="event_placeholder_img"></div>
-                                <?php endif; ?>
-                            <?php if ($link): ?></a><?php endif; ?>
-
-                            <div class="event_date_badge">
-                                <span class="eb_month"><?php echo __('TH', 'child_theme') . ' ' . $month_num; ?></span>
-                                <span class="eb_day"><?php echo $day_num; ?></span>
-                            </div>
-
-                            <div class="event_status_badge <?php echo $status_class; ?>">
-                                <?php echo $status_text; ?>
-                            </div>
-                        </div>
-
-                        <div class="event_content">
-                            <?php if ($title): ?>
-                                <h3 class="event_title">
-                                    <?php if ($link): ?>
-                                        <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-                                    <?php else: ?>
-                                        <?php echo $title; ?>
-                                    <?php endif; ?>
-                                </h3>
-                            <?php endif; ?>
-
-                            <div class="event_meta">
-                                <div class="em_row">
-                                    <i class="fa-regular fa-clock"></i>
-                                    <span><?php echo $date_range; ?></span>
-                                </div>
-                                <?php if ($location): ?>
-                                    <div class="em_row">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span><?php echo $location; ?></span>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
+                    <?php include(get_stylesheet_directory() . '/components/event_card.php'); ?>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
         </div>

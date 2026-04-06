@@ -154,41 +154,9 @@ if ($categories) :
                         $title = get_the_title();
                         $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
                         $link = get_permalink();
-                        $post_categories = get_the_category();
+                        $categories = get_the_category();
                     ?>
-                        <div class="cs_post_item">
-                            <?php if ($link) : ?>
-                                <a href="<?php echo $link; ?>" class="cs_post_image_link">
-                                <?php endif; ?>
-                                <div class="cs_post_image_wrap">
-                                    <?php if ($img) : ?>
-                                        <img src="<?php echo $img; ?>" alt="<?php echo $title; ?>" width="400" height="300">
-                                    <?php else : ?>
-                                        <div class="cs_placeholder_img"></div>
-                                    <?php endif; ?>
-                                </div>
-                                <?php if ($link) : ?>
-                                </a>
-                            <?php endif; ?>
-
-                            <div class="cs_post_content">
-                                <?php if (!empty($post_categories)) : ?>
-                                    <a href="<?php echo get_category_link($post_categories[0]->term_id); ?>" class="fp_category_link">
-                                        <span class="fp_category"><?php echo $post_categories[0]->name; ?></span>
-                                    </a>
-                                <?php endif; ?>
-
-                                <?php if ($title) : ?>
-                                    <h3 class="cs_post_title">
-                                        <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-                                    </h3>
-                                <?php endif; ?>
-
-                                <?php if ($excerpt) : ?>
-                                    <p class="cs_post_excerpt"><?php echo $excerpt; ?></p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
+                        <?php include(get_stylesheet_directory() . '/components/post_card.php'); ?>
                     <?php endwhile;
                     wp_reset_postdata(); ?>
                 </div>

@@ -129,60 +129,9 @@ class category_section_widget extends \Elementor\Widget_Base
                                     $title = get_the_title();
                                     $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
                                     $link = get_permalink();
+                                    $categories = get_the_category();
                                 ?>
-                                    <div class="cs_post_item">
-                                        <?php if ($link): ?>
-                                            <a href="<?php echo $link; ?>" class="cs_post_image_link">
-                                            <?php endif; ?>
-                                            <div class="cs_post_image_wrap">
-                                                <?php if ($img): ?>
-                                                    <img src="<?php echo $img; ?>" alt="<?php echo $title; ?>" width="400" height="300">
-                                                <?php else: ?>
-                                                    <div class="cs_placeholder_img"></div>
-                                                <?php endif; ?>
-                                            </div>
-                                            <?php if ($link): ?>
-                                            </a>
-                                        <?php endif; ?>
-
-                                        <div class="cs_post_content">
-                                            <div class="fp_meta">
-                                                <?php
-                                                $categories = get_the_category();
-                                                if (!empty($categories)):
-                                                    $cat_name = $categories[0]->name;
-                                                    $cat_link = get_category_link($categories[0]->term_id);
-                                                ?>
-                                                    <?php if ($cat_link): ?>
-                                                        <a href="<?php echo $cat_link; ?>" class="fp_category_link">
-                                                        <?php endif; ?>
-                                                        <span class="fp_category_pill"><?php echo $cat_name; ?></span>
-                                                        <?php if ($cat_link): ?>
-                                                        </a>
-                                                    <?php endif; ?>
-                                                <?php endif; ?>
-                                                <span class="fp_date"><?php echo get_the_date('d/m/Y'); ?></span>
-                                            </div>
-
-                                            <?php if ($title): ?>
-                                                <h3 class="cs_post_title">
-                                                    <?php if ($link): ?>
-                                                        <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-                                                    <?php else: ?>
-                                                        <?php echo $title; ?>
-                                                    <?php endif; ?>
-                                                </h3>
-                                            <?php endif; ?>
-
-                                            <?php if ($excerpt): ?>
-                                                <p class="cs_post_excerpt"><?php echo $excerpt; ?></p>
-                                            <?php endif; ?>
-
-                                            <?php if ($link): ?>
-                                                <a href="<?php echo $link; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
+                                    <?php include(get_stylesheet_directory() . '/components/post_card.php'); ?>
                                 <?php endwhile;
                                 wp_reset_postdata(); ?>
                             </div>
