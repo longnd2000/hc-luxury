@@ -1021,9 +1021,18 @@
     flex-shrink: 0;
 }
 
+.lx_archive_sidebar_widget {
+    position: sticky;
+    top: 100px;
+}
+
 @media (max-width: 991px) {
     .lx_archive_sidebar_col {
         width: 100%;
+    }
+    
+    .lx_archive_sidebar_widget {
+        position: static;
     }
 }
 

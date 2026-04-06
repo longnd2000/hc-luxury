@@ -6,6 +6,7 @@
  * @package Child_Theme
  */
 
+// ── Constants ──────────────────────────────────────────
 if (! defined('CHILD_THEME_VERSION')) {
     define('CHILD_THEME_VERSION', '2.0.0');
 }
@@ -22,185 +23,16 @@ if (! defined('WIDGETS_PATH')) {
     define('WIDGETS_PATH', get_stylesheet_directory() . '/widgets/template/');
 }
 
-/**
- * Enqueue child theme assets.
- */
-function child_theme_assets(): void
-{
-    // File path thật trên server
-    $main_css_file_path = CHILD_THEME_PATH . '/assets/css/main.css';
-    $main_js_file_path  = CHILD_THEME_PATH . '/assets/js/main.js';
+// ── Load Modules ───────────────────────────────────────
+$child_theme_inc_files = [
+    '/inc/enqueue.php',       // CSS, JS, fonts
+    '/inc/elementor.php',     // Elementor custom widgets loader
+    '/inc/post-types.php',    // Custom Post Types (event, ...)
+    '/inc/acf.php',           // ACF JSON sync settings
+    '/inc/query.php',         // pre_get_posts modifications
+    '/inc/template-tags.php', // Archive title, helpers
+];
 
-    // Version động theo thời gian sửa file
-    $ver_main_css = file_exists($main_css_file_path) ? filemtime($main_css_file_path) : CHILD_THEME_VERSION;
-    $ver_main_js  = file_exists($main_js_file_path) ? filemtime($main_js_file_path) : CHILD_THEME_VERSION;
-
-    // FontAwesome Free 6.4.2
-    wp_enqueue_style(
-        'font-awesome-free',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
-        [],
-        '6.4.2'
-    );
-
-    // Style gốc của child theme
-    wp_enqueue_style(
-        'child-theme-style',
-        get_stylesheet_uri(),
-        [],
-        CHILD_THEME_VERSION
-    );
-
-    // Main CSS
-    wp_enqueue_style(
-        'child-theme-main',
-        CHILD_THEME_URL . '/assets/css/main.css',
-        ['child-theme-style'],
-        $ver_main_css
-    );
-
-    wp_enqueue_script(
-        'child-theme-slick',
-        CHILD_THEME_URL . '/assets/js/vendor/slick.min.js',
-        ['jquery'],
-        CHILD_THEME_VERSION,
-        true
-    );
-
-    // wp_enqueue_script(
-    //     'child-theme-mh',
-    //     CHILD_THEME_URL . '/assets/js/vendor/jquery.matchHeight.js',
-    //     ['jquery'],
-    //     CHILD_THEME_VERSION,
-    //     true
-    // );
-
-    // Main JS
-    wp_enqueue_script(
-        'child-theme-main-js',
-        CHILD_THEME_URL . '/assets/js/main.js',
-        ['jquery'],
-        $ver_main_js,
-        true
-    );
+foreach ($child_theme_inc_files as $file) {
+    require_once CHILD_THEME_PATH . $file;
 }
-add_action('wp_enqueue_scripts', 'child_theme_assets');
-
-// load widgets library by elementor
-function load_custom_widgets()
-{
-    require CHILD_THEME_PATH . '/widgets/index.php';
-}
-add_action('elementor/init', 'load_custom_widgets');
-
-/**
- * Register Event Custom Post Type
- */
-function register_event_post_type()
-{
-    $labels = [
-        'name'                  => _x('Events', 'Post Type General Name', 'child_theme'),
-        'singular_name'         => _x('Event', 'Post Type Singular Name', 'child_theme'),
-        'menu_name'             => __('Events', 'child_theme'),
-        'name_admin_bar'        => __('Event', 'child_theme'),
-        'archives'              => __('Event Archives', 'child_theme'),
-        'attributes'            => __('Event Attributes', 'child_theme'),
-        'parent_item_colon'     => __('Parent Event:', 'child_theme'),
-        'all_items'             => __('All Events', 'child_theme'),
-        'add_new_item'          => __('Add New Event', 'child_theme'),
-        'add_new'               => __('Add New', 'child_theme'),
-        'new_item'              => __('New Event', 'child_theme'),
-        'edit_item'             => __('Edit Event', 'child_theme'),
-        'update_item'           => __('Update Event', 'child_theme'),
-        'view_item'             => __('View Event', 'child_theme'),
-        'view_items'            => __('View Events', 'child_theme'),
-        'search_items'          => __('Search Event', 'child_theme'),
-        'not_found'             => __('Not found', 'child_theme'),
-        'not_found_in_trash'    => __('Not found in Trash', 'child_theme'),
-        'featured_image'        => __('Featured Image', 'child_theme'),
-        'set_featured_image'    => __('Set featured image', 'child_theme'),
-        'remove_featured_image' => __('Remove featured image', 'child_theme'),
-        'use_featured_image'    => __('Use as featured image', 'child_theme'),
-        'insert_into_item'      => __('Insert into event', 'child_theme'),
-        'uploaded_to_this_item' => __('Uploaded to this event', 'child_theme'),
-        'items_list'            => __('Events list', 'child_theme'),
-        'items_list_navigation' => __('Events list navigation', 'child_theme'),
-        'filter_items_list'     => __('Filter events list', 'child_theme'),
-    ];
-    $args = [
-        'label'                 => __('Event', 'child_theme'),
-        'description'           => __('Event Description', 'child_theme'),
-        'labels'                => $labels,
-        'supports'              => ['title', 'editor', 'thumbnail', 'excerpt'],
-        'hierarchical'          => false,
-        'public'                => true,
-        'show_ui'               => true,
-        'show_in_menu'          => true,
-        'menu_position'         => 5,
-        'menu_icon'             => 'dashicons-calendar-alt',
-        'has_archive'           => 'event',
-        'rewrite'               => ['slug' => 'event', 'with_front' => false],
-        'exclude_from_search'   => false,
-        'publicly_queryable'    => true,
-        'capability_type'       => 'post',
-        'capability_type'       => 'post',
-    ];
-    register_post_type('event', $args);
-
-    // Automatically flush permalinks so the new URL works instantly
-    flush_rewrite_rules();
-}
-add_action('init', 'register_event_post_type', 0);
-
-/**
- * ACF JSON Sync
- */
-add_filter('acf/settings/save_json', function ($path) {
-    return CHILD_THEME_PATH . '/acf-json';
-});
-
-add_filter('acf/settings/load_json', function ($paths) {
-    unset($paths[0]); // Remove default path
-    $paths[] = CHILD_THEME_PATH . '/acf-json';
-    return $paths;
-});
-
-/**
- * Customize archive query: Set posts_per_page to 10.
- */
-function child_theme_customize_archive_query($query)
-{
-    if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_archive())) {
-        $query->set('posts_per_page', 10);
-    }
-}
-add_action('pre_get_posts', 'child_theme_customize_archive_query');
-
-/**
- * Remove Archive Prefix (Category:, Tag:, etc.)
- */
-add_filter('get_the_archive_title', function ($title) {
-    if (is_category()) {
-        $title = single_cat_title('', false);
-    } elseif (is_tag()) {
-        $title = single_tag_title('', false);
-    } elseif (is_author()) {
-        $title = '<span class="vcard">' . get_the_author() . '</span>';
-    } elseif (is_post_type_archive()) {
-        $title = post_type_archive_title('', false);
-    } elseif (is_tax()) {
-        $title = single_term_title('', false);
-    }
-    return $title;
-});
-
-/**
- * Restrict Search Results to Posts Only
- */
-function child_theme_search_filter($query)
-{
-    if (!is_admin() && $query->is_main_query() && $query->is_search()) {
-        $query->set('post_type', 'post');
-    }
-}
-add_action('pre_get_posts', 'child_theme_search_filter');

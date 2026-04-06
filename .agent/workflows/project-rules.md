@@ -7,7 +7,7 @@ description: Project coding standards and rules for artificial intelligence agen
 These rules are mandatory for all development tasks within this project. Adhering to these standards ensures maintainability, logical consistency, and compatibility across the theme.
 
 ## 1. PHP & WordPress Core Standards
-- **Function Location**: All custom PHP functions, actions, and filters must be placed in `functions.php`.
+- **Function Location**: `functions.php` is the **entry point only** (constants + module loader). All custom PHP functions, actions, and filters must be placed in the appropriate module file under `/inc`. See **Section 9** for the full module map.
 - **Widget Templates**: Follow the structure of `widgets/template/duplicate_widget.php` as the master template for all new widgets.
 - **Elementor Widgets**:
   - Use `snake_case` for widget class names.
@@ -103,3 +103,41 @@ These rules are mandatory for all development tasks within this project. Adherin
   - `post_card.php` — `.cs_post_item` block (used in: `archive.php`, `search.php`, `single.php`, `category_section_widget.php`).
   - `event_card.php` — `.event_item` block (used in: `archive-event.php`, `event_widget.php`).
   - `sidebar_latest_posts.php` — Entire sidebar widget with WP_Query + `.fp_side_post` loop (used in: `archive.php`, `archive-event.php`, `search.php`).
+
+## 9. PHP Module Organization (Mandatory)
+
+### Principle
+`functions.php` is the **entry point only** — it defines constants and loads modules via `require_once`.
+All hooks, filters, and functions MUST be placed in the appropriate file under `/inc`.
+
+### Module Map
+
+| File | Domain | What belongs here |
+|---|---|---|
+| `inc/enqueue.php` | Assets | `wp_enqueue_scripts`, `admin_enqueue_scripts`, CSS/JS registration |
+| `inc/elementor.php` | Elementor | `elementor/init`, widget loaders, Elementor-specific hooks |
+| `inc/post-types.php` | CPT & Taxonomy | `register_post_type()`, `register_taxonomy()`, related hooks |
+| `inc/acf.php` | ACF Config | ACF settings filters, options pages, ACF-specific hooks |
+| `inc/query.php` | Query Mods | `pre_get_posts`, `posts_clauses`, query-related filters |
+| `inc/template-tags.php` | Template Helpers | Display helpers, archive title filters, breadcrumb, conditional functions |
+| `inc/shortcodes.php` | Shortcodes | `add_shortcode()` registrations (create when needed) |
+| `inc/admin.php` | Admin Customization | Admin menus, dashboard widgets, admin hooks (create when needed) |
+| `inc/security.php` | Security & Cleanup | Remove WP version, disable XML-RPC, head cleanup (create when needed) |
+| `inc/api.php` | REST API | Custom REST endpoints (create when needed) |
+
+### Rules
+1. **One domain per file** — never mix unrelated hooks in the same file.
+2. **Create on demand** — files marked "(create when needed)" should only be created when the first function of that domain is added.
+3. **Adding a new module**: Create the file in `/inc`, then add it to the `$child_theme_inc_files` array in `functions.php`.
+4. **Function naming**: All functions MUST be prefixed with `child_theme_` (e.g., `child_theme_register_event_cpt()`).
+5. **File header**: Every `/inc` file must start with a doc block:
+   ```php
+   <?php
+   /**
+    * [Domain Name]
+    *
+    * @package Child_Theme
+    */
+   ```
+6. **Hook attachment**: Each function must have its `add_action()` / `add_filter()` call **immediately after** the function definition, in the same file.
+7. **No logic in functions.php**: `functions.php` must never contain hook callbacks, filters, or business logic — only constants and `require_once` statements.
