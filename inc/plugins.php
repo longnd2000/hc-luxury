@@ -21,14 +21,38 @@ function child_theme_required_plugins()
             'name' => 'Classic Editor',
             'slug' => 'classic-editor',
         ],
+        // contact form 7
         [
             'name' => 'Contact Form 7',
             'slug' => 'contact-form-7',
         ],
         [
+            'name' => 'Contact Form CFDB7',
+            'slug' => 'contact-form-cfdb7',
+        ],
+        [
+            'name' => 'WP Mail SMTP',
+            'slug' => 'wp-mail-smtp',
+        ],
+        [
+            'name' => 'ReCaptcha v2 for Contact Form 7',
+            'slug' => 'wpcf7-recaptcha',
+        ],
+        // theme elementor
+        [
             'name' => 'Elementor',
             'slug' => 'elementor',
         ],
+        [
+            'name'    => 'Pro Elements',
+            'slug'    => 'pro-elements',
+            'zip_url' => 'https://github.com/proelements/proelements/releases/download/v3.35.0/pro-elements.zip',
+        ],
+        [
+            'name' => 'Safe SVG',
+            'slug' => 'safe-svg',
+        ],
+        // đa ngôn ngữ
         [
             'name' => 'Polylang',
             'slug' => 'polylang',
@@ -38,16 +62,8 @@ function child_theme_required_plugins()
             'slug' => 'ewww-image-optimizer',
         ],
         [
-            'name' => 'Fixed TOC',
-            'slug' => 'fixed-toc',
-        ],
-        [
             'name' => 'No Category Base (WPML)',
             'slug' => 'no-category-base-wpml',
-        ],
-        [
-            'name' => 'Safe SVG',
-            'slug' => 'safe-svg',
         ],
         [
             'name'    => 'WP Cerber Security',
@@ -65,11 +81,6 @@ function child_theme_required_plugins()
         [
             'name' => 'Yoast Duplicate Post',
             'slug' => 'duplicate-post',
-        ],
-        [
-            'name'    => 'Pro Elements',
-            'slug'    => 'pro-elements',
-            'zip_url' => 'https://github.com/proelements/proelements/releases/download/v3.35.0/pro-elements.zip',
         ],
     ];
 }
@@ -127,7 +138,7 @@ function child_theme_required_plugins_notice()
 
     // Don't show on our own page
     $screen = get_current_screen();
-    if ($screen && $screen->id === 'appearance_page_child-theme-plugins') {
+    if ($screen && $screen->id === 'settings_page_child-theme-plugins') {
         return;
     }
 
@@ -146,10 +157,10 @@ function child_theme_required_plugins_notice()
 
     $count    = count($missing);
     $page_url = admin_url('themes.php?page=child-theme-plugins');
-    ?>
+?>
     <div class="notice notice-error is-dismissible">
         <p>
-            <strong>⚠️ Warning theme:</strong>
+            <strong>⚠️ Warning Theme:</strong>
             <?php printf(
                 __('Có %d plugin cần thiết chưa được cài đặt hoặc kích hoạt. Website có thể không hoạt động đúng.', 'child-theme'),
                 $count
@@ -161,7 +172,7 @@ function child_theme_required_plugins_notice()
             </a>
         </p>
     </div>
-    <?php
+<?php
 }
 add_action('admin_notices', 'child_theme_required_plugins_notice');
 
@@ -202,11 +213,12 @@ function child_theme_override_plugin_api($result, $action, $args)
 add_filter('plugins_api', 'child_theme_override_plugin_api', 20, 3);
 
 /**
- * Register the required plugins admin page under Appearance menu.
+ * Register the required plugins admin page under Settings menu.
  */
 function child_theme_register_plugins_page()
 {
-    add_theme_page(
+    add_submenu_page(
+        'options-general.php',
         __('Plugin cần thiết', 'child-theme'),
         __('Plugin cần thiết', 'child-theme'),
         'install_plugins',
@@ -221,30 +233,42 @@ add_action('admin_menu', 'child_theme_register_plugins_page');
  */
 function child_theme_plugins_page_styles($hook)
 {
-    if ($hook !== 'appearance_page_child-theme-plugins') {
+    if ($hook !== 'settings_page_child-theme-plugins') {
         return;
     }
 
     echo '<style>
-        .ct-plugins-wrap { max-width: 900px; }
-        .ct-plugins-table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
-        .ct-plugins-table th,
-        .ct-plugins-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #e0e0e0; }
-        .ct-plugins-table th { background: #23282d; color: #fff; font-weight: 600; }
-        .ct-plugins-table tr:last-child td { border-bottom: none; }
-        .ct-plugins-table tr:hover td { background: #f9f9f9; }
-        .ct-badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; }
-        .ct-badge--active { background: #d4edda; color: #155724; }
-        .ct-badge--installed { background: #fff3cd; color: #856404; }
-        .ct-badge--missing { background: #f8d7da; color: #721c24; }
-        .ct-btn { display: inline-block; padding: 6px 16px; border-radius: 4px; font-size: 13px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; }
-        .ct-btn--install { background: #0073aa; color: #fff; }
-        .ct-btn--install:hover { background: #005a87; color: #fff; }
-        .ct-btn--activate { background: #f0ad4e; color: #fff; }
-        .ct-btn--activate:hover { background: #d9960a; color: #fff; }
-        .ct-btn--disabled { background: #e0e0e0; color: #999; cursor: not-allowed; pointer-events: none; }
-        .ct-summary { margin: 16px 0 24px; padding: 12px 16px; border-left: 4px solid #0073aa; background: #f0f6fc; }
-        .ct-summary--ok { border-left-color: #46b450; background: #ecf7ed; }
+        .ct-plugins-wrap { max-width: 1000px; margin-top: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
+        .ct-plugins-header { display: flex; align-items: center; margin-bottom: 24px; }
+        .ct-plugins-header h1 { margin: 0; font-size: 23px; font-weight: 600; color: #1d2327; }
+        .ct-plugins-header .dashicons { font-size: 26px; width: 26px; height: 26px; color: #2271b1; margin-right: 10px; }
+        
+        .ct-summary { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid #2271b1; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.05); border-radius: 4px; border: 1px solid #c3c4c7; border-left-width: 4px; font-size: 14px; }
+        .ct-summary--ok { border-left-color: #00a32a; }
+
+        /* Table styles matching screenshot */
+        .ct-plugins-table { width: 100%; border-collapse: collapse; font-size: 14px; background: #fff; overflow: hidden; border: 1px solid #e2e8f0; }
+        .ct-plugins-table th { background: #f1f5f9; color: #334155; font-weight: 600; font-size: 14px; text-align: left; padding: 16px 20px; border: none; }
+        .ct-plugins-table td { padding: 16px 20px; text-align: left; border: none; vertical-align: middle; color: #475569; }
+        .ct-plugins-table tr { border-bottom: none; }
+        .ct-plugins-table tbody tr:nth-child(odd) { background-color: #ffffff; }
+        .ct-plugins-table tbody tr:nth-child(even) { background-color: #f8fafc; }
+        
+        .ct-plugin-name { color: #3b82f6; font-weight: 500; display: inline-block; }
+        
+        .ct-badge { font-weight: 500; font-size: 13px; }
+        .ct-badge--active { color: #059669; }
+        .ct-badge--installed { color: #d97706; }
+        .ct-badge--missing { color: #dc2626; }
+        
+        /* Action buttons matching screenshot (green pills) */
+        .ct-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; border-radius: 30px; font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .ct-btn .dashicons { font-size: 16px; width: 16px; height: 16px; margin-right: 6px; }
+        .ct-btn--install { background: #10b981; color: #fff; } /* Green like screenshot */
+        .ct-btn--install:hover { background: #059669; color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .ct-btn--activate { background: #3b82f6; color: #fff; } /* Blue for activate */
+        .ct-btn--activate:hover { background: #2563eb; color: #fff; }
+        .ct-btn--disabled { background: transparent; color: #94a3b8; box-shadow: none; cursor: not-allowed; pointer-events: none; padding-left: 0; }
     </style>';
 }
 add_action('admin_head', 'child_theme_plugins_page_styles');
@@ -264,82 +288,91 @@ function child_theme_render_plugins_page()
     }
 
     $all_ok = ($missing_count === 0 && $inactive_count === 0);
-    ?>
+?>
     <div class="wrap ct-plugins-wrap">
-        <h1><?php echo __('Plugin cần thiết cho Theme', 'child-theme'); ?></h1>
+        <div class="ct-plugins-header">
+            <span class="dashicons dashicons-admin-plugins"></span>
+            <h1><?php echo __('Quản lý Plugin Tùy Chỉnh', 'child-theme'); ?></h1>
+        </div>
 
         <div class="ct-summary <?php echo $all_ok ? 'ct-summary--ok' : ''; ?>">
             <?php if ($all_ok): ?>
-                <strong>✅ <?php echo __('Tất cả plugin đã được cài đặt và kích hoạt. Website hoạt động đầy đủ!', 'child-theme'); ?></strong>
+                <strong><span class="dashicons dashicons-yes-alt" style="color: #00a32a; vertical-align: middle;"></span> <?php echo __('Tuyệt vời! Tất cả plugin yêu cầu đã được cài đặt và kích hoạt đầy đủ.', 'child-theme'); ?></strong>
             <?php else: ?>
-                <strong>⚠️ <?php printf(
-                    __('Còn %d plugin chưa cài đặt và %d plugin chưa kích hoạt.', 'child-theme'),
-                    $missing_count,
-                    $inactive_count
-                ); ?></strong>
+                <strong><span class="dashicons dashicons-warning" style="color: #d63638; vertical-align: middle;"></span> <?php printf(
+                                __('Hệ thống phát hiện %d plugin chưa cài đặt và %d plugin chưa kích hoạt.', 'child-theme'),
+                                $missing_count,
+                                $inactive_count
+                            ); ?></strong>
             <?php endif; ?>
         </div>
 
-        <table class="ct-plugins-table">
-            <thead>
-                <tr>
-                    <th style="width:5%">#</th>
-                    <th style="width:35%"><?php echo __('Plugin', 'child-theme'); ?></th>
-                    <th style="width:25%"><?php echo __('Trạng thái', 'child-theme'); ?></th>
-                    <th style="width:35%"><?php echo __('Thao tác', 'child-theme'); ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($statuses as $i => $p): ?>
+        <div class="ct-plugins-table-wrap">
+            <table class="ct-plugins-table">
+                <thead>
                     <tr>
-                        <td><?php echo $i + 1; ?></td>
-                        <td><strong><?php echo $p['name']; ?></strong></td>
-                        <td>
-                            <?php if ($p['status'] === 'active'): ?>
-                                <span class="ct-badge ct-badge--active"><?php echo __('Đã kích hoạt', 'child-theme'); ?></span>
-                            <?php elseif ($p['status'] === 'installed'): ?>
-                                <span class="ct-badge ct-badge--installed"><?php echo __('Đã cài đặt', 'child-theme'); ?></span>
-                            <?php else: ?>
-                                <span class="ct-badge ct-badge--missing"><?php echo __('Chưa cài đặt', 'child-theme'); ?></span>
-                            <?php endif; ?>
-                        </td>
-                        <td>
-                            <?php if ($p['status'] === 'active'): ?>
-                                <span class="ct-btn ct-btn--disabled"><?php echo __('Đã hoàn tất', 'child-theme'); ?></span>
-
-                            <?php elseif ($p['status'] === 'installed'): ?>
-                                <?php
-                                $activate_url = wp_nonce_url(
-                                    admin_url('plugins.php?action=activate&plugin=' . urlencode($p['file'])),
-                                    'activate-plugin_' . $p['file']
-                                );
-                                ?>
-                                <a href="<?php echo $activate_url; ?>" class="ct-btn ct-btn--activate">
-                                    <?php echo __('Kích hoạt ngay', 'child-theme'); ?>
-                                </a>
-
-                            <?php else: ?>
-                                <?php if ($p['external_url']): ?>
-                                    <a href="<?php echo $p['external_url']; ?>" class="ct-btn ct-btn--install" target="_blank">
-                                        <?php echo __('Tải từ website ↗', 'child-theme'); ?>
-                                    </a>
+                        <th style="width:10%">STT</th>
+                        <th style="width:40%"><?php echo __('Tên Plugin', 'child-theme'); ?></th>
+                        <th style="width:25%"><?php echo __('Trạng thái', 'child-theme'); ?></th>
+                        <th style="width:25%"><?php echo __('Thao tác', 'child-theme'); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($statuses as $i => $p): ?>
+                        <tr>
+                            <td><span style="color: #64748b; font-weight: 500;"><?php echo $i + 1; ?></span></td>
+                            <td>
+                                <span class="ct-plugin-name">
+                                    <?php echo $p['name']; ?>
+                                </span>
+                            </td>
+                            <td>
+                                <?php if ($p['status'] === 'active'): ?>
+                                    <span class="ct-badge ct-badge--active"><?php echo __('Đã kích hoạt', 'child-theme'); ?></span>
+                                <?php elseif ($p['status'] === 'installed'): ?>
+                                    <span class="ct-badge ct-badge--installed"><?php echo __('Đã cài đặt', 'child-theme'); ?></span>
                                 <?php else: ?>
+                                    <span class="ct-badge ct-badge--missing"><?php echo __('Chưa cài đặt', 'child-theme'); ?></span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($p['status'] === 'active'): ?>
+                                    <span class="ct-btn ct-btn--disabled"><span class="dashicons dashicons-yes"></span> <?php echo __('Hoàn tất', 'child-theme'); ?></span>
+
+                                <?php elseif ($p['status'] === 'installed'): ?>
                                     <?php
-                                    $install_url = wp_nonce_url(
-                                        admin_url('update.php?action=install-plugin&plugin=' . $p['slug']),
-                                        'install-plugin_' . $p['slug']
+                                    $activate_url = wp_nonce_url(
+                                        admin_url('plugins.php?action=activate&plugin=' . urlencode($p['file'])),
+                                        'activate-plugin_' . $p['file']
                                     );
                                     ?>
-                                    <a href="<?php echo $install_url; ?>" class="ct-btn ct-btn--install">
-                                        <?php echo __('Cài đặt ngay', 'child-theme'); ?>
+                                    <a href="<?php echo $activate_url; ?>" class="ct-btn ct-btn--activate">
+                                        <span class="dashicons dashicons-controls-play"></span> <?php echo __('Kích hoạt ngay', 'child-theme'); ?>
                                     </a>
+
+                                <?php else: ?>
+                                    <?php if ($p['external_url']): ?>
+                                        <a href="<?php echo $p['external_url']; ?>" class="ct-btn ct-btn--install" target="_blank">
+                                            <span class="dashicons dashicons-external"></span> <?php echo __('Tải từ trang chủ', 'child-theme'); ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <?php
+                                        $install_url = wp_nonce_url(
+                                            admin_url('update.php?action=install-plugin&plugin=' . $p['slug']),
+                                            'install-plugin_' . $p['slug']
+                                        );
+                                        ?>
+                                        <a href="<?php echo $install_url; ?>" class="ct-btn ct-btn--install">
+                                            <span class="dashicons dashicons-download"></span> <?php echo __('Cài đặt ngay', 'child-theme'); ?>
+                                        </a>
+                                    <?php endif; ?>
                                 <?php endif; ?>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <?php
+<?php
 }
