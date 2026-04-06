@@ -73,7 +73,7 @@ get_header();
 
                 <!-- Author Box (Full Width) -->
                 <section class="lx_single_post_author_box_section">
-                    <h3 class="lx_single_post_author_box_title"><?php echo __('Tác giả', 'child-theme'); ?></h3>
+                    <h2 class="lx_single_post_author_box_title"><?php echo __('Tác giả', 'child-theme'); ?></h2>
                     <div class="lx_single_post_author_box_content">
                         <div class="lx_single_post_author_box_avatar">
                             <?php
@@ -149,7 +149,7 @@ if ($categories) :
                     <h2 class="lx_related_posts_title"><?php echo __('BÀI VIẾT LIÊN QUAN', 'child-theme'); ?></h2>
                 </div>
                 <div class="cs_post_grid">
-                    <?php while ($related_query->have_posts()) : $related_query->the_post(); 
+                    <?php while ($related_query->have_posts()) : $related_query->the_post();
                         $img = get_the_post_thumbnail_url(get_the_ID(), 'large');
                         $title = get_the_title();
                         $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
@@ -159,7 +159,7 @@ if ($categories) :
                         <div class="cs_post_item">
                             <?php if ($link) : ?>
                                 <a href="<?php echo $link; ?>" class="cs_post_image_link">
-                            <?php endif; ?>
+                                <?php endif; ?>
                                 <div class="cs_post_image_wrap">
                                     <?php if ($img) : ?>
                                         <img src="<?php echo $img; ?>" alt="<?php echo $title; ?>" width="400" height="300">
@@ -167,7 +167,7 @@ if ($categories) :
                                         <div class="cs_placeholder_img"></div>
                                     <?php endif; ?>
                                 </div>
-                            <?php if ($link) : ?>
+                                <?php if ($link) : ?>
                                 </a>
                             <?php endif; ?>
 
@@ -179,9 +179,9 @@ if ($categories) :
                                 <?php endif; ?>
 
                                 <?php if ($title) : ?>
-                                    <h4 class="cs_post_title">
+                                    <h3 class="cs_post_title">
                                         <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-                                    </h4>
+                                    </h3>
                                 <?php endif; ?>
 
                                 <?php if ($excerpt) : ?>
@@ -189,7 +189,8 @@ if ($categories) :
                                 <?php endif; ?>
                             </div>
                         </div>
-                    <?php endwhile; wp_reset_postdata(); ?>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
                 </div>
             </div>
         </section>

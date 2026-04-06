@@ -24,13 +24,14 @@ class featured_posts_widget extends \Elementor\Widget_Base
         return ['custom_widgets_theme'];
     }
 
-    private function get_all_posts() {
+    private function get_all_posts()
+    {
         $options = [];
         // Lấy 100 bài viết mới nhất để hiển thị ra list chọn (mặc định lấy theo post_type là 'post')
         $posts = get_posts([
             'post_type' => 'post',
             'post_status' => 'publish',
-            'numberposts' => 100, 
+            'numberposts' => 100,
         ]);
         foreach ($posts as $post) {
             $options[$post->ID] = $post->post_title;
@@ -66,9 +67,9 @@ class featured_posts_widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        
+
         $selected_posts = !empty($settings['selected_posts']) ? $settings['selected_posts'] : [];
-        
+
         $args = [
             'post_type' => 'post',
             'post_status' => 'publish',
@@ -92,7 +93,7 @@ class featured_posts_widget extends \Elementor\Widget_Base
             $posts_data = [];
             while ($query->have_posts()) {
                 $query->the_post();
-                
+
                 // Get the first category
                 $categories = get_the_category();
                 $cat_name = '';
@@ -101,7 +102,7 @@ class featured_posts_widget extends \Elementor\Widget_Base
                     $cat_name = $categories[0]->name;
                     $cat_link = get_category_link($categories[0]->term_id);
                 }
-                
+
                 $posts_data[] = [
                     'title' => get_the_title(),
                     'link' => get_permalink(),
@@ -116,119 +117,119 @@ class featured_posts_widget extends \Elementor\Widget_Base
 
             // Guard against empty condition
             if (empty($posts_data)) return;
-            
+
             // Separate the first post from the rest
             $first_post = $posts_data[0];
             $other_posts = array_slice($posts_data, 1);
-            ?>
+?>
             <div class="featured_posts_widget_container">
                 <div class="fp_grid">
                     <?php if ($first_post): ?>
-                    <div class="fp_main_post">
-                        <?php if ($first_post['link']): ?>
-                        <a href="<?php echo $first_post['link']; ?>" class="fp_main_image_link">
-                        <?php endif; ?>
-                            <div class="fp_main_image_wrap">
-                                <?php if ($first_post['image']): ?>
-                                    <img src="<?php echo $first_post['image']; ?>" alt="<?php echo $first_post['title']; ?>" width="800" height="600">
-                                <?php else: ?>
-                                    <div class="fp_placeholder_img"></div>
-                                <?php endif; ?>
-                            </div>
-                        <?php if ($first_post['link']): ?>
-                        </a>
-                        <?php endif; ?>
-                        
-                        <div class="fp_main_content">
-                            <div class="fp_meta">
-                                <?php if ($first_post['category_name']): ?>
-                                    <?php if ($first_post['category_link']): ?>
-                                        <a href="<?php echo $first_post['category_link']; ?>" class="fp_category_link">
-                                    <?php endif; ?>
-                                        <span class="fp_category_pill"><?php echo $first_post['category_name']; ?></span>
-                                    <?php if ($first_post['category_link']): ?>
-                                        </a>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                                <?php if ($first_post['date']): ?>
-                                    <span class="fp_date"><?php echo $first_post['date']; ?></span>
-                                <?php endif; ?>
-                            </div>
-                            
-                            <?php if ($first_post['title']): ?>
-                                <h3 class="fp_title">
-                                    <?php if ($first_post['link']): ?>
-                                        <a href="<?php echo $first_post['link']; ?>"><?php echo $first_post['title']; ?></a>
-                                    <?php else: ?>
-                                        <?php echo $first_post['title']; ?>
-                                    <?php endif; ?>
-                                </h3>
-                            <?php endif; ?>
-                            
+                        <div class="fp_main_post">
                             <?php if ($first_post['link']): ?>
-                                <a href="<?php echo $first_post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-
-                    <?php if (!empty($other_posts)): ?>
-                    <div class="fp_side_posts">
-                        <?php foreach ($other_posts as $post): ?>
-                        <div class="fp_side_post">
-                            <?php if ($post['link']): ?>
-                            <a href="<?php echo $post['link']; ?>" class="fp_side_image_link">
-                            <?php endif; ?>
-                                <div class="fp_side_image_wrap">
-                                    <?php if ($post['image']): ?>
-                                        <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['title']; ?>" width="400" height="300">
+                                <a href="<?php echo $first_post['link']; ?>" class="fp_main_image_link">
+                                <?php endif; ?>
+                                <div class="fp_main_image_wrap">
+                                    <?php if ($first_post['image']): ?>
+                                        <img src="<?php echo $first_post['image']; ?>" alt="<?php echo $first_post['title']; ?>" width="800" height="600">
                                     <?php else: ?>
                                         <div class="fp_placeholder_img"></div>
                                     <?php endif; ?>
                                 </div>
-                            <?php if ($post['link']): ?>
-                            </a>
+                                <?php if ($first_post['link']): ?>
+                                </a>
                             <?php endif; ?>
-                            
-                            <div class="fp_side_content">
+
+                            <div class="fp_main_content">
                                 <div class="fp_meta">
-                                    <?php if ($post['category_name']): ?>
-                                        <?php if ($post['category_link']): ?>
-                                            <a href="<?php echo $post['category_link']; ?>" class="fp_category_link">
-                                        <?php endif; ?>
-                                            <span class="fp_category_pill"><?php echo $post['category_name']; ?></span>
-                                        <?php if ($post['category_link']): ?>
+                                    <?php if ($first_post['category_name']): ?>
+                                        <?php if ($first_post['category_link']): ?>
+                                            <a href="<?php echo $first_post['category_link']; ?>" class="fp_category_link">
+                                            <?php endif; ?>
+                                            <span class="fp_category_pill"><?php echo $first_post['category_name']; ?></span>
+                                            <?php if ($first_post['category_link']): ?>
                                             </a>
                                         <?php endif; ?>
                                     <?php endif; ?>
-                                    <?php if ($post['date']): ?>
-                                        <span class="fp_date"><?php echo $post['date']; ?></span>
+                                    <?php if ($first_post['date']): ?>
+                                        <span class="fp_date"><?php echo $first_post['date']; ?></span>
                                     <?php endif; ?>
                                 </div>
 
-                                <?php if ($post['title']): ?>
-                                    <h4 class="fp_title">
-                                        <?php if ($post['link']): ?>
-                                            <a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a>
+                                <?php if ($first_post['title']): ?>
+                                    <h3 class="fp_title">
+                                        <?php if ($first_post['link']): ?>
+                                            <a href="<?php echo $first_post['link']; ?>"><?php echo $first_post['title']; ?></a>
                                         <?php else: ?>
-                                            <?php echo $post['title']; ?>
+                                            <?php echo $first_post['title']; ?>
                                         <?php endif; ?>
-                                    </h4>
+                                    </h3>
                                 <?php endif; ?>
-                                
-                                <?php if ($post['link']): ?>
-                                    <a href="<?php echo $post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
+
+                                <?php if ($first_post['link']): ?>
+                                    <a href="<?php echo $first_post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <?php endforeach; ?>
-                    </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($other_posts)): ?>
+                        <div class="fp_side_posts">
+                            <?php foreach ($other_posts as $post): ?>
+                                <div class="fp_side_post">
+                                    <?php if ($post['link']): ?>
+                                        <a href="<?php echo $post['link']; ?>" class="fp_side_image_link">
+                                        <?php endif; ?>
+                                        <div class="fp_side_image_wrap">
+                                            <?php if ($post['image']): ?>
+                                                <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['title']; ?>" width="400" height="300">
+                                            <?php else: ?>
+                                                <div class="fp_placeholder_img"></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <?php if ($post['link']): ?>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <div class="fp_side_content">
+                                        <div class="fp_meta">
+                                            <?php if ($post['category_name']): ?>
+                                                <?php if ($post['category_link']): ?>
+                                                    <a href="<?php echo $post['category_link']; ?>" class="fp_category_link">
+                                                    <?php endif; ?>
+                                                    <span class="fp_category_pill"><?php echo $post['category_name']; ?></span>
+                                                    <?php if ($post['category_link']): ?>
+                                                    </a>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                            <?php if ($post['date']): ?>
+                                                <span class="fp_date"><?php echo $post['date']; ?></span>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <?php if ($post['title']): ?>
+                                            <h3 class="fp_title">
+                                                <?php if ($post['link']): ?>
+                                                    <a href="<?php echo $post['link']; ?>"><?php echo $post['title']; ?></a>
+                                                <?php else: ?>
+                                                    <?php echo $post['title']; ?>
+                                                <?php endif; ?>
+                                            </h3>
+                                        <?php endif; ?>
+
+                                        <?php if ($post['link']): ?>
+                                            <a href="<?php echo $post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
 
 
-            <?php
+<?php
         endif;
     }
 }

@@ -48,7 +48,16 @@ These rules are mandatory for all development tasks within this project. Adherin
   - `h1`: 32px | `h2`: 28px | `h3`: 24px | `h4`: 20px | `h5`: 16px | `h6`: 12px.
   - Body Text: 16px (default) | Small: 12px or 8px.
   - Default Color: `#000000`.
-- **Heading Consistency**: When changing heading tags (`h1`-`h6`) in PHP, immediately update the corresponding CSS `font-size` in `_style.scss` to match the scale above.
+- **Heading Hierarchy (Mandatory)**:
+  - `h2`: Section title (e.g., sidebar widget title, archive section title, widget header).
+  - `h3`: Individual post/item title within a list (e.g., post card title in archive grid, event title in event list, sidebar post title).
+  - `h4`: Sub-title or secondary title if present (e.g., supplementary heading within a card or section).
+- **Contextual Font-Size Overrides (List/Grid Context)**:
+  - Post/event title in list/grid: `16px` (overrides default h3 scale of 24px for visual balance within cards).
+  - Description/excerpt in list/grid: `12px`.
+  - These overrides are intentional — the heading tag (`h3`) is kept for semantic/SEO purposes, but the visual size is reduced to fit card layouts.
+- **Heading Consistency**: When changing heading tags (`h1`-`h6`) in PHP, immediately update the corresponding CSS `font-size` in `_style.scss` to match the scale above, unless a contextual override applies.
+- **Elementor Specificity Override**: Elementor injects global heading styles via `.elementor-kit-{id} h1-h6` selectors (specificity `0,1,1`), which override single-class selectors (specificity `0,1,0`). When custom `font-size` or `font-weight` on heading elements is being overridden by Elementor, use `!important` to enforce. This applies to all custom heading classes inside Elementor widget templates and theme templates.
 
 ## 5. Global Layout & Styling
 - **Layout Classes**:

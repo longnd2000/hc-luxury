@@ -58,7 +58,7 @@ function child_theme_assets(): void
         ['child-theme-style'],
         $ver_main_css
     );
-    
+
     wp_enqueue_script(
         'child-theme-slick',
         CHILD_THEME_URL . '/assets/js/vendor/slick.min.js',
@@ -96,7 +96,8 @@ add_action('elementor/init', 'load_custom_widgets');
 /**
  * Register Event Custom Post Type
  */
-function register_event_post_type() {
+function register_event_post_type()
+{
     $labels = [
         'name'                  => _x('Events', 'Post Type General Name', 'child_theme'),
         'singular_name'         => _x('Event', 'Post Type Singular Name', 'child_theme'),
@@ -145,7 +146,7 @@ function register_event_post_type() {
         'capability_type'       => 'post',
     ];
     register_post_type('event', $args);
-    
+
     // Automatically flush permalinks so the new URL works instantly
     flush_rewrite_rules();
 }
@@ -154,11 +155,11 @@ add_action('init', 'register_event_post_type', 0);
 /**
  * ACF JSON Sync
  */
-add_filter('acf/settings/save_json', function($path) {
+add_filter('acf/settings/save_json', function ($path) {
     return CHILD_THEME_PATH . '/acf-json';
 });
 
-add_filter('acf/settings/load_json', function($paths) {
+add_filter('acf/settings/load_json', function ($paths) {
     unset($paths[0]); // Remove default path
     $paths[] = CHILD_THEME_PATH . '/acf-json';
     return $paths;
@@ -167,7 +168,8 @@ add_filter('acf/settings/load_json', function($paths) {
 /**
  * Customize archive query: Set posts_per_page to 10.
  */
-function child_theme_customize_archive_query($query) {
+function child_theme_customize_archive_query($query)
+{
     if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_archive())) {
         $query->set('posts_per_page', 10);
     }
@@ -195,7 +197,8 @@ add_filter('get_the_archive_title', function ($title) {
 /**
  * Restrict Search Results to Posts Only
  */
-function child_theme_search_filter($query) {
+function child_theme_search_filter($query)
+{
     if (!is_admin() && $query->is_main_query() && $query->is_search()) {
         $query->set('post_type', 'post');
     }

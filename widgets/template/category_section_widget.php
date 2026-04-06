@@ -24,7 +24,8 @@ class category_section_widget extends \Elementor\Widget_Base
         return ['custom_widgets_theme'];
     }
 
-    private function get_all_categories() {
+    private function get_all_categories()
+    {
         $options = [];
         $categories = get_categories([
             'parent' => 0, // Only Level 1
@@ -85,16 +86,16 @@ class category_section_widget extends \Elementor\Widget_Base
 
         if (empty($sub_categories)) return;
 
-        ?>
+?>
         <div class="category_section_widget">
             <div class="cs_header">
                 <div class="cs_title_wrap">
-                    <?php 
-                        $display_title = $settings['section_title'];
-                        if (empty($display_title)) {
-                            $parent_term = get_term($parent_id, 'category');
-                            $display_title = !is_wp_error($parent_term) && $parent_term ? $parent_term->name : '';
-                        }
+                    <?php
+                    $display_title = $settings['section_title'];
+                    if (empty($display_title)) {
+                        $parent_term = get_term($parent_id, 'category');
+                        $display_title = !is_wp_error($parent_term) && $parent_term ? $parent_term->name : '';
+                    }
                     ?>
                     <?php if ($display_title): ?>
                         <h2 class="cs_section_title"><?php echo $display_title; ?></h2>
@@ -112,7 +113,7 @@ class category_section_widget extends \Elementor\Widget_Base
             </div>
 
             <div class="cs_content_wrap">
-                <?php foreach ($sub_categories as $index => $cat): 
+                <?php foreach ($sub_categories as $index => $cat):
                     $posts_query = new \WP_Query([
                         'cat' => $cat->term_id,
                         'posts_per_page' => 4,
@@ -120,76 +121,77 @@ class category_section_widget extends \Elementor\Widget_Base
                     ]);
 
                     if ($posts_query->have_posts()):
-                    ?>
-                    <div class="cs_tab_content <?php echo ($index === 0) ? 'active' : ''; ?>" id="cat_<?php echo $cat->term_id; ?>">
-                        <div class="cs_post_grid">
-                            <?php while ($posts_query->have_posts()): $posts_query->the_post(); 
-                                $img = get_the_post_thumbnail_url(get_the_ID(), 'large');
-                                $title = get_the_title();
-                                $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
-                                $link = get_permalink();
-                            ?>
-                                <div class="cs_post_item">
-                                    <?php if ($link): ?>
-                                    <a href="<?php echo $link; ?>" class="cs_post_image_link">
-                                    <?php endif; ?>
-                                        <div class="cs_post_image_wrap">
-                                            <?php if ($img): ?>
-                                                <img src="<?php echo $img; ?>" alt="<?php echo $title; ?>" width="400" height="300">
-                                            <?php else: ?>
-                                                <div class="cs_placeholder_img"></div>
+                ?>
+                        <div class="cs_tab_content <?php echo ($index === 0) ? 'active' : ''; ?>" id="cat_<?php echo $cat->term_id; ?>">
+                            <div class="cs_post_grid">
+                                <?php while ($posts_query->have_posts()): $posts_query->the_post();
+                                    $img = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                                    $title = get_the_title();
+                                    $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
+                                    $link = get_permalink();
+                                ?>
+                                    <div class="cs_post_item">
+                                        <?php if ($link): ?>
+                                            <a href="<?php echo $link; ?>" class="cs_post_image_link">
                                             <?php endif; ?>
-                                        </div>
-                                    <?php if ($link): ?>
-                                    </a>
-                                    <?php endif; ?>
+                                            <div class="cs_post_image_wrap">
+                                                <?php if ($img): ?>
+                                                    <img src="<?php echo $img; ?>" alt="<?php echo $title; ?>" width="400" height="300">
+                                                <?php else: ?>
+                                                    <div class="cs_placeholder_img"></div>
+                                                <?php endif; ?>
+                                            </div>
+                                            <?php if ($link): ?>
+                                            </a>
+                                        <?php endif; ?>
 
-                                    <div class="cs_post_content">
-                                        <div class="fp_meta">
-                                            <?php 
+                                        <div class="cs_post_content">
+                                            <div class="fp_meta">
+                                                <?php
                                                 $categories = get_the_category();
                                                 if (!empty($categories)):
                                                     $cat_name = $categories[0]->name;
                                                     $cat_link = get_category_link($categories[0]->term_id);
-                                            ?>
-                                                <?php if ($cat_link): ?>
-                                                    <a href="<?php echo $cat_link; ?>" class="fp_category_link">
+                                                ?>
+                                                    <?php if ($cat_link): ?>
+                                                        <a href="<?php echo $cat_link; ?>" class="fp_category_link">
+                                                        <?php endif; ?>
+                                                        <span class="fp_category_pill"><?php echo $cat_name; ?></span>
+                                                        <?php if ($cat_link): ?>
+                                                        </a>
+                                                    <?php endif; ?>
                                                 <?php endif; ?>
-                                                    <span class="fp_category_pill"><?php echo $cat_name; ?></span>
-                                                <?php if ($cat_link): ?>
-                                                    </a>
-                                                <?php endif; ?>
+                                                <span class="fp_date"><?php echo get_the_date('d/m/Y'); ?></span>
+                                            </div>
+
+                                            <?php if ($title): ?>
+                                                <h3 class="cs_post_title">
+                                                    <?php if ($link): ?>
+                                                        <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
+                                                    <?php else: ?>
+                                                        <?php echo $title; ?>
+                                                    <?php endif; ?>
+                                                </h3>
                                             <?php endif; ?>
-                                            <span class="fp_date"><?php echo get_the_date('d/m/Y'); ?></span>
+
+                                            <?php if ($excerpt): ?>
+                                                <p class="cs_post_excerpt"><?php echo $excerpt; ?></p>
+                                            <?php endif; ?>
+
+                                            <?php if ($link): ?>
+                                                <a href="<?php echo $link; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
+                                            <?php endif; ?>
                                         </div>
-
-                                        <?php if ($title): ?>
-                                            <h4 class="cs_post_title">
-                                                <?php if ($link): ?>
-                                                    <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-                                                <?php else: ?>
-                                                    <?php echo $title; ?>
-                                                <?php endif; ?>
-                                            </h4>
-                                        <?php endif; ?>
-
-                                        <?php if ($excerpt): ?>
-                                            <p class="cs_post_excerpt"><?php echo $excerpt; ?></p>
-                                        <?php endif; ?>
-
-                                        <?php if ($link): ?>
-                                            <a href="<?php echo $link; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
-                                        <?php endif; ?>
                                     </div>
-                                </div>
-                            <?php endwhile; wp_reset_postdata(); ?>
+                                <?php endwhile;
+                                wp_reset_postdata(); ?>
+                            </div>
                         </div>
-                    </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>
-        <?php
+    <?php
     }
 }
 
@@ -200,11 +202,11 @@ add_action('wp_footer', function () {
             var custom_category_section_widget = function($scope, $) {
                 $scope.on('click', '.cs_tab_item', function() {
                     var tabId = $(this).data('tab');
-                    
+
                     // Update Tabs
                     $scope.find('.cs_tab_item').removeClass('active');
                     $(this).addClass('active');
-                    
+
                     // Update Content
                     $scope.find('.cs_tab_content').removeClass('active');
                     $scope.find('#' + tabId).addClass('active');

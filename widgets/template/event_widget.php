@@ -124,7 +124,7 @@ class event_widget extends \Elementor\Widget_Base
                             <?php if ($link): ?></a><?php endif; ?>
 
                             <div class="event_date_badge">
-                                <span class="eb_month"><?php echo __('THÁNG', 'child_theme') . ' ' . $month_num; ?></span>
+                                <span class="eb_month"><?php echo __('TH', 'child_theme') . ' ' . $month_num; ?></span>
                                 <span class="eb_day"><?php echo $day_num; ?></span>
                             </div>
 
@@ -135,13 +135,13 @@ class event_widget extends \Elementor\Widget_Base
 
                         <div class="event_content">
                             <?php if ($title): ?>
-                                <h4 class="event_title">
+                                <h3 class="event_title">
                                     <?php if ($link): ?>
                                         <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
                                     <?php else: ?>
                                         <?php echo $title; ?>
                                     <?php endif; ?>
-                                </h4>
+                                </h3>
                             <?php endif; ?>
 
                             <div class="event_meta">
