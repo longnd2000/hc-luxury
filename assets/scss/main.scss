@@ -77,9 +77,16 @@ h6 {
   margin-bottom: 8px;
 }
 
-p {
+p,
+ul,
+ol {
   margin-top: 0;
   margin-bottom: 16px;
+}
+
+ul,
+ol {
+  padding-left: 16px;
 }
 
 // style web

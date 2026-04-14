@@ -65,10 +65,15 @@ function child_theme_required_plugins()
             'name' => 'No Category Base (WPML)',
             'slug' => 'no-category-base-wpml',
         ],
+        // bảo mật
         [
             'name'    => 'WP Cerber Security',
             'slug'    => 'wp-cerber',
             'zip_url' => 'https://downloads.wpcerber.com/plugin/wp-cerber.zip',
+        ],
+        [
+            'name' => 'Login Security Captcha',
+            'slug' => 'login-security-recaptcha',
         ],
         [
             'name' => 'WP File Manager',
@@ -156,7 +161,7 @@ function child_theme_required_plugins_notice()
     }
 
     $count    = count($missing);
-    $page_url = admin_url('themes.php?page=child-theme-plugins');
+    $page_url = admin_url('options-general.php?page=child-theme-plugins');
 ?>
     <div class="notice notice-error is-dismissible">
         <p>
@@ -300,10 +305,10 @@ function child_theme_render_plugins_page()
                 <strong><span class="dashicons dashicons-yes-alt" style="color: #00a32a; vertical-align: middle;"></span> <?php echo __('Tuyệt vời! Tất cả plugin yêu cầu đã được cài đặt và kích hoạt đầy đủ.', 'child-theme'); ?></strong>
             <?php else: ?>
                 <strong><span class="dashicons dashicons-warning" style="color: #d63638; vertical-align: middle;"></span> <?php printf(
-                                __('Hệ thống phát hiện %d plugin chưa cài đặt và %d plugin chưa kích hoạt.', 'child-theme'),
-                                $missing_count,
-                                $inactive_count
-                            ); ?></strong>
+                                                                                                                                __('Hệ thống phát hiện %d plugin chưa cài đặt và %d plugin chưa kích hoạt.', 'child-theme'),
+                                                                                                                                $missing_count,
+                                                                                                                                $inactive_count
+                                                                                                                            ); ?></strong>
             <?php endif; ?>
         </div>
 

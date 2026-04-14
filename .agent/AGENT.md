@@ -81,3 +81,4 @@ Use `/slash-command` to trigger:
 5. **CSS** → `lx_` prefix, snake_case, no nesting, 4px grid (`rules/css.md`).
 6. **Never edit `functions.php`** for logic — only constants and `require_once`.
 7. **Update context files** when adding CPTs, ACF fields, components, or widgets.
+8. **No Browser Testing**: Do not use the browser tool to test the frontend/UI. Just write the code; the USER will test it manually (as the site is built with Elementor). 
