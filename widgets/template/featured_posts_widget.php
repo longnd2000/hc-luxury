@@ -21,7 +21,7 @@ class featured_posts_widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['custom_widgets_theme'];
+        return ['lx_loops'];
     }
 
     private function get_all_posts()

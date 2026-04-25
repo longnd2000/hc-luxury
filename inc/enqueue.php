@@ -43,9 +43,25 @@ function child_theme_assets(): void
         $ver_main_css
     );
 
+    // Slick CSS
+    wp_enqueue_style(
+        'child-theme-slick-css',
+        CHILD_THEME_URL . '/assets/inc/slick/slick.css',
+        [],
+        CHILD_THEME_VERSION
+    );
+
     wp_enqueue_script(
-        'child-theme-slick',
-        CHILD_THEME_URL . '/assets/js/vendor/slick.min.js',
+        'child-theme-slick-js',
+        CHILD_THEME_URL . '/assets/inc/slick/slick.min.js',
+        ['jquery'],
+        CHILD_THEME_VERSION,
+        true
+    );
+
+    wp_enqueue_script(
+        'child-theme-matchheight',
+        CHILD_THEME_URL . '/assets/inc/matchHeight/jquery.matchHeight.js',
         ['jquery'],
         CHILD_THEME_VERSION,
         true

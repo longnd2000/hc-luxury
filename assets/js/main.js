@@ -47,5 +47,9 @@
         infinite: true,
       });
     }
+
+    if (typeof $.fn.matchHeight === 'function') {
+      $('[data-mh]').matchHeight();
+    }
   });
 })(jQuery);

@@ -18,11 +18,11 @@ description: How to create a new custom Elementor widget.
    - Update `get_name()` → unique slug.
    - Update `get_title()` → display name.
    - Update `get_icon()` → Elementor icon class.
-   - Set `get_categories()` → `['custom_widgets_theme']`.
+   - Set `get_categories()` → Pick ONE from: `['lx_typography']`, `['lx_media']`, `['lx_cards']`, `['lx_sections']`, `['lx_loops']`, `['lx_forms']`, `['lx_misc']`.
 
 3. **Add controls** in `_register_controls()`:
-   - Use Elementor's control types (TEXT, TEXTAREA, MEDIA, REPEATER, etc.).
-   - Group controls in sections.
+   - Use Elementor's control types (TEXT, TEXTAREA, MEDIA, REPEATER, etc.) for **CONTENT ONLY**.
+   - **DO NOT** add Style Controls (Color, Typography, Margin, Padding). This theme uses a Strict UI Kit Strategy. All styling is handled via `lx_` prefixed SCSS classes.
 
 4. **Build render output** in `render()`:
    - Get settings: `$settings = $this->get_settings_for_display();`

@@ -21,14 +21,26 @@ function register_custom_widgets($widgets_manager)
 }
 add_action('elementor/widgets/register', 'register_custom_widgets');
 
-function register_custom_widget_category($elements_manager)
+function register_custom_widget_categories($elements_manager)
 {
-    $elements_manager->add_category(
-        'custom_widgets_theme',
-        [
-            'title' => __('Custom Widgets', 'child_theme'),
-            'priority' => 0,
-        ]
-    );
+    $categories = [
+        'lx_typography' => 'LX Typography',
+        'lx_media'      => 'LX Media & Sliders',
+        'lx_cards'      => 'LX Cards & Blocks',
+        'lx_sections'   => 'LX Sections',
+        'lx_loops'      => 'LX Post Loops',
+        'lx_forms'      => 'LX Forms',
+        'lx_misc'       => 'LX Misc',
+    ];
+
+    foreach ($categories as $slug => $title) {
+        $elements_manager->add_category(
+            $slug,
+            [
+                'title' => __($title, 'child_theme'),
+                'priority' => 0,
+            ]
+        );
+    }
 }
-add_action('elementor/elements/categories_registered', 'register_custom_widget_category');
+add_action('elementor/elements/categories_registered', 'register_custom_widget_categories');

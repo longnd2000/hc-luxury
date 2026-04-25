@@ -21,7 +21,7 @@ class event_widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['custom_widgets_theme'];
+        return ['lx_loops'];
     }
 
     protected function _register_controls()

@@ -26,3 +26,6 @@ description: Frontend rules — data handling, output policy, asset standards, a
 ## Contact Form 7
 - Store form configuration code in `/form-ctf7/` (e.g., `form-tu-van.php`).
 - Keep all CF7-related SCSS in `_ctf7.scss`. Ensure it is `@import`ed in `main.scss`.
+
+## JavaScript Plugins
+- **Match Height**: To equalize element heights across rows, add the `data-mh="group-name"` attribute directly to the HTML tag. Do not write custom JS initialization for each widget. The global `main.js` automatically parses all `[data-mh]` elements.

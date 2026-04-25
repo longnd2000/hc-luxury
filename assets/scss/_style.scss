@@ -71,7 +71,7 @@
     bottom: 0;
     left: 30%;
     right: 0px;
-    border: 2px solid #FA8314;
+    border: 2px solid var(--lx-primary-color, #FA8314);
     border-radius: 20px;
     z-index: 3;
 }
@@ -152,7 +152,7 @@
 }
 
 .fp_category_pill {
-    background-color: #FA8314;
+    background-color: var(--lx-primary-color, #FA8314);
     /* Orange pill */
     color: #fff;
     padding: 6px 14px;
@@ -180,7 +180,7 @@
 }
 
 .fp_read_more:hover {
-    color: #FA8314;
+    color: var(--lx-primary-color, #FA8314);
 }
 
 /* Main Post (Left) */
@@ -322,7 +322,7 @@
 }
 
 .fp_side_content .fp_title a:hover {
-    color: #FA8314;
+    color: var(--lx-primary-color, #FA8314);
 }
 
 /* Category Section Widget */
@@ -600,7 +600,7 @@
 }
 
 .event_title a:hover {
-    color: #FA8314;
+    color: var(--lx-primary-color, #FA8314);
 }
 
 .event_meta {
@@ -774,7 +774,7 @@
     color: #333;
     font-style: italic;
     margin-bottom: 32px;
-    border-left: 2px solid #FA8314;
+    border-left: 2px solid var(--lx-primary-color, #FA8314);
     padding-left: 24px;
 }
 

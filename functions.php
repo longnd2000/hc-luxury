@@ -33,6 +33,9 @@ $child_theme_inc_files = [
     '/inc/query.php',         // pre_get_posts modifications
     '/inc/template-tags.php', // Archive title, helpers
     '/inc/plugins.php',       // Required plugins notice & installer
+    '/inc/security.php',      // Security checklist module
+    '/inc/custom-code.php',   // Custom code injection module
+    '/inc/theme-options.php', // ACF Theme Options (Fonts, Colors, Logos)
 ];
 
 foreach ($child_theme_inc_files as $file) {
