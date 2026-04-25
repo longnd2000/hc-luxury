@@ -36,7 +36,7 @@ function child_theme_get_breadcrumbs(): string
     global $post;
 
     $delimiter = '<i class="fa-solid fa-chevron-right mx-2"></i>';
-    $home_text = __('Trang chủ', 'child-theme');
+    $home_text = __('Trang chủ', 'lx-landing');
     $before    = '<span class="lx_breadcrumb_current">';
     $after     = '</span>';
 
@@ -61,7 +61,7 @@ function child_theme_get_breadcrumbs(): string
     } elseif (is_search()) {
         // Search Results
         $output .= $delimiter;
-        $output .= $before . sprintf(__('Kết quả tìm kiếm cho: "%s"', 'child-theme'), get_search_query()) . $after;
+        $output .= $before . sprintf(__('Kết quả tìm kiếm cho: "%s"', 'lx-landing'), get_search_query()) . $after;
     } elseif (is_single()) {
         // Single Post
         $output .= $delimiter;
@@ -74,7 +74,7 @@ function child_theme_get_breadcrumbs(): string
                 $output .= '<a href="' . get_category_link($cat->term_id) . '">' . $cat->name . '</a>' . $delimiter;
             }
         } elseif ($post_type == 'event') {
-             $output .= '<a href="' . get_post_type_archive_link('event') . '">' . __('Sự kiện', 'child-theme') . '</a>' . $delimiter;
+             $output .= '<a href="' . get_post_type_archive_link('event') . '">' . __('Sự kiện', 'lx-landing') . '</a>' . $delimiter;
         } else {
             $post_type_obj = get_post_type_object($post_type);
             if ($post_type_obj && $post_type_obj->has_archive) {
@@ -102,7 +102,7 @@ function child_theme_get_breadcrumbs(): string
     } elseif (is_404()) {
         // 404
         $output .= $delimiter;
-        $output .= $before . __('Lỗi 404', 'child-theme') . $after;
+        $output .= $before . __('Lỗi 404', 'lx-landing') . $after;
     }
 
     $output .= '</div>';

@@ -167,7 +167,7 @@ class featured_posts_widget extends \Elementor\Widget_Base
                                 <?php endif; ?>
 
                                 <?php if ($first_post['link']): ?>
-                                    <a href="<?php echo $first_post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
+                                    <a href="<?php echo $first_post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'lx-landing'); ?></a>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -218,7 +218,7 @@ class featured_posts_widget extends \Elementor\Widget_Base
                                         <?php endif; ?>
 
                                         <?php if ($post['link']): ?>
-                                            <a href="<?php echo $post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
+                                            <a href="<?php echo $post['link']; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'lx-landing'); ?></a>
                                         <?php endif; ?>
                                     </div>
                                 </div>

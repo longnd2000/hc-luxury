@@ -37,6 +37,7 @@ $child_theme_inc_files = [
     '/inc/custom-code.php',   // Custom code injection module
     '/inc/theme-options.php', // ACF Theme Options (Fonts, Colors, Logos)
     '/inc/breadcrumbs.php',   // Global breadcrumbs system
+    '/inc/update-checker.php', // Auto-update from GitHub
 ];
 
 foreach ($child_theme_inc_files as $file) {

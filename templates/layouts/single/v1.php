@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="lx_single_post_published_date text-end">
-                                <span class="lx_single_post_date_label d-block text-muted small text-uppercase"><?php echo __('Ngày đăng', 'child-theme'); ?></span>
+                                <span class="lx_single_post_date_label d-block text-muted small text-uppercase"><?php echo __('Ngày đăng', 'lx-landing'); ?></span>
                                 <span class="lx_single_post_date_value"><?php echo get_the_date('d/m/Y'); ?></span>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
 
                         <!-- Author Box -->
                         <section class="lx_single_post_author_box_section mt-5 pt-5 border-top">
-                            <h2 class="lx_single_post_author_box_title mb-4"><?php echo __('Tác giả', 'child-theme'); ?></h2>
+                            <h2 class="lx_single_post_author_box_title mb-4"><?php echo __('Tác giả', 'lx-landing'); ?></h2>
                             <div class="lx_single_post_author_box_content row align-items-center">
                                 <div class="lx_single_post_author_box_avatar col-md-3 text-center mb-3 mb-md-0">
                                     <?php
@@ -127,7 +127,7 @@ if ($categories) :
         <section class="lx_related_posts_section py_section section_box bg-light">
             <div class="container">
                 <div class="lx_related_posts_header mb-4">
-                    <h2 class="lx_related_posts_title"><?php echo __('BÀI VIẾT LIÊN QUAN', 'child-theme'); ?></h2>
+                    <h2 class="lx_related_posts_title"><?php echo __('BÀI VIẾT LIÊN QUAN', 'lx-landing'); ?></h2>
                 </div>
                 <div class="row">
                     <?php while ($related_query->have_posts()) : $related_query->the_post();

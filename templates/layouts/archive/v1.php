@@ -50,7 +50,7 @@
                     </div>
 
                 <?php else : ?>
-                    <p><?php echo __('Rất tiếc, không tìm thấy bài viết nào.', 'child-theme'); ?></p>
+                    <p><?php echo __('Rất tiếc, không tìm thấy bài viết nào.', 'lx-landing'); ?></p>
                 <?php endif; ?>
             </div>
 

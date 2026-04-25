@@ -30,7 +30,7 @@
             </a><?php endif; ?>
 
         <div class="event_date_badge">
-            <span class="eb_month"><?php echo __('TH', 'child-theme') . ' ' . $month_num; ?></span>
+            <span class="eb_month"><?php echo __('TH', 'lx-landing') . ' ' . $month_num; ?></span>
             <span class="eb_day"><?php echo $day_num; ?></span>
         </div>
 

@@ -17,7 +17,7 @@ class LX_Heading_Widget extends \Elementor\Widget_Base
 
     public function get_title(): string
     {
-        return __('Tiêu đề', 'child-theme');
+        return __('Tiêu đề', 'lx-landing');
     }
 
     public function get_icon(): string
@@ -35,7 +35,7 @@ class LX_Heading_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'section_noi_dung',
             [
-                'label' => __('Nội dung', 'child-theme'),
+                'label' => __('Nội dung', 'lx-landing'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -43,18 +43,18 @@ class LX_Heading_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'noi_dung',
             [
-                'label'       => __('Nội dung tiêu đề', 'child-theme'),
+                'label'       => __('Nội dung tiêu đề', 'lx-landing'),
                 'type'        => \Elementor\Controls_Manager::TEXTAREA,
                 'rows'        => 3,
-                'default'     => __('Tiêu đề của bạn', 'child-theme'),
-                'placeholder' => __('Nhập tiêu đề...', 'child-theme'),
+                'default'     => __('Tiêu đề của bạn', 'lx-landing'),
+                'placeholder' => __('Nhập tiêu đề...', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'cap_tieu_de',
             [
-                'label'   => __('Cấp tiêu đề (HTML tag)', 'child-theme'),
+                'label'   => __('Cấp tiêu đề (HTML tag)', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'h2',
                 'options' => [
@@ -71,20 +71,20 @@ class LX_Heading_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'can_le',
             [
-                'label'   => __('Căn lề', 'child-theme'),
+                'label'   => __('Căn lề', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'left',
                 'options' => [
                     'left'   => [
-                        'title' => __('Trái', 'child-theme'),
+                        'title' => __('Trái', 'lx-landing'),
                         'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => __('Giữa', 'child-theme'),
+                        'title' => __('Giữa', 'lx-landing'),
                         'icon'  => 'eicon-text-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Phải', 'child-theme'),
+                        'title' => __('Phải', 'lx-landing'),
                         'icon'  => 'eicon-text-align-right',
                     ],
                 ],

@@ -17,7 +17,7 @@ class LX_Button_Widget extends \Elementor\Widget_Base
 
     public function get_title(): string
     {
-        return __('Nút', 'child-theme');
+        return __('Nút', 'lx-landing');
     }
 
     public function get_icon(): string
@@ -35,7 +35,7 @@ class LX_Button_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'section_noi_dung',
             [
-                'label' => __('Nội dung', 'child-theme'),
+                'label' => __('Nội dung', 'lx-landing'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -43,17 +43,17 @@ class LX_Button_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'van_ban',
             [
-                'label'       => __('Văn bản nút', 'child-theme'),
+                'label'       => __('Văn bản nút', 'lx-landing'),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => __('Tìm hiểu thêm', 'child-theme'),
-                'placeholder' => __('Nhập văn bản nút...', 'child-theme'),
+                'default'     => __('Tìm hiểu thêm', 'lx-landing'),
+                'placeholder' => __('Nhập văn bản nút...', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'lien_ket',
             [
-                'label'         => __('Liên kết', 'child-theme'),
+                'label'         => __('Liên kết', 'lx-landing'),
                 'type'          => \Elementor\Controls_Manager::URL,
                 'placeholder'   => 'https://',
                 'show_external' => true,
@@ -68,14 +68,14 @@ class LX_Button_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'bien_the',
             [
-                'label'   => __('Biến thể', 'child-theme'),
+                'label'   => __('Biến thể', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'primary',
                 'options' => [
-                    'primary' => __('Đặc (Primary)', 'child-theme'),
-                    'outline' => __('Viền (Outline)', 'child-theme'),
-                    'ghost'   => __('Mờ (Ghost)', 'child-theme'),
-                    'text'    => __('Chỉ text (Text)', 'child-theme'),
+                    'primary' => __('Đặc (Primary)', 'lx-landing'),
+                    'outline' => __('Viền (Outline)', 'lx-landing'),
+                    'ghost'   => __('Mờ (Ghost)', 'lx-landing'),
+                    'text'    => __('Chỉ text (Text)', 'lx-landing'),
                 ],
             ]
         );
@@ -83,13 +83,13 @@ class LX_Button_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'kich_thuoc',
             [
-                'label'   => __('Kích thước', 'child-theme'),
+                'label'   => __('Kích thước', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'default' => 'md',
                 'options' => [
-                    'sm' => __('Nhỏ', 'child-theme'),
-                    'md' => __('Vừa', 'child-theme'),
-                    'lg' => __('Lớn', 'child-theme'),
+                    'sm' => __('Nhỏ', 'lx-landing'),
+                    'md' => __('Vừa', 'lx-landing'),
+                    'lg' => __('Lớn', 'lx-landing'),
                 ],
             ]
         );
@@ -97,20 +97,20 @@ class LX_Button_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'can_le',
             [
-                'label'   => __('Căn lề', 'child-theme'),
+                'label'   => __('Căn lề', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'left',
                 'options' => [
                     'left'   => [
-                        'title' => __('Trái', 'child-theme'),
+                        'title' => __('Trái', 'lx-landing'),
                         'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => __('Giữa', 'child-theme'),
+                        'title' => __('Giữa', 'lx-landing'),
                         'icon'  => 'eicon-text-align-center',
                     ],
                     'right'  => [
-                        'title' => __('Phải', 'child-theme'),
+                        'title' => __('Phải', 'lx-landing'),
                         'icon'  => 'eicon-text-align-right',
                     ],
                 ],

@@ -18,8 +18,8 @@ if (!defined('ABSPATH')) {
  */
 if (function_exists('acf_add_options_page')) {
     acf_add_options_page([
-        'page_title'    => __('Theme Settings', 'child-theme'),
-        'menu_title'    => __('Theme Settings', 'child-theme'),
+        'page_title'    => __('Theme Settings', 'lx-landing'),
+        'menu_title'    => __('Theme Settings', 'lx-landing'),
         'menu_slug'     => 'theme-settings',
         'capability'    => 'edit_theme_options',
         'redirect'      => false,
@@ -38,12 +38,12 @@ function lx_register_theme_options_fields()
 
         acf_add_local_field_group([
             'key' => 'group_lx_theme_options',
-            'title' => __('Cài đặt Giao diện (Theme Options)', 'child-theme'),
+            'title' => __('Cài đặt Giao diện (Theme Options)', 'lx-landing'),
             'fields' => [
                 // Tab: Typography
                 [
                     'key' => 'field_lx_tab_typography',
-                    'label' => __('Typography', 'child-theme'),
+                    'label' => __('Typography', 'lx-landing'),
                     'name' => '',
                     'type' => 'tab',
                     'placement' => 'top',
@@ -51,10 +51,10 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key'           => 'field_lx_primary_font',
-                    'label'         => __('Font chữ chủ đạo (Google Fonts)', 'child-theme'),
+                    'label'         => __('Font chữ chủ đạo (Google Fonts)', 'lx-landing'),
                     'name'          => 'lx_primary_font',
                     'type'          => 'select',
-                    'instructions'  => __('Tìm kiếm và chọn bất kỳ font nào từ Google Fonts (~1500+ fonts).', 'child-theme'),
+                    'instructions'  => __('Tìm kiếm và chọn bất kỳ font nào từ Google Fonts (~1500+ fonts).', 'lx-landing'),
                     'choices'       => [],
                     'default_value' => 'Inter',
                     'allow_null'    => 0,
@@ -67,7 +67,7 @@ function lx_register_theme_options_fields()
                 // Tab: Colors
                 [
                     'key' => 'field_lx_tab_colors',
-                    'label' => __('Màu sắc', 'child-theme'),
+                    'label' => __('Màu sắc', 'lx-landing'),
                     'name' => '',
                     'type' => 'tab',
                     'placement' => 'top',
@@ -75,7 +75,7 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key'            => 'field_lx_primary_color',
-                    'label'          => __('Màu chủ đạo (Primary Color)', 'child-theme'),
+                    'label'          => __('Màu chủ đạo (Primary Color)', 'lx-landing'),
                     'name'           => 'lx_primary_color',
                     'type'           => 'color_picker',
                     'default_value'  => '#0d6efd',
@@ -84,7 +84,7 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key'            => 'field_lx_secondary_color',
-                    'label'          => __('Màu phụ (Secondary Color)', 'child-theme'),
+                    'label'          => __('Màu phụ (Secondary Color)', 'lx-landing'),
                     'name'           => 'lx_secondary_color',
                     'type'           => 'color_picker',
                     'default_value'  => '#fd7c00',
@@ -95,7 +95,7 @@ function lx_register_theme_options_fields()
                 // Tab: Logos
                 [
                     'key' => 'field_lx_tab_logos',
-                    'label' => __('Logos', 'child-theme'),
+                    'label' => __('Logos', 'lx-landing'),
                     'name' => '',
                     'type' => 'tab',
                     'placement' => 'top',
@@ -103,7 +103,7 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key' => 'field_lx_main_logo',
-                    'label' => __('Logo chính (Main Logo)', 'child-theme'),
+                    'label' => __('Logo chính (Main Logo)', 'lx-landing'),
                     'name' => 'lx_main_logo',
                     'type' => 'image',
                     'return_format' => 'array',
@@ -112,10 +112,10 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key' => 'field_lx_negative_logo',
-                    'label' => __('Logo âm bản (Negative Logo)', 'child-theme'),
+                    'label' => __('Logo âm bản (Negative Logo)', 'lx-landing'),
                     'name' => 'lx_negative_logo',
                     'type' => 'image',
-                    'instructions' => __('Dùng cho Dark mode hoặc nền tối.', 'child-theme'),
+                    'instructions' => __('Dùng cho Dark mode hoặc nền tối.', 'lx-landing'),
                     'return_format' => 'array',
                     'preview_size' => 'medium',
                     'library' => 'all',
@@ -124,7 +124,7 @@ function lx_register_theme_options_fields()
                 // Tab: Layouts
                 [
                     'key' => 'field_lx_tab_layouts',
-                    'label' => __('Bố cục (Layouts)', 'child-theme'),
+                    'label' => __('Bố cục (Layouts)', 'lx-landing'),
                     'name' => '',
                     'type' => 'tab',
                     'placement' => 'top',
@@ -132,7 +132,7 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key' => 'field_lx_single_layout',
-                    'label' => __('Giao diện Bài viết (Single Post)', 'child-theme'),
+                    'label' => __('Giao diện Bài viết (Single Post)', 'lx-landing'),
                     'name' => 'lx_single_layout',
                     'type' => 'select',
                     'choices' => [
@@ -143,7 +143,7 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key' => 'field_lx_archive_layout',
-                    'label' => __('Giao diện Danh mục (Archive)', 'child-theme'),
+                    'label' => __('Giao diện Danh mục (Archive)', 'lx-landing'),
                     'name' => 'lx_archive_layout',
                     'type' => 'select',
                     'choices' => [
@@ -154,7 +154,7 @@ function lx_register_theme_options_fields()
                 ],
                 [
                     'key' => 'field_lx_search_layout',
-                    'label' => __('Giao diện Tìm kiếm (Search)', 'child-theme'),
+                    'label' => __('Giao diện Tìm kiếm (Search)', 'lx-landing'),
                     'name' => 'lx_search_layout',
                     'type' => 'select',
                     'choices' => [

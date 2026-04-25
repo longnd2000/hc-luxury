@@ -20,7 +20,7 @@
                     <h1 class="lx_archive_main_title">
                         <?php
                         /* translators: %s: search query. */
-                        printf(__('Kết quả tìm kiếm cho: "%s"', 'child-theme'), '<span>' . get_search_query() . '</span>');
+                        printf(__('Kết quả tìm kiếm cho: "%s"', 'lx-landing'), '<span>' . get_search_query() . '</span>');
                         ?>
                     </h1>
                 </header>
@@ -52,7 +52,7 @@
                     </div>
 
                 <?php else : ?>
-                    <p><?php echo __('Rất tiếc, không tìm thấy bài viết nào phù hợp với từ khóa của bạn.', 'child-theme'); ?></p>
+                    <p><?php echo __('Rất tiếc, không tìm thấy bài viết nào phù hợp với từ khóa của bạn.', 'lx-landing'); ?></p>
                 <?php endif; ?>
             </div>
 

@@ -118,11 +118,11 @@ function lx_handle_plugin_actions()
     $nonce  = isset($_GET['_wpnonce']) ? $_GET['_wpnonce'] : '';
 
     if (!wp_verify_nonce($nonce, 'lx_plugin_action_' . $plugin)) {
-        wp_die(__('Yêu cầu bảo mật không hợp lệ.', 'child-theme'));
+        wp_die(__('Yêu cầu bảo mật không hợp lệ.', 'lx-landing'));
     }
 
     if (!current_user_can('install_plugins')) {
-        wp_die(__('Bạn không có quyền thực hiện hành động này.', 'child-theme'));
+        wp_die(__('Bạn không có quyền thực hiện hành động này.', 'lx-landing'));
     }
 
     if (!function_exists('get_plugins')) {
@@ -261,13 +261,13 @@ function lx_required_plugins_notice()
         <p>
             <strong>⚠️ Warning Theme:</strong>
             <?php printf(
-                __('Có %d plugin cần thiết chưa được cài đặt hoặc kích hoạt. Website có thể không hoạt động đúng.', 'child-theme'),
+                __('Có %d plugin cần thiết chưa được cài đặt hoặc kích hoạt. Website có thể không hoạt động đúng.', 'lx-landing'),
                 $count
             ); ?>
         </p>
         <p>
             <a href="<?php echo $page_url; ?>" class="button button-primary">
-                <?php echo __('Xem danh sách & cài đặt ngay', 'child-theme'); ?>
+                <?php echo __('Xem danh sách & cài đặt ngay', 'lx-landing'); ?>
             </a>
         </p>
     </div>
@@ -333,8 +333,8 @@ function lx_register_plugins_page()
 {
     add_submenu_page(
         'options-general.php',
-        __('Plugin cần thiết', 'child-theme'),
-        __('Plugin cần thiết', 'child-theme'),
+        __('Plugin cần thiết', 'lx-landing'),
+        __('Plugin cần thiết', 'lx-landing'),
         'install_plugins',
         'child-theme-plugins',
         'lx_render_plugins_page'
@@ -463,20 +463,20 @@ function lx_render_plugins_page()
 
             switch ($lx_msg) {
                 case 'success_activate':
-                    $msg_text = __('Plugin đã được kích hoạt thành công.', 'child-theme');
+                    $msg_text = __('Plugin đã được kích hoạt thành công.', 'lx-landing');
                     break;
                 case 'success_deactivate':
-                    $msg_text = __('Plugin đã được vô hiệu hóa.', 'child-theme');
+                    $msg_text = __('Plugin đã được vô hiệu hóa.', 'lx-landing');
                     break;
                 case 'success_delete':
-                    $msg_text = __('Plugin đã được xóa khỏi hệ thống.', 'child-theme');
+                    $msg_text = __('Plugin đã được xóa khỏi hệ thống.', 'lx-landing');
                     break;
                 case 'error_activate':
-                    $msg_text = __('Lỗi khi kích hoạt plugin.', 'child-theme');
+                    $msg_text = __('Lỗi khi kích hoạt plugin.', 'lx-landing');
                     $msg_class = 'notice-error';
                     break;
                 case 'error_delete':
-                    $msg_text = __('Lỗi khi xóa plugin.', 'child-theme');
+                    $msg_text = __('Lỗi khi xóa plugin.', 'lx-landing');
                     $msg_class = 'notice-error';
                     break;
             }
@@ -488,27 +488,27 @@ function lx_render_plugins_page()
         ?>
         <div class="ct-plugins-header">
             <span class="dashicons dashicons-admin-plugins"></span>
-            <h1><?php echo __('Quản lý Plugin Tùy Chỉnh', 'child-theme'); ?></h1>
+            <h1><?php echo __('Quản lý Plugin Tùy Chỉnh', 'lx-landing'); ?></h1>
         </div>
 
         <div class="ct-plugins-actions">
             <?php if ($all_ok): ?>
                 <button class="ct-btn-massive" style="background: #e2e8f0; color: #94a3b8; cursor: not-allowed; box-shadow: none; animation: none; border: 1px solid #cbd5e1;" disabled>
-                    <span class="dashicons dashicons-yes-alt" style="margin-top: 2px;"></span> <?php echo __('Tất cả plugin đã sẵn sàng', 'child-theme'); ?>
+                    <span class="dashicons dashicons-yes-alt" style="margin-top: 2px;"></span> <?php echo __('Tất cả plugin đã sẵn sàng', 'lx-landing'); ?>
                 </button>
             <?php else: ?>
                 <button id="lx-install-all-btn" class="ct-btn-massive">
-                    <span class="dashicons dashicons-download" style="margin-top: 2px;"></span> <?php echo __('Cài đặt nhanh tất cả', 'child-theme'); ?>
+                    <span class="dashicons dashicons-download" style="margin-top: 2px;"></span> <?php echo __('Cài đặt nhanh tất cả', 'lx-landing'); ?>
                 </button>
             <?php endif; ?>
         </div>
 
         <div class="ct-summary <?php echo $all_ok ? 'ct-summary--ok' : ''; ?>">
             <?php if ($all_ok): ?>
-                <strong><span class="dashicons dashicons-yes-alt" style="color: #00a32a; vertical-align: middle;"></span> <?php echo __('Tuyệt vời! Tất cả plugin yêu cầu đã được cài đặt và kích hoạt đầy đủ.', 'child-theme'); ?></strong>
+                <strong><span class="dashicons dashicons-yes-alt" style="color: #00a32a; vertical-align: middle;"></span> <?php echo __('Tuyệt vời! Tất cả plugin yêu cầu đã được cài đặt và kích hoạt đầy đủ.', 'lx-landing'); ?></strong>
             <?php else: ?>
                 <strong><span class="dashicons dashicons-warning" style="color: #d63638; vertical-align: middle;"></span> <?php printf(
-                                                                                                                                __('Hệ thống phát hiện %d plugin chưa cài đặt và %d plugin chưa kích hoạt.', 'child-theme'),
+                                                                                                                                __('Hệ thống phát hiện %d plugin chưa cài đặt và %d plugin chưa kích hoạt.', 'lx-landing'),
                                                                                                                                 $missing_count,
                                                                                                                                 $inactive_count
                                                                                                                             ); ?></strong>
@@ -520,10 +520,10 @@ function lx_render_plugins_page()
                 <thead>
                     <tr>
                         <th style="width:10%">STT</th>
-                        <th style="width:30%"><?php echo __('Tên Plugin', 'child-theme'); ?></th>
-                        <th style="width:20%"><?php echo __('Trạng thái', 'child-theme'); ?></th>
-                        <th style="width:20%"><?php echo __('Thao tác', 'child-theme'); ?></th>
-                        <th style="width:20%"><?php echo __('Gỡ bỏ', 'child-theme'); ?></th>
+                        <th style="width:30%"><?php echo __('Tên Plugin', 'lx-landing'); ?></th>
+                        <th style="width:20%"><?php echo __('Trạng thái', 'lx-landing'); ?></th>
+                        <th style="width:20%"><?php echo __('Thao tác', 'lx-landing'); ?></th>
+                        <th style="width:20%"><?php echo __('Gỡ bỏ', 'lx-landing'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -537,16 +537,16 @@ function lx_render_plugins_page()
                             </td>
                             <td>
                                 <?php if ($p['status'] === 'active'): ?>
-                                    <span class="ct-badge ct-badge--active"><?php echo __('Đã kích hoạt', 'child-theme'); ?></span>
+                                    <span class="ct-badge ct-badge--active"><?php echo __('Đã kích hoạt', 'lx-landing'); ?></span>
                                 <?php elseif ($p['status'] === 'installed'): ?>
-                                    <span class="ct-badge ct-badge--installed"><?php echo __('Đã cài đặt', 'child-theme'); ?></span>
+                                    <span class="ct-badge ct-badge--installed"><?php echo __('Đã cài đặt', 'lx-landing'); ?></span>
                                 <?php else: ?>
-                                    <span class="ct-badge ct-badge--missing"><?php echo __('Chưa cài đặt', 'child-theme'); ?></span>
+                                    <span class="ct-badge ct-badge--missing"><?php echo __('Chưa cài đặt', 'lx-landing'); ?></span>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <?php if ($p['status'] === 'active'): ?>
-                                    <span class="ct-btn ct-btn--disabled"><span class="dashicons dashicons-yes"></span> <?php echo __('Hoàn tất', 'child-theme'); ?></span>
+                                    <span class="ct-btn ct-btn--disabled"><span class="dashicons dashicons-yes"></span> <?php echo __('Hoàn tất', 'lx-landing'); ?></span>
 
                                 <?php elseif ($p['status'] === 'installed'): ?>
                                     <?php
@@ -556,13 +556,13 @@ function lx_render_plugins_page()
                                     );
                                     ?>
                                     <a href="<?php echo $activate_url; ?>" class="ct-btn ct-btn--activate">
-                                        <span class="dashicons dashicons-controls-play"></span> <?php echo __('Kích hoạt ngay', 'child-theme'); ?>
+                                        <span class="dashicons dashicons-controls-play"></span> <?php echo __('Kích hoạt ngay', 'lx-landing'); ?>
                                     </a>
 
                                 <?php else: ?>
                                     <?php if ($p['external_url']): ?>
                                         <a href="<?php echo $p['external_url']; ?>" class="ct-btn ct-btn--install" target="_blank">
-                                            <span class="dashicons dashicons-external"></span> <?php echo __('Tải từ trang chủ', 'child-theme'); ?>
+                                            <span class="dashicons dashicons-external"></span> <?php echo __('Tải từ trang chủ', 'lx-landing'); ?>
                                         </a>
                                     <?php else: ?>
                                         <?php
@@ -572,7 +572,7 @@ function lx_render_plugins_page()
                                         );
                                         ?>
                                         <a href="<?php echo $install_url; ?>" class="ct-btn ct-btn--install">
-                                            <span class="dashicons dashicons-download"></span> <?php echo __('Cài đặt ngay', 'child-theme'); ?>
+                                            <span class="dashicons dashicons-download"></span> <?php echo __('Cài đặt ngay', 'lx-landing'); ?>
                                         </a>
                                     <?php endif; ?>
                                 <?php endif; ?>
@@ -585,8 +585,8 @@ function lx_render_plugins_page()
                                         'lx_plugin_action_' . $p['file']
                                     );
                                     ?>
-                                    <a href="<?php echo $deactivate_url; ?>" class="ct-btn ct-btn--deactivate" onclick="return confirm('<?php echo __('Bạn có chắc chắn muốn vô hiệu hóa plugin này?', 'child-theme'); ?>')">
-                                        <span class="dashicons dashicons-controls-pause"></span> <?php echo __('Vô hiệu hóa', 'child-theme'); ?>
+                                    <a href="<?php echo $deactivate_url; ?>" class="ct-btn ct-btn--deactivate" onclick="return confirm('<?php echo __('Bạn có chắc chắn muốn vô hiệu hóa plugin này?', 'lx-landing'); ?>')">
+                                        <span class="dashicons dashicons-controls-pause"></span> <?php echo __('Vô hiệu hóa', 'lx-landing'); ?>
                                     </a>
                                 <?php elseif ($p['status'] === 'installed'): ?>
                                     <?php
@@ -595,11 +595,11 @@ function lx_render_plugins_page()
                                         'lx_plugin_action_' . $p['file']
                                     );
                                     ?>
-                                    <a href="<?php echo $delete_url; ?>" class="ct-btn ct-btn--delete" onclick="return confirm('<?php echo __('Bạn có chắc chắn muốn XÓA plugin này? Hành động này không thể hoàn tác.', 'child-theme'); ?>')">
-                                        <span class="dashicons dashicons-trash"></span> <?php echo __('Xóa luôn', 'child-theme'); ?>
+                                    <a href="<?php echo $delete_url; ?>" class="ct-btn ct-btn--delete" onclick="return confirm('<?php echo __('Bạn có chắc chắn muốn XÓA plugin này? Hành động này không thể hoàn tác.', 'lx-landing'); ?>')">
+                                        <span class="dashicons dashicons-trash"></span> <?php echo __('Xóa luôn', 'lx-landing'); ?>
                                     </a>
                                 <?php else: ?>
-                                    <span class="ct-btn ct-btn--disabled"><?php echo __('Chưa có sẵn', 'child-theme'); ?></span>
+                                    <span class="ct-btn ct-btn--disabled"><?php echo __('Chưa có sẵn', 'lx-landing'); ?></span>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -629,21 +629,21 @@ function lx_render_plugins_page()
             });
             
             if (pluginsToInstall.length === 0) {
-                alert('<?php echo esc_js(__('Tất cả plugin đã được cài đặt và kích hoạt!', 'child-theme')); ?>');
+                alert('<?php echo esc_js(__('Tất cả plugin đã được cài đặt và kích hoạt!', 'lx-landing')); ?>');
                 return;
             }
             
-            if (!confirm('<?php echo esc_js(__('Bạn có muốn cài đặt và kích hoạt tất cả plugin còn thiếu không?', 'child-theme')); ?>')) {
+            if (!confirm('<?php echo esc_js(__('Bạn có muốn cài đặt và kích hoạt tất cả plugin còn thiếu không?', 'lx-landing')); ?>')) {
                 return;
             }
             
-            $btn.addClass('installing').html('<span class="dashicons dashicons-update-alt lx-spin" style="margin-top: 2px;"></span> <?php echo esc_js(__('Đang xử lý...', 'child-theme')); ?>');
+            $btn.addClass('installing').html('<span class="dashicons dashicons-update-alt lx-spin" style="margin-top: 2px;"></span> <?php echo esc_js(__('Đang xử lý...', 'lx-landing')); ?>');
             
             var currentIndex = 0;
             
             function processNextPlugin() {
                 if (currentIndex >= pluginsToInstall.length) {
-                    $btn.removeClass('installing').html('<span class="dashicons dashicons-yes-alt" style="margin-top: 2px;"></span> <?php echo esc_js(__('Đã hoàn tất!', 'child-theme')); ?>');
+                    $btn.removeClass('installing').html('<span class="dashicons dashicons-yes-alt" style="margin-top: 2px;"></span> <?php echo esc_js(__('Đã hoàn tất!', 'lx-landing')); ?>');
                     setTimeout(function() {
                         window.location.reload();
                     }, 1000);
@@ -653,7 +653,7 @@ function lx_render_plugins_page()
                 var plugin = pluginsToInstall[currentIndex];
                 var $row = plugin.row;
                 
-                $row.find('.ct-btn--install, .ct-btn--activate').replaceWith('<span class="ct-btn ct-btn--disabled lx-processing-btn"><span class="dashicons dashicons-update-alt lx-spin"></span> <?php echo esc_js(__('Đang xử lý...', 'child-theme')); ?></span>');
+                $row.find('.ct-btn--install, .ct-btn--activate').replaceWith('<span class="ct-btn ct-btn--disabled lx-processing-btn"><span class="dashicons dashicons-update-alt lx-spin"></span> <?php echo esc_js(__('Đang xử lý...', 'lx-landing')); ?></span>');
                 
                 $.ajax({
                     url: ajaxurl,
@@ -665,16 +665,16 @@ function lx_render_plugins_page()
                     },
                     success: function(response) {
                         if (response.success) {
-                            $row.find('.lx-processing-btn').html('<span class="dashicons dashicons-yes"></span> <?php echo esc_js(__('Hoàn tất', 'child-theme')); ?>').css({'color': '#059669', 'font-weight': '600'});
-                            $row.find('.ct-badge').replaceWith('<span class="ct-badge ct-badge--active"><?php echo esc_js(__('Đã kích hoạt', 'child-theme')); ?></span>');
+                            $row.find('.lx-processing-btn').html('<span class="dashicons dashicons-yes"></span> <?php echo esc_js(__('Hoàn tất', 'lx-landing')); ?>').css({'color': '#059669', 'font-weight': '600'});
+                            $row.find('.ct-badge').replaceWith('<span class="ct-badge ct-badge--active"><?php echo esc_js(__('Đã kích hoạt', 'lx-landing')); ?></span>');
                             $row.data('status', 'active');
                         } else {
-                            $row.find('.lx-processing-btn').html('<span class="dashicons dashicons-warning"></span> <?php echo esc_js(__('Lỗi', 'child-theme')); ?>').css({'color': '#dc2626', 'font-weight': '600'});
+                            $row.find('.lx-processing-btn').html('<span class="dashicons dashicons-warning"></span> <?php echo esc_js(__('Lỗi', 'lx-landing')); ?>').css({'color': '#dc2626', 'font-weight': '600'});
                             console.error('Lỗi cài đặt plugin ' + plugin.slug + ':', response.data);
                         }
                     },
                     error: function() {
-                        $row.find('.lx-processing-btn').html('<span class="dashicons dashicons-warning"></span> <?php echo esc_js(__('Lỗi kết nối', 'child-theme')); ?>').css({'color': '#dc2626', 'font-weight': '600'});
+                        $row.find('.lx-processing-btn').html('<span class="dashicons dashicons-warning"></span> <?php echo esc_js(__('Lỗi kết nối', 'lx-landing')); ?>').css({'color': '#dc2626', 'font-weight': '600'});
                     },
                     complete: function() {
                         currentIndex++;
@@ -697,12 +697,12 @@ function lx_ajax_install_activate_plugin() {
     check_ajax_referer('lx_plugin_install_all', 'nonce');
 
     if (!current_user_can('install_plugins')) {
-        wp_send_json_error(__('Bạn không có quyền thực hiện hành động này.', 'child-theme'));
+        wp_send_json_error(__('Bạn không có quyền thực hiện hành động này.', 'lx-landing'));
     }
 
     $slug = isset($_POST['slug']) ? sanitize_text_field($_POST['slug']) : '';
     if (empty($slug)) {
-        wp_send_json_error(__('Thiếu slug plugin.', 'child-theme'));
+        wp_send_json_error(__('Thiếu slug plugin.', 'lx-landing'));
     }
 
     require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
@@ -733,7 +733,7 @@ function lx_ajax_install_activate_plugin() {
 
         // Initialize Filesystem
         if (!WP_Filesystem()) {
-            wp_send_json_error(__('Không thể khởi tạo Filesystem.', 'child-theme'));
+            wp_send_json_error(__('Không thể khởi tạo Filesystem.', 'lx-landing'));
         }
 
         ob_start();
@@ -745,7 +745,7 @@ function lx_ajax_install_activate_plugin() {
         if (is_wp_error($result)) {
             wp_send_json_error($result->get_error_message());
         } elseif ($result === false) {
-            wp_send_json_error(__('Lỗi khi cài đặt plugin.', 'child-theme'));
+            wp_send_json_error(__('Lỗi khi cài đặt plugin.', 'lx-landing'));
         }
 
         // Search for the plugin file again
@@ -764,12 +764,12 @@ function lx_ajax_install_activate_plugin() {
         if (!is_plugin_active($plugin_file)) {
             $activate = activate_plugin($plugin_file);
             if (is_wp_error($activate)) {
-                wp_send_json_error(__('Đã cài đặt nhưng lỗi khi kích hoạt: ', 'child-theme') . $activate->get_error_message());
+                wp_send_json_error(__('Đã cài đặt nhưng lỗi khi kích hoạt: ', 'lx-landing') . $activate->get_error_message());
             }
         }
-        wp_send_json_success(__('Đã cài đặt và kích hoạt thành công!', 'child-theme'));
+        wp_send_json_success(__('Đã cài đặt và kích hoạt thành công!', 'lx-landing'));
     }
 
-    wp_send_json_error(__('Không tìm thấy file plugin sau khi cài đặt.', 'child-theme'));
+    wp_send_json_error(__('Không tìm thấy file plugin sau khi cài đặt.', 'lx-landing'));
 }
 add_action('wp_ajax_lx_install_activate_plugin', 'lx_ajax_install_activate_plugin');

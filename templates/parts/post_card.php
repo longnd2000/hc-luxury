@@ -62,7 +62,7 @@
 
         <?php if ($link): ?>
             <div class="cs_post_footer">
-                <a href="<?php echo $link; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'child-theme'); ?></a>
+                <a href="<?php echo $link; ?>" class="fp_read_more"><?php echo __('Xem thêm &rarr;', 'lx-landing'); ?></a>
             </div>
         <?php endif; ?>
     </div>

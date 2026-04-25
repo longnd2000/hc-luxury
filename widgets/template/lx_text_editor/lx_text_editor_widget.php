@@ -17,7 +17,7 @@ class LX_Text_Editor_Widget extends \Elementor\Widget_Base
 
     public function get_title(): string
     {
-        return __('Văn bản', 'child-theme');
+        return __('Văn bản', 'lx-landing');
     }
 
     public function get_icon(): string
@@ -35,7 +35,7 @@ class LX_Text_Editor_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'section_noi_dung',
             [
-                'label' => __('Nội dung', 'child-theme'),
+                'label' => __('Nội dung', 'lx-landing'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -43,9 +43,9 @@ class LX_Text_Editor_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'noi_dung',
             [
-                'label'      => __('Nội dung văn bản', 'child-theme'),
+                'label'      => __('Nội dung văn bản', 'lx-landing'),
                 'type'       => \Elementor\Controls_Manager::WYSIWYG,
-                'default'    => __('Nhập nội dung văn bản tại đây...', 'child-theme'),
+                'default'    => __('Nhập nội dung văn bản tại đây...', 'lx-landing'),
                 'show_label' => false,
             ]
         );

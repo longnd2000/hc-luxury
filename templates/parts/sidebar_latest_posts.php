@@ -13,7 +13,7 @@
 <aside class="lx_sidebar_latest_posts">
 
     <div class="lx_archive_sidebar_widget">
-        <h2 class="lx_archive_sidebar_title"><?php echo __('Bài viết mới nhất', 'child-theme'); ?></h2>
+        <h2 class="lx_archive_sidebar_title"><?php echo __('Bài viết mới nhất', 'lx-landing'); ?></h2>
 
         <div class="lx_archive_sidebar_list">
             <?php

@@ -21,7 +21,7 @@ get_header();
             <!-- Main Content: Left Column -->
             <div class="col-lg-8">
                 <header class="lx_archive_main_header mb-5">
-                    <h1 class="lx_archive_main_title"><?php echo __('Sự kiện', 'child-theme'); ?></h1>
+                    <h1 class="lx_archive_main_title"><?php echo __('Sự kiện', 'lx-landing'); ?></h1>
                 </header>
 
                 <?php if (have_posts()) :
@@ -55,13 +55,13 @@ get_header();
                             $status_text = '';
                             $status_class = '';
                             if ($now < $start_ts) {
-                                $status_text = __('SẮP DIỄN RA', 'child-theme');
+                                $status_text = __('SẮP DIỄN RA', 'lx-landing');
                                 $status_class = 'upcoming';
                             } elseif ($now >= $start_ts && $now <= $end_ts) {
-                                $status_text = __('ĐĂNG KÝ NGAY', 'child-theme');
+                                $status_text = __('ĐĂNG KÝ NGAY', 'lx-landing');
                                 $status_class = 'active';
                             } else {
-                                $status_text = __('ĐÃ KẾT THÚC', 'child-theme');
+                                $status_text = __('ĐÃ KẾT THÚC', 'lx-landing');
                                 $status_class = 'finished';
                             }
 
@@ -87,7 +87,7 @@ get_header();
                     </div>
 
                 <?php else : ?>
-                    <p><?php echo __('Rất tiếc, chưa có sự kiện nào.', 'child-theme'); ?></p>
+                    <p><?php echo __('Rất tiếc, chưa có sự kiện nào.', 'lx-landing'); ?></p>
                 <?php endif; ?>
             </div>
 
