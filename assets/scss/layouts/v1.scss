@@ -20,7 +20,10 @@
         color: #888;
         text-decoration: none;
         transition: all 0.3s;
-        &:hover { color: #000; }
+
+        &:hover {
+            color: #000;
+        }
     }
 
     i {

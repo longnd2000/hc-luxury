@@ -35,6 +35,8 @@ Follow the structure of `widgets/template/duplicate_widget.php` as the master te
 | `lx_faqs` | LX — FAQs | Accordion FAQs |
 | `lx_cta` | LX — CTA | Call-to-action banners |
 | `lx_lien_he` | LX — Liên hệ | Contact forms, maps, contact info |
+| `lx_dynamic` | LX — Năng động | Theme Builder (Single, Archive, Search) |
+
 
 ## Strict CSS Isolation (UI Kit Strategy)
 - This theme is built as a highly reusable **UI Kit**.

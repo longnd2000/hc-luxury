@@ -1,76 +1,85 @@
-﻿// ============================================================
-// CATEGORY: LX --- N--t (lx_nut)
+// ============================================================
+// CATEGORY: LX --- Nút (lx_nut)
 // ============================================================
 
-// Wrap c--n l---
-.lx_btn_wrap        { display: flex; }
-.lx_btn_wrap_left   { justify-content: flex-start; }
-.lx_btn_wrap_center { justify-content: center; }
-.lx_btn_wrap_right  { justify-content: flex-end; }
+// Wrap căn lề
+.lx_btn_wrap        { display: flex !important; }
+.lx_btn_wrap_left   { justify-content: flex-start !important; }
+.lx_btn_wrap_center { justify-content: center !important; }
+.lx_btn_wrap_right  { justify-content: flex-end !important; }
 
-// Base n--t
+// Base nút
 .lx_btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 4px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: background-color 0.25s, color 0.25s, border-color 0.25s, opacity 0.25s;
-    white-space: nowrap;
-    line-height: 1;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background-color 0.25s, color 0.25s, border-color 0.25s, opacity 0.25s !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    font-family: $font-main !important;
+
+    // Sử dụng biến từ Theme Options
+    font-size: var(--lx-btn-font-size, 16px) !important;
+    font-weight: var(--lx-btn-font-weight, 500) !important;
+    padding: var(--lx-btn-padding-y, 12px) var(--lx-btn-padding-x, 24px) !important;
+    border: var(--lx-btn-border-width, 1px) solid transparent !important;
+    border-radius: var(--lx-btn-border-radius, 4px) !important;
+
 }
 
-// K--ch th-----c
-.lx_btn_sm { font-size: 13px; padding: 8px 16px; }
-.lx_btn_md { font-size: 15px; padding: 12px 24px; }
-.lx_btn_lg { font-size: 17px; padding: 16px 32px; }
-
-// Bi---n th---: -----c (Primary)
+// Biến thể: Rực (Primary)
 .lx_btn_primary {
-    background-color: var(--lx-primary-color, #0d6efd);
-    border-color: var(--lx-primary-color, #0d6efd);
-    color: #fff;
-}
-.lx_btn_primary:hover {
-    opacity: 0.85;
-    color: #fff;
+    background-color: var(--lx-btn-bg-color, var(--lx-primary-color, #0d6efd)) !important;
+    border-color: var(--lx-btn-border-color, var(--lx-primary-color, #0d6efd)) !important;
+    color: var(--lx-btn-text-color, #fff) !important;
 }
 
-// Bi---n th---: Vi---n (Outline)
+.lx_btn_primary:hover {
+    background-color: var(--lx-btn-bg-hover, #0056b3) !important;
+    border-color: var(--lx-btn-border-hover, #0056b3) !important;
+    color: var(--lx-btn-text-hover, #fff) !important;
+    opacity: 1 !important;
+}
+
+// Các kích thước phụ (vẫn giữ quan hệ !important)
+.lx_btn_sm { font-size: 13px !important; padding: 8px 16px !important; }
+.lx_btn_md { font-size: 15px !important; padding: 12px 24px !important; }
+.lx_btn_lg { font-size: 17px !important; padding: 16px 32px !important; }
+
+// Biến thể: Viền (Outline)
 .lx_btn_outline {
-    background-color: transparent;
-    border-color: var(--lx-primary-color, #0d6efd);
-    color: var(--lx-primary-color, #0d6efd);
+    background-color: transparent !important;
+    border-color: var(--lx-primary-color, #0d6efd) !important;
+    color: var(--lx-primary-color, #0d6efd) !important;
 }
 .lx_btn_outline:hover {
-    background-color: var(--lx-primary-color, #0d6efd);
-    color: #fff;
+    background-color: var(--lx-primary-color, #0d6efd) !important;
+    color: #fff !important;
 }
 
-// Bi---n th---: M--- (Ghost)
+// Biến thể: Mờ (Ghost)
 .lx_btn_ghost {
-    background-color: color-mix(in srgb, var(--lx-primary-color, #0d6efd) 12%, transparent);
-    border-color: transparent;
-    color: var(--lx-primary-color, #0d6efd);
+    background-color: color-mix(in srgb, var(--lx-primary-color, #0d6efd) 12%, transparent) !important;
+    border-color: transparent !important;
+    color: var(--lx-primary-color, #0d6efd) !important;
 }
 .lx_btn_ghost:hover {
-    background-color: color-mix(in srgb, var(--lx-primary-color, #0d6efd) 20%, transparent);
-    color: var(--lx-primary-color, #0d6efd);
+    background-color: color-mix(in srgb, var(--lx-primary-color, #0d6efd) 20%, transparent) !important;
+    color: var(--lx-primary-color, #0d6efd) !important;
 }
 
-// Bi---n th---: Ch--- text (Text)
+// Biến thể: Chỉ text (Text)
 .lx_btn_text {
-    background-color: transparent;
-    border-color: transparent;
-    color: var(--lx-primary-color, #0d6efd);
-    padding-left: 0;
-    padding-right: 0;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: var(--lx-primary-color, #0d6efd) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 .lx_btn_text:hover {
-    opacity: 0.75;
-    color: var(--lx-primary-color, #0d6efd);
+    opacity: 0.75 !important;
+    color: var(--lx-primary-color, #0d6efd) !important;
 }

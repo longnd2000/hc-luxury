@@ -121,50 +121,116 @@ function lx_register_theme_options_fields()
                     'library' => 'all',
                 ],
 
-                // Tab: Layouts
+                // Tab: Buttons
                 [
-                    'key' => 'field_lx_tab_layouts',
-                    'label' => __('Bố cục (Layouts)', 'lx-landing'),
+                    'key' => 'field_lx_tab_buttons',
+                    'label' => __('Nút (Buttons)', 'lx-landing'),
                     'name' => '',
                     'type' => 'tab',
                     'placement' => 'top',
                     'endpoint' => 0,
                 ],
                 [
-                    'key' => 'field_lx_single_layout',
-                    'label' => __('Giao diện Bài viết (Single Post)', 'lx-landing'),
-                    'name' => 'lx_single_layout',
-                    'type' => 'select',
-                    'choices' => [
-                        'v1' => 'Version 1 (Default)',
-                    ],
-                    'default_value' => 'v1',
-                    'return_format' => 'value',
+                    'key' => 'field_lx_btn_font_size',
+                    'label' => __('Cỡ chữ của nút (px)', 'lx-landing'),
+                    'name' => 'lx_btn_font_size',
+                    'type' => 'number',
+                    'default_value' => 16,
+                    'append' => 'px',
                 ],
                 [
-                    'key' => 'field_lx_archive_layout',
-                    'label' => __('Giao diện Danh mục (Archive)', 'lx-landing'),
-                    'name' => 'lx_archive_layout',
+                    'key' => 'field_lx_btn_font_weight',
+                    'label' => __('Độ đậm của chữ', 'lx-landing'),
+                    'name' => 'lx_btn_font_weight',
                     'type' => 'select',
                     'choices' => [
-                        'v1' => 'Version 1 (Default)',
+                        '400' => '400 - Normal',
+                        '500' => '500 - Medium',
+                        '600' => '600 - Semi-Bold',
+                        '700' => '700 - Bold',
                     ],
-                    'default_value' => 'v1',
-                    'return_format' => 'value',
+                    'default_value' => '500',
                 ],
                 [
-                    'key' => 'field_lx_search_layout',
-                    'label' => __('Giao diện Tìm kiếm (Search)', 'lx-landing'),
-                    'name' => 'lx_search_layout',
-                    'type' => 'select',
-                    'choices' => [
-                        'v1' => 'Version 1 (Default)',
-                    ],
-                    'default_value' => 'v1',
-                    'return_format' => 'value',
+                    'key' => 'field_lx_btn_padding_y',
+                    'label' => __('Khoảng cách Trên/Dưới (px)', 'lx-landing'),
+                    'name' => 'lx_btn_padding_y',
+                    'type' => 'number',
+                    'default_value' => 12,
+                    'append' => 'px',
+                ],
+                [
+                    'key' => 'field_lx_btn_padding_x',
+                    'label' => __('Khoảng cách Trái/Phải (px)', 'lx-landing'),
+                    'name' => 'lx_btn_padding_x',
+                    'type' => 'number',
+                    'default_value' => 24,
+                    'append' => 'px',
+                ],
+                [
+                    'key' => 'field_lx_btn_border_width',
+                    'label' => __('Độ dày viền (px)', 'lx-landing'),
+                    'name' => 'lx_btn_border_width',
+                    'type' => 'number',
+                    'default_value' => 1,
+                    'append' => 'px',
+                ],
+                [
+                    'key' => 'field_lx_btn_border_radius',
+                    'label' => __('Độ bo góc (px)', 'lx-landing'),
+                    'name' => 'lx_btn_border_radius',
+                    'type' => 'number',
+                    'default_value' => 4,
+                    'append' => 'px',
+                ],
+                [
+                    'key' => 'field_lx_btn_bg_color',
+                    'label' => __('Màu nền nút (Primary)', 'lx-landing'),
+                    'name' => 'lx_btn_bg_color',
+                    'type' => 'color_picker',
+                    'default_value' => '#0d6efd',
+                ],
+                [
+                    'key' => 'field_lx_btn_border_color',
+                    'label' => __('Màu viền nút (Primary)', 'lx-landing'),
+                    'name' => 'lx_btn_border_color',
+                    'type' => 'color_picker',
+                    'default_value' => '#0d6efd',
+                ],
+                [
+                    'key' => 'field_lx_btn_text_color',
+                    'label' => __('Màu chữ nút (Primary)', 'lx-landing'),
+                    'name' => 'lx_btn_text_color',
+                    'type' => 'color_picker',
+                    'default_value' => '#ffffff',
+                ],
+                [
+                    'key' => 'field_lx_btn_bg_color_hover',
+                    'label' => __('Màu nền nút khi Hover', 'lx-landing'),
+                    'name' => 'lx_btn_bg_color_hover',
+                    'type' => 'color_picker',
+                    'default_value' => '#0056b3',
+                ],
+                [
+                    'key' => 'field_lx_btn_border_color_hover',
+                    'label' => __('Màu viền nút khi Hover', 'lx-landing'),
+                    'name' => 'lx_btn_border_color_hover',
+                    'type' => 'color_picker',
+                    'default_value' => '#0056b3',
+                ],
+                [
+                    'key' => 'field_lx_btn_text_color_hover',
+                    'label' => __('Màu chữ nút khi Hover', 'lx-landing'),
+                    'name' => 'lx_btn_text_color_hover',
+                    'type' => 'color_picker',
+                    'default_value' => '#ffffff',
                 ],
 
-            ],
+
+
+
+                ],
+
             'location' => [
                 [
                     [
@@ -200,7 +266,26 @@ function lx_inject_theme_options_css()
     $primary_color   = get_field('lx_primary_color', 'option') ?: '#0d6efd';
     $secondary_color = get_field('lx_secondary_color', 'option') ?: '#fd7c00';
 
+    // Button Settings
+    $btn_font_size     = get_field('lx_btn_font_size', 'option') ?: 15;
+    $btn_font_weight   = get_field('lx_btn_font_weight', 'option') ?: '600';
+    $btn_padding_y     = get_field('lx_btn_padding_y', 'option') ?: 12;
+    $btn_padding_x     = get_field('lx_btn_padding_x', 'option') ?: 24;
+    $btn_border_width  = get_field('lx_btn_border_width', 'option') ?: 1;
+    $btn_border_radius = get_field('lx_btn_border_radius', 'option') ?: 4;
+
+    // Button Colors
+    $btn_bg_color     = get_field('lx_btn_bg_color', 'option') ?: '#0d6efd';
+    $btn_border_color = get_field('lx_btn_border_color', 'option') ?: '#0d6efd';
+    $btn_text_color   = get_field('lx_btn_text_color', 'option') ?: '#ffffff';
+
+    $btn_bg_hover     = get_field('lx_btn_bg_color_hover', 'option') ?: '#0056b3';
+    $btn_border_hover = get_field('lx_btn_border_color_hover', 'option') ?: '#0056b3';
+    $btn_text_hover   = get_field('lx_btn_text_color_hover', 'option') ?: '#ffffff';
+
     // Format font name for Google Fonts URL (replace spaces with +)
+
+
     $font_url_param   = str_replace(' ', '+', $primary_font);
     $google_fonts_url = "https://fonts.googleapis.com/css2?family={$font_url_param}:ital,wght@0,400..900;1,400..900&display=swap";
 
@@ -215,8 +300,25 @@ function lx_inject_theme_options_css()
     echo '  --lx-primary-color: ' . esc_attr($primary_color) . ';' . "\n";
     echo '  --lx-secondary-color: ' . esc_attr($secondary_color) . ';' . "\n";
     echo '  --lx-primary-font: "' . esc_attr($primary_font) . '", sans-serif;' . "\n";
+    
+    // Global Button Variables
+    echo '  --lx-btn-font-size: ' . esc_attr($btn_font_size) . 'px;' . "\n";
+    echo '  --lx-btn-font-weight: ' . esc_attr($btn_font_weight) . ';' . "\n";
+    echo '  --lx-btn-padding-y: ' . esc_attr($btn_padding_y) . 'px;' . "\n";
+    echo '  --lx-btn-padding-x: ' . esc_attr($btn_padding_x) . 'px;' . "\n";
+    echo '  --lx-btn-border-width: ' . esc_attr($btn_border_width) . 'px;' . "\n";
+    echo '  --lx-btn-border-radius: ' . esc_attr($btn_border_radius) . 'px;' . "\n";
+    echo '  --lx-btn-bg-color: ' . esc_attr($btn_bg_color) . ';' . "\n";
+    echo '  --lx-btn-border-color: ' . esc_attr($btn_border_color) . ';' . "\n";
+    echo '  --lx-btn-text-color: ' . esc_attr($btn_text_color) . ';' . "\n";
+    echo '  --lx-btn-bg-hover: ' . esc_attr($btn_bg_hover) . ';' . "\n";
+    echo '  --lx-btn-border-hover: ' . esc_attr($btn_border_hover) . ';' . "\n";
+    echo '  --lx-btn-text-hover: ' . esc_attr($btn_text_hover) . ';' . "\n";
     echo '}' . "\n";
+
+
     echo '</style>' . "\n";
+
 }
 
 // ── Google Fonts AJAX Support ──────────────────────────────────────────────

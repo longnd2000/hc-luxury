@@ -1,129 +1,106 @@
 @import "normalize";
 
 // Dynamic Theme Options Variables (Mapped from CSS Custom Properties)
-$primary: var(--lx-primary-color, #FA8314);
-$secondary: var(--lx-secondary-color, #000000);
+$primary: var(--lx-primary-color, #0d6efd);    // Màu chính (Mặc định: Xanh)
+$secondary: var(--lx-secondary-color, #FA8314); // Màu phụ (Mặc định: Cam)
+$content: #000000;                              // Màu nội dung chính
 $font-main: var(--lx-primary-font, "Inter", sans-serif);
 
-body {
-  color: $secondary;
-  font-family: $font-main;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-}
+/**
+ * SPECIFICITY BOOSTER & GLOBAL OVERRIDES
+ * Toàn bộ styles được bọc trong 'body' để đè bẹp CSS của Elementor Kit.
+ */
+body.elementor-page.elementor-default {
+  color: $content !important;
+  font-family: $font-main !important;
 
-// slick custom
-.slick-slider .slick-arrow {
-  background-color: $primary !important;
-  border-radius: 50% !important;
-  width: 32px;
-  height: 32px;
-  z-index: 999;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important; // Tiêu chuẩn body text
 
-  &::before {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  // Reset Headings with High Priority
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3 !important; // Tiêu chuẩn headings
+    margin-top: 0 !important;
+    margin-bottom: 16px !important; // Cưỡng chế 16px đồng nhất
   }
+
+
+  p, ul, ol {
+    margin-top: 0 !important;
+    margin-bottom: 16px !important; // Cưỡng chế 16px đồng nhất
+  }
+
+
+  ul, ol {
+    padding-left: 16px;
+  }
+
+  // slick custom
+  .slick-slider .slick-arrow {
+    background-color: $primary !important;
+    border-radius: 50% !important;
+    width: 32px;
+    height: 32px;
+    z-index: 999;
+
+    &::before {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .slick-slider .slick-arrow.slick-prev {
+    left: -40px;
+  }
+
+  .slick-slider .slick-arrow.slick-next {
+    right: -40px;
+  }
+
+  .slick-dots li button::before {
+    display: none !important;
+  }
+
+  .slick-dots li button {
+    background-color: #f0f0f0 !important;
+    border-radius: 50% !important;
+    overflow: hidden;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: $primary !important;
+  }
+
+  // Plugins customization
+
+  @import 'plugins/editor';
+  @import 'plugins/ctf7';
+  @import 'plugins/fixed-toc';
+
+  // Theme styles (Layouts)
+  @import 'layouts/v1';
+
+  // ── Widget Styles (By Category) ──────────────────────────────────────────
+  @import 'widgets/lx_tieu_de/main';
+  @import 'widgets/lx_nut/main';
+  @import 'widgets/lx_text_editor/main';
+  @import 'widgets/lx_banner/main';
+  @import 'widgets/lx_khach_hang/main';
+  @import 'widgets/lx_doi_tac/main';
+  @import 'widgets/lx_van_de/main';
+  @import 'widgets/lx_giai_phap/main';
+  @import 'widgets/lx_loi_ich/main';
+  @import 'widgets/lx_tinh_nang/main';
+  @import 'widgets/lx_dich_vu/main';
+  @import 'widgets/lx_quy_trinh/main';
+  @import 'widgets/lx_danh_gia/main';
+  @import 'widgets/lx_bang_gia/main';
+  @import 'widgets/lx_faqs/main';
+  @import 'widgets/lx_cta/main';
+  @import 'widgets/lx_lien_he/main';
 }
-
-.slick-slider .slick-arrow.slick-prev {
-  left: -40px;
-}
-
-.slick-slider .slick-arrow.slick-next {
-  right: -40px;
-}
-
-.slick-dots li button::before {
-  display: none !important;
-}
-
-.slick-dots li button {
-  background-color: #f0f0f0 !important;
-  border-radius: 50% !important;
-  overflow: hidden;
-  width: 16px !important;
-  height: 16px !important;
-}
-
-.slick-dots li.slick-active button {
-  background-color: $primary !important;
-}
-
-// Global layout
-.section_box {
-  width: 100%;
-  padding: 0 4%;
-  box-sizing: border-box;
-}
-
-.container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.py_section {
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-p,
-ul,
-ol {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-ul,
-ol {
-  padding-left: 16px;
-}
-
-// Plugins customization
-@import 'plugins/editor';
-@import 'plugins/ctf7';
-@import 'plugins/fixed-toc';
-
-// Theme styles (Layouts)
-@import 'layouts/v1';
-
-
-
-// ── Widget Styles (By Category) ──────────────────────────────────────────
-// Cấu trúc: Mỗi file tương ứng với 1 DANH MỤC widget (Category).
-// Giúp quản lý code theo nghiệp vụ kinh doanh.
-
-// Cơ bản (Atom)
-@import 'widgets/lx_tieu_de/main';
-@import 'widgets/lx_nut/main';
-@import 'widgets/lx_text_editor/main';
-
-// Nghiệp vụ (Business Categories)
-@import 'widgets/lx_banner/main';
-@import 'widgets/lx_khach_hang/main';
-@import 'widgets/lx_doi_tac/main';
-@import 'widgets/lx_van_de/main';
-@import 'widgets/lx_giai_phap/main';
-@import 'widgets/lx_loi_ich/main';
-@import 'widgets/lx_tinh_nang/main';
-@import 'widgets/lx_dich_vu/main';
-@import 'widgets/lx_quy_trinh/main';
-@import 'widgets/lx_danh_gia/main';
-@import 'widgets/lx_bang_gia/main';
-@import 'widgets/lx_faqs/main';
-@import 'widgets/lx_cta/main';
-@import 'widgets/lx_lien_he/main';

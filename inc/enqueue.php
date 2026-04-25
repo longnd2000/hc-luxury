@@ -94,3 +94,15 @@ function child_theme_assets(): void
     );
 }
 add_action('wp_enqueue_scripts', 'child_theme_assets');
+
+/**
+ * Remove Elementor Default Styles to prevent overrides
+ */
+function lx_remove_elementor_base_styles()
+{
+    // Loại bỏ CSS Kit (Màu sắc/Font chữ mặc định của Elementor)
+    wp_dequeue_style('elementor-kit');
+    wp_dequeue_style('elementor-global');
+}
+add_action('wp_enqueue_scripts', 'lx_remove_elementor_base_styles', 999);
+

@@ -1,20 +1,22 @@
-﻿// ============================================================
-// CATEGORY: LX --- Ti--u ----- (lx_tieu_de)
+// ============================================================
+// CATEGORY: LX --- Tiêu đề (lx_tieu_de)
 // ============================================================
 
 .lx_heading {
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--lx-primary-color, #0d6efd);
-    margin: 0;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+    color: var(--lx-primary-color, #0d6efd) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: $font-main !important;
 }
 
-// C--n l---
-.lx_heading_align_left   { text-align: left; }
-.lx_heading_align_center { text-align: center; }
-.lx_heading_align_right  { text-align: right; }
+// Căn lề
+.lx_heading_align_left   { text-align: left !important; }
+.lx_heading_align_center { text-align: center !important; }
+.lx_heading_align_right  { text-align: right !important; }
 
-// M---c -----nh: mobile + tablet (< 1200px)
+// Mức định: mobile + tablet (< 1200px)
 .lx_heading_h1 { font-size: 40px !important; }
 .lx_heading_h2 { font-size: 32px !important; }
 .lx_heading_h3 { font-size: 28px !important; }

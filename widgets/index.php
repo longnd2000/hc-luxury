@@ -29,6 +29,16 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_dich_vu/category_section_widget.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/event_widget.php';
 
+    // Theme Builder / Dynamic
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_archive_posts.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_breadcrumbs.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_post_title.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_post_meta.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_post_content.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_author_box.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_related_posts.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_archive_title.php';
+
 
     // Register widgets
     $widgets_manager->register(new \Image_Gallery_Widget());
@@ -40,7 +50,19 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Heading_Widget());
     $widgets_manager->register(new \LX_Button_Widget());
     $widgets_manager->register(new \LX_Text_Editor_Widget());
+    $widgets_manager->register(new \LX_Archive_Posts());
+    $widgets_manager->register(new \LX_Breadcrumbs_Widget());
+    $widgets_manager->register(new \LX_Post_Title_Widget());
+    $widgets_manager->register(new \LX_Post_Meta_Widget());
+    $widgets_manager->register(new \LX_Post_Content_Widget());
+    $widgets_manager->register(new \LX_Author_Box_Widget());
+    $widgets_manager->register(new \LX_Related_Posts_Widget());
+    $widgets_manager->register(new \LX_Archive_Title_Widget());
 }
+
+
+
+
 add_action('elementor/widgets/register', 'child_theme_register_custom_widgets');
 
 // ── Category Registration ──────────────────────────────────────────────────
@@ -72,6 +94,7 @@ function child_theme_register_widget_categories($elements_manager): void
         'lx_faqs'             => [__('LX — FAQs',          'lx-landing'), 120],
         'lx_cta'              => [__('LX — CTA',           'lx-landing'), 130],
         'lx_lien_he'          => [__('LX — Liên hệ',      'lx-landing'), 140],
+        'lx_dynamic'          => [__('LX — Năng động',    'lx-landing'), 150],
     ];
 
     foreach ($categories as $slug => [$title, $priority]) {

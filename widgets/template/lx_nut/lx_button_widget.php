@@ -4,9 +4,10 @@ if (!defined('ABSPATH')) exit;
 /**
  * Widget Nút (LX Button)
  *
- * Các biến thể nút đi theo màu chủ đạo (--lx-primary-color).
- * Chỉ cho phép thay đổi text, link, và biến thể.
- * Toàn bộ màu sắc, bo góc, padding được kiểm soát bằng CSS class lx_btn_*.
+ * Chỉ cho phép thay đổi văn bản và liên kết.
+ * Toàn bộ kiểu dáng được kiểm soát 100% bằng Theme Settings (inc/theme-options.php).
+ * 
+ * @package LX_Landing
  */
 class LX_Button_Widget extends \Elementor\Widget_Base
 {
@@ -17,12 +18,12 @@ class LX_Button_Widget extends \Elementor\Widget_Base
 
     public function get_title(): string
     {
-        return __('Nút', 'lx-landing');
+        return __('LX — Nút', 'lx-landing');
     }
 
     public function get_icon(): string
     {
-        return 'eicon-button'; // https://elementor.github.io/elementor-icons/
+        return 'eicon-button';
     }
 
     public function get_categories(): array
@@ -65,58 +66,6 @@ class LX_Button_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'bien_the',
-            [
-                'label'   => __('Biến thể', 'lx-landing'),
-                'type'    => \Elementor\Controls_Manager::SELECT,
-                'default' => 'primary',
-                'options' => [
-                    'primary' => __('Đặc (Primary)', 'lx-landing'),
-                    'outline' => __('Viền (Outline)', 'lx-landing'),
-                    'ghost'   => __('Mờ (Ghost)', 'lx-landing'),
-                    'text'    => __('Chỉ text (Text)', 'lx-landing'),
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'kich_thuoc',
-            [
-                'label'   => __('Kích thước', 'lx-landing'),
-                'type'    => \Elementor\Controls_Manager::SELECT,
-                'default' => 'md',
-                'options' => [
-                    'sm' => __('Nhỏ', 'lx-landing'),
-                    'md' => __('Vừa', 'lx-landing'),
-                    'lg' => __('Lớn', 'lx-landing'),
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'can_le',
-            [
-                'label'   => __('Căn lề', 'lx-landing'),
-                'type'    => \Elementor\Controls_Manager::CHOOSE,
-                'default' => 'left',
-                'options' => [
-                    'left'   => [
-                        'title' => __('Trái', 'lx-landing'),
-                        'icon'  => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Giữa', 'lx-landing'),
-                        'icon'  => 'eicon-text-align-center',
-                    ],
-                    'right'  => [
-                        'title' => __('Phải', 'lx-landing'),
-                        'icon'  => 'eicon-text-align-right',
-                    ],
-                ],
-            ]
-        );
-
         $this->end_controls_section();
     }
 
@@ -125,15 +74,6 @@ class LX_Button_Widget extends \Elementor\Widget_Base
         $settings  = $this->get_settings_for_display();
         $van_ban   = $settings['van_ban'] ?? '';
         $lien_ket  = $settings['lien_ket'] ?? [];
-        $bien_the  = in_array($settings['bien_the'], ['primary','outline','ghost','text'], true)
-                        ? $settings['bien_the']
-                        : 'primary';
-        $kich_thuoc = in_array($settings['kich_thuoc'], ['sm','md','lg'], true)
-                        ? $settings['kich_thuoc']
-                        : 'md';
-        $can_le    = in_array($settings['can_le'], ['left','center','right'], true)
-                        ? $settings['can_le']
-                        : 'left';
 
         if (empty($van_ban)) {
             return;
@@ -143,14 +83,12 @@ class LX_Button_Widget extends \Elementor\Widget_Base
         $target   = !empty($lien_ket['is_external']) ? ' target="_blank"' : '';
         $nofollow = !empty($lien_ket['nofollow'])    ? ' rel="nofollow"'  : '';
 
+        // Luôn sử dụng class lx_btn lx_btn_primary để nhận style từ Theme Settings
         printf(
-            '<div class="lx_btn_wrap lx_btn_wrap_%1$s"><a href="%2$s"%3$s%4$s class="lx_btn lx_btn_%5$s lx_btn_%6$s">%7$s</a></div>',
-            esc_attr($can_le),
+            '<div class="lx_btn_wrap"><a href="%1$s"%2$s%3$s class="lx_btn lx_btn_primary">%4$s</a></div>',
             $url,
             $target,
             $nofollow,
-            esc_attr($bien_the),
-            esc_attr($kich_thuoc),
             esc_html($van_ban)
         );
     }

@@ -28,8 +28,10 @@ All hooks, filters, and functions MUST be placed in the appropriate file under `
 | `inc/api.php` | REST API | Custom REST endpoints (create when needed) |
 
 ### Template Organization
-1. **Layouts**: `/templates/layouts/{type}/{version}.php` (e.g., `single/v1.php`).
-2. **Template Parts (Item Loops)**: `/templates/parts/{name}.php` (e.g., `post_card.php`). Use for repeated markup inside loops or reusable sections.
+1. **Elementor Layouts (Theme Builder)**: Toàn bộ bố cục Single, Archive, Search phải được build trong Elementor Theme Builder.
+2. **Template Parts (Item Loops)**: `/templates/parts/{name}.php` (e.g., `post_card.php`). Vẫn sử dụng để chứa markup cho 1 item trong vòng lặp (được gọi từ Elementor Widget).
+3. **No Hardcoded Layouts**: Tuyệt đối không code bố cục trang trong `single.php`, `archive.php` hay thư mục `templates/layouts/`.
+
 
 ### Module Rules
 1. **One domain per file** — never mix unrelated hooks in the same file.

@@ -28,6 +28,13 @@ description: CSS architecture, naming conventions, 4px grid system, typography, 
 ## The 4px Grid System
 - **Core Requirement**: All spacing and typographic sizes MUST be multiples of 4 (4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, etc.).
 
+## Typography Standards
+- **Body Text**: `line-height: 1.5 !important`.
+- **Headings (H1-H6)**: `line-height: 1.3 !important`.
+- **Mandatory !important**: Mọi thuộc tính Typography (font-family, size, weight, line-height, color) và Layout (padding, border, border-radius) của theme **BẮT BUỘC** phải có `!important` để đè bẹp CSS mặc định của Elementor Kit.
+- Use the `body { ... }` wrapper in `main.scss` as a specificity booster to override Elementor base styles.
+
+
 ## Typography Scale (Responsive Heading)
 
 Cách viết: **Mobile-first** — luôn dùng `min-width`, không dùng `max-width`.
