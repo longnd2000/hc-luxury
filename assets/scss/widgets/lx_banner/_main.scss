@@ -1,0 +1,61 @@
+// ============================================================
+// CATEGORY: LX — Banner (lx_banner)
+// ============================================================
+
+/* Widget: Image Gallery */
+.image_gallery_widget_main_item,
+.image_gallery_widget_thumb_item {
+    position: relative;
+    height: 0px !important;
+    padding-bottom: 75% !important;
+}
+
+.image_gallery_widget_main_item img,
+.image_gallery_widget_thumb_item img {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.image_gallery_widget_thumbs {
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+.image_gallery_widget_thumbs .slick-slide {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.image_gallery_widget_main {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 24px;
+}
+
+/* Widget: YouTube Iframe Slider */
+.youtube_iframe_slider {
+    margin: 0 -8px;
+}
+
+.youtube_iframe_slider_item {
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.youtube_iframe_wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+}
+
+.youtube_iframe_wrap iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+    display: block;
+}

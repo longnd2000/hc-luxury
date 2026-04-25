@@ -21,7 +21,7 @@ class Youtube_Iframe_Slider_Widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['lx_media'];
+        return ['lx_banner'];
     }
 
     protected function _register_controls()

@@ -14,9 +14,27 @@ Follow the structure of `widgets/template/duplicate_widget.php` as the master te
 - Implement JS logic using the `elementor/frontend/init` hook (refer to the jQuery pattern in `duplicate_widget.php`).
 
 ## Widget Registration
-- Widget files live in `widgets/template/`.
-- Register in `widgets/index.php` using `$widgets_manager->register(new \Widget_Class())`.
-- Assign to one of the **LX UI Kit categories**: `lx_typography`, `lx_media`, `lx_cards`, `lx_sections`, `lx_loops`, `lx_forms`, `lx_misc`.
+- **File Location**: Widget files MUST live in subfolders corresponding to their category: `widgets/template/{lx_category_slug}/{widget_name}.php`.
+- **Registration**: Register in `widgets/index.php` using `$widgets_manager->register(new \Widget_Class())`.
+- **Categorization**: Assign to one of the 17 **LX Business Categories** below.
+
+
+| Slug | Label | Dùng cho |
+|---|---|---|
+| `lx_banner` | LX — Banner | Hero banners, slider chính |
+| `lx_khach_hang` | LX — Khách hàng | Logo khách hàng, testimonial logos |
+| `lx_doi_tac` | LX — Đối tác | Logo đối tác, partner grid |
+| `lx_van_de` | LX — Vấn đề | Pain points, problem statements |
+| `lx_giai_phap` | LX — Giải pháp | Solution sections |
+| `lx_loi_ich` | LX — Lợi ích | Benefits, why-us sections |
+| `lx_tinh_nang` | LX — Tính năng | Feature lists, feature grids |
+| `lx_dich_vu` | LX — Dịch vụ | Service cards, service lists |
+| `lx_quy_trinh` | LX — Quy trình | Process steps, timelines |
+| `lx_danh_gia` | LX — Đánh giá | Reviews, testimonials, ratings |
+| `lx_bang_gia` | LX — Bảng giá | Pricing tables, plan cards |
+| `lx_faqs` | LX — FAQs | Accordion FAQs |
+| `lx_cta` | LX — CTA | Call-to-action banners |
+| `lx_lien_he` | LX — Liên hệ | Contact forms, maps, contact info |
 
 ## Strict CSS Isolation (UI Kit Strategy)
 - This theme is built as a highly reusable **UI Kit**.

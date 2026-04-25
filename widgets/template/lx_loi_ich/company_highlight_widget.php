@@ -21,7 +21,7 @@ class Company_Highlight_Widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['lx_sections'];
+        return ['lx_loi_ich'];
     }
 
     protected function _register_controls()

@@ -8,10 +8,7 @@ description: How to create a new custom Elementor widget.
 
 ## Steps
 
-1. **Duplicate the master template**:
-   ```
-   Copy widgets/template/duplicate_widget.php → widgets/template/{widget_name}.php
-   ```
+1. **Create the widget PHP file** at `widgets/template/{lx_category_slug}/{widget_slug}.php`. Use the appropriate category folder from the 17 business categories (e.g., `lx_banner/`, `lx_dich_vu/`).
 
 2. **Update widget class**:
    - Rename class to `{Widget_Name}` (snake_case).
@@ -32,12 +29,18 @@ description: How to create a new custom Elementor widget.
 
 5. **Register the widget** in `widgets/index.php`:
    ```php
-   require_once WIDGETS_PATH . '/{widget_name}.php';
+   require_once WIDGETS_PATH . '{lx_category_slug}/{widget_slug}.php';
    $widgets_manager->register(new \{Widget_Class}());
    ```
 
-6. **Add CSS**: Style in `_style.scss` with `lx_` prefixed classes.
+6. **Add CSS (MANDATORY SEPARATION)**:
+   - Create a new SCSS file: `assets/scss/widgets/{lx_category_slug}/_{widget_slug}.scss`.
+   - Style using `lx_` prefixed classes.
+   - Import the new file in the category's main file: `assets/scss/widgets/{lx_category_slug}/_main.scss`.
+   - Ensure the category main file is imported in `assets/scss/main.scss`.
+
 
 7. **Update registry**: Add to `.agent/context/widgets.md`.
 
 8. **Test**: Add widget in Elementor editor, verify frontend rendering.
+

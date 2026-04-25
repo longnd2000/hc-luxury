@@ -93,8 +93,36 @@ ol {
   padding-left: 16px;
 }
 
-// style web
-@import 'editor';
-@import 'ctf7';
+// Plugins customization
+@import 'plugins/editor';
+@import 'plugins/ctf7';
+@import 'plugins/fixed-toc';
+
+// Theme styles
 @import 'style';
-@import 'fixed-toc';
+
+
+// ── Widget Styles (By Category) ──────────────────────────────────────────
+// Cấu trúc: Mỗi file tương ứng với 1 DANH MỤC widget (Category).
+// Giúp quản lý code theo nghiệp vụ kinh doanh.
+
+// Cơ bản (Atom)
+@import 'widgets/lx_tieu_de/main';
+@import 'widgets/lx_nut/main';
+@import 'widgets/lx_text_editor/main';
+
+// Nghiệp vụ (Business Categories)
+@import 'widgets/lx_banner/main';
+@import 'widgets/lx_khach_hang/main';
+@import 'widgets/lx_doi_tac/main';
+@import 'widgets/lx_van_de/main';
+@import 'widgets/lx_giai_phap/main';
+@import 'widgets/lx_loi_ich/main';
+@import 'widgets/lx_tinh_nang/main';
+@import 'widgets/lx_dich_vu/main';
+@import 'widgets/lx_quy_trinh/main';
+@import 'widgets/lx_danh_gia/main';
+@import 'widgets/lx_bang_gia/main';
+@import 'widgets/lx_faqs/main';
+@import 'widgets/lx_cta/main';
+@import 'widgets/lx_lien_he/main';

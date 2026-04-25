@@ -1,0 +1,76 @@
+// ============================================================
+// CATEGORY: LX — Nút (lx_nut)
+// ============================================================
+
+// Wrap căn lề
+.lx_btn_wrap        { display: flex; }
+.lx_btn_wrap_left   { justify-content: flex-start; }
+.lx_btn_wrap_center { justify-content: center; }
+.lx_btn_wrap_right  { justify-content: flex-end; }
+
+// Base nút
+.lx_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.25s, color 0.25s, border-color 0.25s, opacity 0.25s;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+// Kích thước
+.lx_btn_sm { font-size: 13px; padding: 8px 16px; }
+.lx_btn_md { font-size: 15px; padding: 12px 24px; }
+.lx_btn_lg { font-size: 17px; padding: 16px 32px; }
+
+// Biến thể: Đặc (Primary)
+.lx_btn_primary {
+    background-color: var(--lx-primary-color, #0d6efd);
+    border-color: var(--lx-primary-color, #0d6efd);
+    color: #fff;
+}
+.lx_btn_primary:hover {
+    opacity: 0.85;
+    color: #fff;
+}
+
+// Biến thể: Viền (Outline)
+.lx_btn_outline {
+    background-color: transparent;
+    border-color: var(--lx-primary-color, #0d6efd);
+    color: var(--lx-primary-color, #0d6efd);
+}
+.lx_btn_outline:hover {
+    background-color: var(--lx-primary-color, #0d6efd);
+    color: #fff;
+}
+
+// Biến thể: Mờ (Ghost)
+.lx_btn_ghost {
+    background-color: color-mix(in srgb, var(--lx-primary-color, #0d6efd) 12%, transparent);
+    border-color: transparent;
+    color: var(--lx-primary-color, #0d6efd);
+}
+.lx_btn_ghost:hover {
+    background-color: color-mix(in srgb, var(--lx-primary-color, #0d6efd) 20%, transparent);
+    color: var(--lx-primary-color, #0d6efd);
+}
+
+// Biến thể: Chỉ text (Text)
+.lx_btn_text {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--lx-primary-color, #0d6efd);
+    padding-left: 0;
+    padding-right: 0;
+}
+.lx_btn_text:hover {
+    opacity: 0.75;
+    color: var(--lx-primary-color, #0d6efd);
+}

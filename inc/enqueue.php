@@ -27,6 +27,15 @@ function child_theme_assets(): void
         '6.4.2'
     );
 
+    // Bootstrap Grid Only (chỉ grid: .row, .col-*, .align-*, .justify-*, .g-*)
+    // Không load full Bootstrap — chỉ mình phần lưới để tránh xứng đột style
+    wp_enqueue_style(
+        'bootstrap-grid',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap-grid.min.css',
+        [],
+        '5.3.3'
+    );
+
     // Style gốc của child theme
     wp_enqueue_style(
         'child-theme-style',

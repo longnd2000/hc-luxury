@@ -1,0 +1,61 @@
+// ============================================================
+// CATEGORY: LX — Văn bản (lx_text_editor)
+// ============================================================
+
+.lx_text_editor {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.lx_text_editor p {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.lx_text_editor p:last-child {
+    margin-bottom: 0;
+}
+
+.lx_text_editor a {
+    color: var(--lx-primary-color, #0d6efd);
+    text-decoration: underline;
+    transition: opacity 0.2s;
+}
+
+.lx_text_editor a:hover {
+    opacity: 0.75;
+}
+
+.lx_text_editor ul,
+.lx_text_editor ol {
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
+
+.lx_text_editor li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+
+.lx_text_editor strong { font-weight: 700; }
+.lx_text_editor em     { font-style: italic; }
+
+.lx_text_editor blockquote {
+    margin: 0 0 16px;
+    padding: 12px 20px;
+    border-left: 4px solid var(--lx-primary-color, #0d6efd);
+    background: #f8f9fa;
+    font-style: italic;
+    color: #555;
+}
+
+.lx_text_editor h2,
+.lx_text_editor h3,
+.lx_text_editor h4 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #111;
+}

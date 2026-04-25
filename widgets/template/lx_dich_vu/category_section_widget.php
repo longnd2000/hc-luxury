@@ -21,7 +21,7 @@ class category_section_widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['lx_sections'];
+        return ['lx_dich_vu'];
     }
 
     private function get_all_categories()

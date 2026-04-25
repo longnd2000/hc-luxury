@@ -2,11 +2,11 @@
 
 /**
  * Theme Options Management
- * 
+ *
  * Provides an ACF Options Page for global theme settings
  * like fonts, colors, and logos.
- * 
- * @package lx-theme
+ *
+ * @package Child_Theme
  */
 
 if (!defined('ABSPATH')) {
@@ -50,28 +50,17 @@ function lx_register_theme_options_fields()
                     'endpoint' => 0,
                 ],
                 [
-                    'key' => 'field_lx_primary_font',
-                    'label' => __('Font chữ chủ đạo (Google Fonts)', 'child-theme'),
-                    'name' => 'lx_primary_font',
-                    'type' => 'select',
-                    'instructions' => __('Chọn Font chữ sẽ áp dụng cho toàn bộ website.', 'child-theme'),
-                    'choices' => [
-                        'Inter' => 'Inter',
-                        'Roboto' => 'Roboto',
-                        'Open Sans' => 'Open Sans',
-                        'Montserrat' => 'Montserrat',
-                        'Poppins' => 'Poppins',
-                        'Lato' => 'Lato',
-                        'Oswald' => 'Oswald',
-                        'Raleway' => 'Raleway',
-                        'Playfair Display' => 'Playfair Display',
-                        'Lora' => 'Lora',
-                    ],
+                    'key'           => 'field_lx_primary_font',
+                    'label'         => __('Font chữ chủ đạo (Google Fonts)', 'child-theme'),
+                    'name'          => 'lx_primary_font',
+                    'type'          => 'select',
+                    'instructions'  => __('Tìm kiếm và chọn bất kỳ font nào từ Google Fonts (~1500+ fonts).', 'child-theme'),
+                    'choices'       => [],
                     'default_value' => 'Inter',
-                    'allow_null' => 0,
-                    'multiple' => 0,
-                    'ui' => 1,
-                    'ajax' => 0,
+                    'allow_null'    => 0,
+                    'multiple'      => 0,
+                    'ui'            => 1,
+                    'ajax'          => 0,
                     'return_format' => 'value',
                 ],
 
@@ -85,22 +74,22 @@ function lx_register_theme_options_fields()
                     'endpoint' => 0,
                 ],
                 [
-                    'key' => 'field_lx_primary_color',
-                    'label' => __('Màu chủ đạo (Primary Color)', 'child-theme'),
-                    'name' => 'lx_primary_color',
-                    'type' => 'color_picker',
-                    'default_value' => '#FA8314',
+                    'key'            => 'field_lx_primary_color',
+                    'label'          => __('Màu chủ đạo (Primary Color)', 'child-theme'),
+                    'name'           => 'lx_primary_color',
+                    'type'           => 'color_picker',
+                    'default_value'  => '#0d6efd',
                     'enable_opacity' => 0,
-                    'return_format' => 'string',
+                    'return_format'  => 'string',
                 ],
                 [
-                    'key' => 'field_lx_secondary_color',
-                    'label' => __('Màu phụ (Secondary Color)', 'child-theme'),
-                    'name' => 'lx_secondary_color',
-                    'type' => 'color_picker',
-                    'default_value' => '#000000',
+                    'key'            => 'field_lx_secondary_color',
+                    'label'          => __('Màu phụ (Secondary Color)', 'child-theme'),
+                    'name'           => 'lx_secondary_color',
+                    'type'           => 'color_picker',
+                    'default_value'  => '#fd7c00',
                     'enable_opacity' => 0,
-                    'return_format' => 'string',
+                    'return_format'  => 'string',
                 ],
 
                 // Tab: Logos
@@ -163,12 +152,12 @@ function lx_inject_theme_options_css()
         return;
     }
 
-    $primary_font  = get_field('lx_primary_font', 'option') ?: 'Inter';
-    $primary_color = get_field('lx_primary_color', 'option') ?: '#FA8314';
-    $secondary_color = get_field('lx_secondary_color', 'option') ?: '#000000';
+    $primary_font    = get_field('lx_primary_font', 'option') ?: 'Inter';
+    $primary_color   = get_field('lx_primary_color', 'option') ?: '#0d6efd';
+    $secondary_color = get_field('lx_secondary_color', 'option') ?: '#fd7c00';
 
     // Format font name for Google Fonts URL (replace spaces with +)
-    $font_url_param = str_replace(' ', '+', $primary_font);
+    $font_url_param   = str_replace(' ', '+', $primary_font);
     $google_fonts_url = "https://fonts.googleapis.com/css2?family={$font_url_param}:ital,wght@0,400..900;1,400..900&display=swap";
 
     // Enqueue the font
@@ -185,6 +174,84 @@ function lx_inject_theme_options_css()
     echo '}' . "\n";
     echo '</style>' . "\n";
 }
+
+// ── Google Fonts AJAX Support ──────────────────────────────────────────────
+
+/**
+ * Fetch the full list of Google Fonts from the public metadata endpoint.
+ * Results are cached in a transient for 7 days to avoid repeated HTTP calls.
+ *
+ * @return array Associative array: ['Font Name' => 'Font Name', ...]
+ */
+function child_theme_get_google_fonts_list(): array
+{
+    $transient_key = 'child_theme_google_fonts_list';
+    $cached        = get_transient($transient_key);
+
+    if (false !== $cached) {
+        return $cached;
+    }
+
+    $response = wp_remote_get(
+        'https://fonts.google.com/metadata/fonts',
+        ['timeout' => 10, 'sslverify' => false]
+    );
+
+    if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
+        // Fallback: return a minimal list so the field is still usable
+        return [
+            'Inter'            => 'Inter',
+            'Roboto'           => 'Roboto',
+            'Open Sans'        => 'Open Sans',
+            'Montserrat'       => 'Montserrat',
+            'Poppins'          => 'Poppins',
+            'Lato'             => 'Lato',
+            'Oswald'           => 'Oswald',
+            'Raleway'          => 'Raleway',
+            'Playfair Display' => 'Playfair Display',
+            'Lora'             => 'Lora',
+        ];
+    }
+
+    $body = wp_remote_retrieve_body($response);
+
+    // Google prepends ")]}'\'\n" as XSSI protection – strip it
+    $body  = preg_replace('/^\)\]\}\'\n/', '', $body);
+    $data  = json_decode($body, true);
+    $fonts = [];
+
+    if (!empty($data['familyMetadataList']) && is_array($data['familyMetadataList'])) {
+        foreach ($data['familyMetadataList'] as $family) {
+            $name          = $family['family'] ?? '';
+            if ($name) {
+                $fonts[$name] = $name;
+            }
+        }
+        ksort($fonts);
+    }
+
+    if (empty($fonts)) {
+        return ['Inter' => 'Inter'];
+    }
+
+    set_transient($transient_key, $fonts, 7 * DAY_IN_SECONDS);
+
+    return $fonts;
+}
+
+/**
+ * Inject the full Google Fonts list into the ACF select field choices
+ * before the field is rendered in the admin.
+ * The Select2 UI (ui=1) will add a live-search box automatically.
+ */
+add_filter('acf/load_field/name=lx_primary_font', 'child_theme_acf_load_google_fonts_field');
+function child_theme_acf_load_google_fonts_field(array $field): array
+{
+    $field['choices'] = child_theme_get_google_fonts_list();
+    return $field;
+}
+
+
 
 /**
  * Helper function to retrieve logo
