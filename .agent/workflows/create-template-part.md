@@ -1,8 +1,8 @@
 ---
-description: How to create a new reusable component in /components.
+description: Cách tạo một template part (đoạn mã tái sử dụng) trong /templates/parts.
 ---
 
-# Create Component
+# Create Template Part
 
 // turbo-all
 
@@ -10,13 +10,13 @@ description: How to create a new reusable component in /components.
 
 1. **Identify the repeated pattern**: Confirm the markup is used in 2+ templates or widgets.
 
-2. **Create the component file**:
-   - Path: `components/{component_name}.php` (snake_case)
+2. **Create the template part file**:
+   - Path: `templates/parts/{name}.php` (snake_case)
    - Add data contract at the top:
      ```php
      <?php
      /**
-      * Component: {Component Name} ({css_class})
+      * Template Part: {Name} ({css_class})
       *
       * {Brief description}
       *
@@ -27,16 +27,17 @@ description: How to create a new reusable component in /components.
      ?>
      ```
 
-3. **Extract the markup**: Move the HTML block from the template into the component file. Keep only markup and conditionals — no `WP_Query` or loops.
+3. **Extract the markup**: Move the HTML block from the template into the part file. Keep only markup and conditionals — no `WP_Query` or loops.
 
 4. **Replace in parent templates**: In each template where the markup was duplicated, replace with:
    ```php
-   // For components needing parent variables (MOST cases):
-   include(get_stylesheet_directory() . '/components/{component_name}.php');
+   // For parts needing parent variables (MOST cases):
+   include(get_stylesheet_directory() . '/templates/parts/{name}.php');
 
-   // For self-contained components ONLY:
-   get_template_part('components/{component_name}');
+   // For self-contained parts ONLY:
+   get_template_part('templates/parts/{name}');
    ```
+
 
 5. **Add CSS**: Ensure all component classes use `lx_` prefix and are defined in `_style.scss`.
 

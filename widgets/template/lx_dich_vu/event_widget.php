@@ -113,7 +113,7 @@ class event_widget extends \Elementor\Widget_Base
                     $title = get_the_title();
                     $link = get_permalink();
                 ?>
-                    <?php include(get_stylesheet_directory() . '/components/event_card.php'); ?>
+                    <?php include(get_stylesheet_directory() . '/templates/parts/event_card.php'); ?>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
         </div>

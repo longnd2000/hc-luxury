@@ -60,6 +60,14 @@ function child_theme_assets(): void
         CHILD_THEME_VERSION
     );
 
+    wp_enqueue_style(
+        'child-theme-slick-theme',
+        CHILD_THEME_URL . '/assets/inc/slick/slick-theme.css',
+        ['child-theme-slick-css'],
+        CHILD_THEME_VERSION
+    );
+
+
     wp_enqueue_script(
         'child-theme-slick-js',
         CHILD_THEME_URL . '/assets/inc/slick/slick.min.js',

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The template for displaying event archives
  *
@@ -13,25 +12,22 @@ get_header();
     <div class="container">
 
         <!-- Breadcrumbs -->
-        <nav class="lx_archive_breadcrumbs">
-            <a href="<?php echo home_url('/'); ?>"><?php echo __('Trang chủ', 'child-theme'); ?></a>
-            <i class="fa-solid fa-chevron-right"></i>
-            <span><?php echo __('Sự kiện', 'child-theme'); ?></span>
-        </nav>
+        <?php echo lx_get_breadcrumbs(); ?>
+
 
         <!-- Archive Main Section -->
-        <div class="lx_archive_container">
+        <div class="row">
 
             <!-- Main Content: Left Column -->
-            <div class="lx_archive_main_col">
-                <header class="lx_archive_main_header">
+            <div class="col-lg-8">
+                <header class="lx_archive_main_header mb-5">
                     <h1 class="lx_archive_main_title"><?php echo __('Sự kiện', 'child-theme'); ?></h1>
                 </header>
 
                 <?php if (have_posts()) :
                     $now = current_time('timestamp');
                 ?>
-                    <div class="lx_archive_grid">
+                    <div class="row">
                         <?php while (have_posts()) : the_post();
                             $start_date_raw = get_field('event_start_date');
                             $end_date_raw = get_field('event_end_date');
@@ -73,12 +69,14 @@ get_header();
                             $title = get_the_title();
                             $link = get_permalink();
                         ?>
-                            <?php include(get_stylesheet_directory() . '/components/event_card.php'); ?>
+                            <div class="col-md-6 mb-4">
+                                <?php include(get_stylesheet_directory() . '/templates/parts/event_card.php'); ?>
+                            </div>
                         <?php endwhile; ?>
                     </div>
 
                     <!-- Pagination -->
-                    <div class="lx_archive_pagination">
+                    <div class="lx_archive_pagination mt-5">
                         <?php
                         echo paginate_links([
                             'prev_text' => '<i class="fa-solid fa-chevron-left"></i>',
@@ -93,7 +91,10 @@ get_header();
                 <?php endif; ?>
             </div>
 
-            <?php include(get_stylesheet_directory() . '/components/sidebar_latest_posts.php'); ?>
+            <!-- Sidebar: Right Column -->
+            <div class="col-lg-4">
+                <?php include(get_stylesheet_directory() . '/templates/parts/sidebar_latest_posts.php'); ?>
+            </div>
 
         </div>
     </div>

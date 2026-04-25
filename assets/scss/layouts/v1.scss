@@ -1,0 +1,121 @@
+// ⚠️ File này chỉ chứa styles cho TRANG (single post, archive, pagination...).
+// Sử dụng Bootstrap Grid cho bố cục chính.
+
+/* Typography & Base Components */
+.lx_single_post_title {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #000;
+}
+
+.lx_single_post_breadcrumbs {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+
+    a {
+        color: #888;
+        text-decoration: none;
+        transition: all 0.3s;
+        &:hover { color: #000; }
+    }
+
+    i {
+        font-size: 8px;
+        color: #ccc;
+    }
+}
+
+/* Post Meta */
+.lx_single_post_author_name {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.lx_single_post_date_label {
+    letter-spacing: 1px;
+}
+
+/* Post Content */
+.lx_single_post_excerpt {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.lx_single_post_body {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Author Box Custom Styling */
+.lx_single_post_author_box_section {
+    .lx_single_post_author_box_title {
+        font-size: 28px !important;
+        font-weight: 700;
+    }
+}
+
+/* Related Posts Custom Styling */
+.lx_related_posts_title {
+    font-size: 28px !important;
+    font-weight: 700;
+}
+
+/* Archive & Search Specifics */
+.lx_archive_main_title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.lx_archive_main_desc {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Archive Sidebar */
+.lx_archive_sidebar_title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #000;
+    text-transform: uppercase;
+}
+
+/* Archive Pagination */
+.lx_archive_pagination {
+    ul {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+    }
+
+    li a,
+    li span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #eee;
+        color: #333;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    li span.page-numbers.current,
+    li a.page-numbers:hover {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+    }
+}

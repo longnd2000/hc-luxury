@@ -19,11 +19,17 @@ All hooks, filters, and functions MUST be placed in the appropriate file under `
 | `inc/post-types.php` | CPT & Taxonomy | `register_post_type()`, `register_taxonomy()`, related hooks |
 | `inc/acf.php` | ACF Config | ACF settings filters, options pages, ACF-specific hooks |
 | `inc/query.php` | Query Mods | `pre_get_posts`, `posts_clauses`, query-related filters |
-| `inc/template-tags.php` | Template Helpers | Display helpers, archive title filters, breadcrumb, conditional functions |
+| `inc/template-tags.php` | Template Helpers | Display helpers, archive title filters, conditional functions |
+| `inc/breadcrumbs.php` | Breadcrumbs | Global breadcrumb system. Use `lx_get_breadcrumbs()` in templates. |
+
 | `inc/shortcodes.php` | Shortcodes | `add_shortcode()` registrations (create when needed) |
 | `inc/admin.php` | Admin Customization | Admin menus, dashboard widgets, admin hooks (create when needed) |
 | `inc/security.php` | Security & Cleanup | Remove WP version, disable XML-RPC, head cleanup (create when needed) |
 | `inc/api.php` | REST API | Custom REST endpoints (create when needed) |
+
+### Template Organization
+1. **Layouts**: `/templates/layouts/{type}/{version}.php` (e.g., `single/v1.php`).
+2. **Template Parts (Item Loops)**: `/templates/parts/{name}.php` (e.g., `post_card.php`). Use for repeated markup inside loops or reusable sections.
 
 ### Module Rules
 1. **One domain per file** — never mix unrelated hooks in the same file.

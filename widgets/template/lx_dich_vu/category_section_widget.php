@@ -131,7 +131,7 @@ class category_section_widget extends \Elementor\Widget_Base
                                     $link = get_permalink();
                                     $categories = get_the_category();
                                 ?>
-                                    <?php include(get_stylesheet_directory() . '/components/post_card.php'); ?>
+                                    <?php include(get_stylesheet_directory() . '/templates/parts/post_card.php'); ?>
                                 <?php endwhile;
                                 wp_reset_postdata(); ?>
                             </div>

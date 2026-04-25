@@ -120,6 +120,50 @@ function lx_register_theme_options_fields()
                     'preview_size' => 'medium',
                     'library' => 'all',
                 ],
+
+                // Tab: Layouts
+                [
+                    'key' => 'field_lx_tab_layouts',
+                    'label' => __('Bố cục (Layouts)', 'child-theme'),
+                    'name' => '',
+                    'type' => 'tab',
+                    'placement' => 'top',
+                    'endpoint' => 0,
+                ],
+                [
+                    'key' => 'field_lx_single_layout',
+                    'label' => __('Giao diện Bài viết (Single Post)', 'child-theme'),
+                    'name' => 'lx_single_layout',
+                    'type' => 'select',
+                    'choices' => [
+                        'v1' => 'Version 1 (Default)',
+                    ],
+                    'default_value' => 'v1',
+                    'return_format' => 'value',
+                ],
+                [
+                    'key' => 'field_lx_archive_layout',
+                    'label' => __('Giao diện Danh mục (Archive)', 'child-theme'),
+                    'name' => 'lx_archive_layout',
+                    'type' => 'select',
+                    'choices' => [
+                        'v1' => 'Version 1 (Default)',
+                    ],
+                    'default_value' => 'v1',
+                    'return_format' => 'value',
+                ],
+                [
+                    'key' => 'field_lx_search_layout',
+                    'label' => __('Giao diện Tìm kiếm (Search)', 'child-theme'),
+                    'name' => 'lx_search_layout',
+                    'type' => 'select',
+                    'choices' => [
+                        'v1' => 'Version 1 (Default)',
+                    ],
+                    'default_value' => 'v1',
+                    'return_format' => 'value',
+                ],
+
             ],
             'location' => [
                 [

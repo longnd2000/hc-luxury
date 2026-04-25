@@ -5,9 +5,10 @@ description: CSS architecture, naming conventions, 4px grid system, typography, 
 # CSS Rules
 
 ## File Organization
-- **General page styles**: `/assets/scss/_style.scss`.
-- **Plugin custom styles**: `/assets/scss/plugins/` (Chứa `_ctf7.scss`, `_fixed-toc.scss`, `_editor.scss`).
-- **Widget styles (MANDATORY)**: Mỗi widget phải có file SCSS riêng đặt tại `/assets/scss/widgets/{category}/_{name}.scss`.
+- **General page styles**: `/assets/scss/layouts/` (Chứa các biến thể giao diện trang v1, v2... được import tùy theo layout chọn trong admin).
+- **Plugin custom styles**: `/assets/scss/plugins/`.
+- **Widget styles (MANDATORY)**: `/assets/scss/widgets/{category}/_{name}.scss`.
+
 - **Main entry point**: `main.scss`.
 
 
