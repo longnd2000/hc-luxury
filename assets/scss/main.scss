@@ -4,7 +4,12 @@
 $primary: var(--lx-primary-color, #0d6efd);    // Màu chính (Mặc định: Xanh)
 $secondary: var(--lx-secondary-color, #FA8314); // Màu phụ (Mặc định: Cam)
 $content: #000000;                              // Màu nội dung chính
-$font-main: var(--lx-primary-font, "Inter", sans-serif);
+$font-main: var(--lx-primary-font, sans-serif);
+
+// Elementor Breakpoints (Sync with Elementor Site Settings)
+$bp-mobile: 767px;
+$bp-tablet: 1024px;
+$bp-laptop: 1200px;
 
 /**
  * SPECIFICITY BOOSTER & GLOBAL OVERRIDES
@@ -17,6 +22,23 @@ body.elementor-page.elementor-default {
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 1.5 !important; // Tiêu chuẩn body text
+
+  // Ép buộc font chữ triệt để cho mọi thành phần text của Elementor
+  h1, h2, h3, h4, h5, h6, p, a, li, span,
+  .elementor-widget-container,
+  .elementor-heading-title,
+  .elementor-widget-text-editor,
+  .elementor-button {
+    font-family: $font-main !important;
+  }
+
+  // Khôi phục font cho các loại Icon (FontAwesome, Eicons) để không bị lỗi hiển thị
+  i, .fa, .fas, .fab, .far, .fal {
+    font-family: "Font Awesome 6 Free" !important;
+  }
+  .elementor-icon, [class^="eicon-"], [class*=" eicon-"] {
+    font-family: "eicons" !important;
+  }
 
   // Reset Headings with High Priority
   h1, h2, h3, h4, h5, h6 {
@@ -103,4 +125,5 @@ body.elementor-page.elementor-default {
   @import 'widgets/lx_faqs/main';
   @import 'widgets/lx_cta/main';
   @import 'widgets/lx_lien_he/main';
+  @import 'widgets/lx_dynamic/main';
 }

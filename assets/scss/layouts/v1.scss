@@ -122,3 +122,23 @@
         border-color: #000;
     }
 }
+
+/* Container Utilities */
+.lx_con {
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 120px;
+    padding-bottom: 120px;
+
+    // Tablet (Dưới 1200px)
+    @media (max-width: #{$bp-laptop}) {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    // Mobile (Dưới 767px)
+    @media (max-width: #{$bp-mobile}) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}

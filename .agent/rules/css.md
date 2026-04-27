@@ -42,5 +42,26 @@ Cách viết: **Mobile-first** — luôn dùng `min-width: 1200px` cho PC.
 | `h5` | 20px | 24px |
 | `h6` | 18px | 20px |
 
-## Bootstrap Grid
-Chỉ sử dụng **Bootstrap Grid Only** cho việc chia cột trong PHP templates. Không sử dụng Bootstrap Grid bên trong Elementor Widget.
+## Breakpoints & Responsive Design
+Tất cả các mốc responsive phải đồng bộ với thiết lập của Elementor và quy định của Bootstrap. Chúng ta gộp màn hình thành 3 mốc chính:
+- **PC (>= 1200px):** Hiển thị mặc định (dùng code cơ bản, không nằm trong max-width media query).
+- **Tablet (768px - 1199px):** Gộp chung màn hình Tablet và Laptop nhỏ.
+- **Mobile (<= 767px):** Màn hình điện thoại.
+
+### 1. Trong SCSS (Media Queries)
+Sử dụng các biến đã khai báo trong `main.scss` (`$bp-mobile: 767px`, `$bp-laptop: 1200px`):
+```scss
+// 1. Tablet & Laptop nhỏ (dưới 1200px)
+@media (max-width: #{$bp-laptop}) { ... }
+
+// 2. Mobile (dưới 767px)
+@media (max-width: #{$bp-mobile}) { ... }
+```
+*(Lưu ý: Bỏ qua điểm ngắt 1024px để giảm thiểu lượng code và dễ bảo trì).*
+
+### 2. Trong PHP (Bootstrap Grid)
+Chỉ sử dụng **Bootstrap Grid Only** cho việc chia cột trong PHP templates (không sử dụng trong Elementor Widget). Các class tương ứng với 3 mốc trên:
+- **Mobile (< 768px):** Sử dụng `col-*` (vd: `col-12`).
+- **Tablet (768px - 1199px):** Sử dụng `col-md-*`.
+- **PC (>= 1200px):** Sử dụng `col-xl-*`.
+*(Tuyệt đối bỏ qua và KHÔNG sử dụng các class `col-sm-*` hoặc `col-lg-*` để giữ cấu trúc chia cột đơn giản, thống nhất).*

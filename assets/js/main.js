@@ -48,6 +48,26 @@
       });
     }
 
+    // LX Menu Widget Logic
+    $(document).on('click', '.lx_menu_toggler', function(e) {
+      e.preventDefault();
+      $(this).closest('.lx_menu_container').addClass('is-open');
+    });
+
+    $(document).on('click', '.lx_menu_close, .lx_menu_backdrop', function(e) {
+      e.preventDefault();
+      $(this).closest('.lx_menu_container').removeClass('is-open');
+    });
+
+    $(document).on('click', '.lx_menu_container .menu-item-has-children > a', function(e) {
+      if ($(window).width() < 1200) {
+        e.preventDefault();
+        var $parentLi = $(this).parent();
+        $parentLi.toggleClass('is-active');
+        $(this).siblings('.sub-menu').slideToggle(300);
+      }
+    });
+
     if (typeof $.fn.matchHeight === 'function') {
       $('[data-mh]').matchHeight();
     }

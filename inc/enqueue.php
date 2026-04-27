@@ -19,7 +19,7 @@ function child_theme_assets(): void
     $ver_main_css = file_exists($main_css_file_path) ? filemtime($main_css_file_path) : CHILD_THEME_VERSION;
     $ver_main_js  = file_exists($main_js_file_path) ? filemtime($main_js_file_path) : CHILD_THEME_VERSION;
 
-    // FontAwesome Free 6.4.2
+    // FontAwesome Free 6.4.2 (Load via CDN to keep theme light)
     wp_enqueue_style(
         'font-awesome-free',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
@@ -31,9 +31,9 @@ function child_theme_assets(): void
     // Không load full Bootstrap — chỉ mình phần lưới để tránh xứng đột style
     wp_enqueue_style(
         'bootstrap-grid',
-        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap-grid.min.css',
+        CHILD_THEME_URL . '/assets/inc/bootstrap/bootstrap-grid.min.css',
         [],
-        '5.3.3'
+        CHILD_THEME_VERSION
     );
 
     // Style gốc của child theme

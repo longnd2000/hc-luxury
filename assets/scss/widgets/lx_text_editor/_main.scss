@@ -166,7 +166,7 @@
                 grid-template-columns: repeat($i, 1fr) !important;
                 
                 // Trên mobile (dưới 768px), nếu số cột > 2 thì thu về 2 cột, còn lại về 1 cột
-                @media (max-width: 767px) {
+                @media (max-width: #{$bp-mobile}) {
                     grid-template-columns: repeat(min($i, 2), 1fr) !important;
                 }
                 
