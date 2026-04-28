@@ -5,7 +5,7 @@
  * 
  * Provides a checklist of security hardening measures that can be toggled.
  * 
- * @package lx-theme
+ * @package lx-landing
  */
 
 /**
@@ -26,8 +26,8 @@ add_action('admin_init', 'lx_security_register_settings');
 function lx_security_add_menu()
 {
     add_options_page(
-        __('Bảo mật website', 'lx-theme'),
-        __('Bảo mật website', 'lx-theme'),
+        __('Bảo mật website', 'lx-landing'),
+        __('Bảo mật website', 'lx-landing'),
         'manage_options',
         'lx-security',
         'lx_render_security_page'
@@ -45,53 +45,53 @@ function lx_render_security_page()
 
     $checklist = [
         'hide_wp_version' => [
-            'label' => __('Ẩn phiên bản WordPress', 'lx-theme'),
-            'desc'  => __('Loại bỏ thông tin phiên bản WordPress trong mã nguồn (head, scripts, RSS) để tránh bị tin tặc dò tìm lỗ hổng.', 'lx-theme')
+            'label' => __('Ẩn phiên bản WordPress', 'lx-landing'),
+            'desc'  => __('Loại bỏ thông tin phiên bản WordPress trong mã nguồn (head, scripts, RSS) để tránh bị tin tặc dò tìm lỗ hổng.', 'lx-landing')
         ],
         'disable_auto_updates' => [
-            'label' => __('Tắt tự động cập nhật', 'lx-theme'),
-            'desc'  => __('Ngăn chặn WordPress tự động cập nhật phiên bản Core và Plugins để tránh xung đột mã nguồn đột ngột.', 'lx-theme')
+            'label' => __('Tắt tự động cập nhật', 'lx-landing'),
+            'desc'  => __('Ngăn chặn WordPress tự động cập nhật phiên bản Core và Plugins để tránh xung đột mã nguồn đột ngột.', 'lx-landing')
         ],
         'disallow_file_mods' => [
-            'label' => __('Chế độ Read-Only (Lock Files)', 'lx-theme'),
-            'desc'  => __('<strong>Nghiêm ngặt:</strong> Vô hiệu hóa việc cài đặt, cập nhật, xóa Plugin/Theme và chỉnh sửa file trực tiếp. Thích hợp khi đã hoàn tất deploy.', 'lx-theme'),
+            'label' => __('Chế độ Read-Only (Lock Files)', 'lx-landing'),
+            'desc'  => __('<strong>Nghiêm ngặt:</strong> Vô hiệu hóa việc cài đặt, cập nhật, xóa Plugin/Theme và chỉnh sửa file trực tiếp. Thích hợp khi đã hoàn tất deploy.', 'lx-landing'),
             'warning' => true
         ],
         'cleanup_head' => [
-            'label' => __('Dọn dẹp Header (RSD, WLW, Generator)', 'lx-theme'),
-            'desc'  => __('Loại bỏ các liên kết không cần thiết như RSD, WLW Manifest và Shortlink giúp website sạch sẽ và bảo mật hơn.', 'lx-theme')
+            'label' => __('Dọn dẹp Header (RSD, WLW, Generator)', 'lx-landing'),
+            'desc'  => __('Loại bỏ các liên kết không cần thiết như RSD, WLW Manifest và Shortlink giúp website sạch sẽ và bảo mật hơn.', 'lx-landing')
         ],
         'disable_emoji' => [
-            'label' => __('Tắt Emoji', 'lx-theme'),
-            'desc'  => __('Vô hiệu hóa các scripts và styles phục vụ Emoji giúp tăng tốc website và giảm thiểu rủi ro.', 'lx-theme')
+            'label' => __('Tắt Emoji', 'lx-landing'),
+            'desc'  => __('Vô hiệu hóa các scripts và styles phục vụ Emoji giúp tăng tốc website và giảm thiểu rủi ro.', 'lx-landing')
         ],
         'hide_login_logo' => [
-            'label' => __('Ẩn Logo WordPress trang đăng nhập', 'lx-theme'),
-            'desc'  => __('Ẩn logo WordPress mặc định tại trang wp-login.php để tăng tính chuyên nghiệp và giảm nhận diện WP.', 'lx-theme')
+            'label' => __('Ẩn Logo WordPress trang đăng nhập', 'lx-landing'),
+            'desc'  => __('Ẩn logo WordPress mặc định tại trang wp-login.php để tăng tính chuyên nghiệp và giảm nhận diện WP.', 'lx-landing')
         ],
         'remove_admin_bar_logo' => [
-            'label' => __('Ẩn Logo WordPress thanh công cụ', 'lx-theme'),
-            'desc'  => __('Xóa logo WordPress ở góc trên bên trái của thanh Admin Bar.', 'lx-theme')
+            'label' => __('Ẩn Logo WordPress thanh công cụ', 'lx-landing'),
+            'desc'  => __('Xóa logo WordPress ở góc trên bên trái của thanh Admin Bar.', 'lx-landing')
         ],
         'disable_wp_cron' => [
-            'label' => __('Tắt WP Cron (Virtual Cron)', 'lx-theme'),
-            'desc'  => __('Vô hiệu hóa cơ chế cron mặc định của WP. Bạn nên cài đặt System Cron (Crontab) trên server sau khi bật tùy chọn này.', 'lx-theme')
+            'label' => __('Tắt WP Cron (Virtual Cron)', 'lx-landing'),
+            'desc'  => __('Vô hiệu hóa cơ chế cron mặc định của WP. Bạn nên cài đặt System Cron (Crontab) trên server sau khi bật tùy chọn này.', 'lx-landing')
         ],
         'hide_login_errors' => [
-            'label' => __('Ẩn thông báo lỗi đăng nhập cụ thể', 'lx-theme'),
-            'desc'  => __('Chỉ hiển thị thông báo lỗi chung chung khi đăng nhập sai, không tiết lộ tên user tồn tại hay không.', 'lx-theme')
+            'label' => __('Ẩn thông báo lỗi đăng nhập cụ thể', 'lx-landing'),
+            'desc'  => __('Chỉ hiển thị thông báo lỗi chung chung khi đăng nhập sai, không tiết lộ tên user tồn tại hay không.', 'lx-landing')
         ],
         'disable_lost_password' => [
-            'label' => __('Tắt chức năng Quên mật khẩu', 'lx-theme'),
-            'desc'  => __('Ẩn liên kết "Lost your password?" và vô hiệu hóa tính năng reset mật khẩu tự động.', 'lx-theme')
+            'label' => __('Tắt chức năng Quên mật khẩu', 'lx-landing'),
+            'desc'  => __('Ẩn liên kết "Lost your password?" và vô hiệu hóa tính năng reset mật khẩu tự động.', 'lx-landing')
         ],
         'limit_upload_size' => [
-            'label' => __('Giới hạn dung lượng tải lên 2MB', 'lx-theme'),
-            'desc'  => __('Giới hạn kích thước file tối đa khi tải lên là 2MB. Nếu không bật, giới hạn mặc định là 50MB để bảo vệ dung lượng lưu trữ.', 'lx-theme')
+            'label' => __('Giới hạn dung lượng tải lên 2MB', 'lx-landing'),
+            'desc'  => __('Giới hạn kích thước file tối đa khi tải lên là 2MB. Nếu không bật, giới hạn mặc định là 50MB để bảo vệ dung lượng lưu trữ.', 'lx-landing')
         ],
         'limit_cookie_expiration' => [
-            'label' => __('Giới hạn thời gian đăng nhập lại', 'lx-theme'),
-            'desc'  => __('<strong>Bảo mật cao:</strong> Giảm thời gian duy trì phiên đăng nhập. Không chọn "Nhớ mật khẩu" tối đa 1 ngày (mặc định 48 giờ). Có chọn "Nhớ mật khẩu" tối đa 5 ngày (mặc định 14 ngày). Tránh rủi ro bị cướp session khi dùng Wifi công cộng.', 'lx-theme'),
+            'label' => __('Giới hạn thời gian đăng nhập lại', 'lx-landing'),
+            'desc'  => __('<strong>Bảo mật cao:</strong> Giảm thời gian duy trì phiên đăng nhập. Không chọn "Nhớ mật khẩu" tối đa 1 ngày (mặc định 48 giờ). Có chọn "Nhớ mật khẩu" tối đa 5 ngày (mặc định 14 ngày). Tránh rủi ro bị cướp session khi dùng Wifi công cộng.', 'lx-landing'),
             'warning' => true
         ],
     ];
@@ -152,13 +152,13 @@ function lx_render_security_page()
     <div class="wrap lx-security-wrap">
         <h1 class="lx-page-title">
             <span class="dashicons dashicons-shield-alt"></span>
-            <?php echo __('Cấu hình Bảo mật website', 'lx-theme'); ?>
+            <?php echo __('Cấu hình Bảo mật website', 'lx-landing'); ?>
         </h1>
 
         <div class="lx-card">
             <p style="margin-top: 0; color: #475569; padding-bottom: 12px; border-bottom: 1px solid #f0f0f1;">
-                <?php echo __('Kích hoạt các biện pháp bảo mật bên dưới để tối ưu hóa và bảo vệ website của bạn trước các cuộc tấn công phổ biến.', 'lx-theme'); ?>
-                <br><span style="color: #64748b; font-size: 12px;"><?php echo __('Lưu ý: Các tính năng nâng cao khác đã được quản lý bởi WP Cerber.', 'lx-theme'); ?></span>
+                <?php echo __('Kích hoạt các biện pháp bảo mật bên dưới để tối ưu hóa và bảo vệ website của bạn trước các cuộc tấn công phổ biến.', 'lx-landing'); ?>
+                <br><span style="color: #64748b; font-size: 12px;"><?php echo __('Lưu ý: Các tính năng nâng cao khác đã được quản lý bởi WP Cerber.', 'lx-landing'); ?></span>
             </p>
             
             <form method="post" action="options.php">
@@ -177,7 +177,7 @@ function lx_render_security_page()
                                 <label class="lx-item-label" for="lx_security_options[<?php echo $key; ?>]">
                                     <?php echo $item['label']; ?>
                                     <?php if (isset($item['warning']) && $item['warning']) : ?>
-                                        <span style="color: #d63638; font-size: 10px; text-transform: uppercase; background: #fecaca; padding: 2px 6px; border-radius: 10px; margin-left: 8px; vertical-align: middle;"><?php echo __('Bảo mật cao', 'lx-theme'); ?></span>
+                                        <span style="color: #d63638; font-size: 10px; text-transform: uppercase; background: #fecaca; padding: 2px 6px; border-radius: 10px; margin-left: 8px; vertical-align: middle;"><?php echo __('Bảo mật cao', 'lx-landing'); ?></span>
                                     <?php endif; ?>
                                 </label>
                                 <div class="lx-item-desc"><?php echo $item['desc']; ?></div>
@@ -187,12 +187,12 @@ function lx_render_security_page()
                 </ul>
 
                 <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #f0f0f1; display: flex; gap: 12px; align-items: center;">
-                    <?php submit_button(__('Lưu cài đặt', 'lx-theme'), 'primary', 'submit', false, array('class' => 'lx-submit-btn')); ?>
+                    <?php submit_button(__('Lưu cài đặt', 'lx-landing'), 'primary', 'submit', false, array('class' => 'lx-submit-btn')); ?>
                     <button type="button" id="lx-enable-all-btn" class="button button-secondary" style="display: inline-flex; align-items: center; padding: 6px 14px;">
-                        <span class="dashicons dashicons-yes" style="margin-right: 4px;"></span> <?php echo __('Bật tất cả (Thường)', 'lx-theme'); ?>
+                        <span class="dashicons dashicons-yes" style="margin-right: 4px;"></span> <?php echo __('Bật tất cả (Thường)', 'lx-landing'); ?>
                     </button>
                     <button type="button" id="lx-disable-all-btn" class="button button-secondary" style="display: inline-flex; align-items: center; padding: 6px 14px;">
-                        <span class="dashicons dashicons-no-alt" style="margin-right: 4px;"></span> <?php echo __('Tắt tất cả (Thường)', 'lx-theme'); ?>
+                        <span class="dashicons dashicons-no-alt" style="margin-right: 4px;"></span> <?php echo __('Tắt tất cả (Thường)', 'lx-landing'); ?>
                     </button>
                 </div>
             </form>
@@ -324,7 +324,7 @@ function lx_apply_security_hardening()
     // 8. Hide Login Errors
     if (isset($options['hide_login_errors']) && $options['hide_login_errors'] == '1') {
         add_filter('login_errors', function() {
-            return __('Thông tin tài khoản không chính xác.', 'lx-theme');
+            return __('Thông tin tài khoản không chính xác.', 'lx-landing');
         });
     }
 

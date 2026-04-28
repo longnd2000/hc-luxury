@@ -5,13 +5,18 @@
 @import 'lx_footer';
 
 .lx_header_wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 8px 4% !important;
     width: 100%;
-    gap: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+
+    .lx_con {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
 
     .lx_header_logo {
         flex-shrink: 0;
@@ -34,12 +39,14 @@
     .lx_header_action {
         flex-shrink: 0;
     }
-    
+
     @media (max-width: 1199px) {
-        justify-content: space-between;
-        
-        .lx_header_nav {
-            justify-content: flex-end;
+        .lx_con {
+            justify-content: space-between;
+            
+            .lx_header_nav {
+                justify-content: flex-end;
+            }
         }
         
         .lx_header_action {

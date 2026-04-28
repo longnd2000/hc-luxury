@@ -117,7 +117,7 @@ class LX_Video_Reviews_Grid_Widget extends \Elementor\Widget_Base {
         <section class="lx_wrap lx_video_grid">
             <div class="lx_con">
                 <div class="row justify-content-center mb-4">
-                    <div class="col-lg-10 lx_text_center">
+                    <div class="col-xl-8 lx_text_center">
                         <?php if ($settings['title']) : ?>
                             <h2 class="lx_heading lx_heading_h2 mb-3">
                                 <?php echo nl2br(esc_html($settings['title'])); ?>
@@ -134,7 +134,7 @@ class LX_Video_Reviews_Grid_Widget extends \Elementor\Widget_Base {
 
                 <!-- Featured Horizontal Video -->
                 <div class="row justify-content-center mb-4">
-                    <div class="col-lg-12">
+                    <div class="col-xl-12">
                         <div class="lx_video_grid_featured">
                             <?php if (!empty($settings['featured_iframe'])) : ?>
                                 <div class="lx_video_iframe_horizontal">
@@ -152,9 +152,9 @@ class LX_Video_Reviews_Grid_Widget extends \Elementor\Widget_Base {
 
                 <!-- Vertical Videos Grid -->
                 <?php if (!empty($video_list)) : ?>
-                    <div class="row g-3 g-md-4">
+                    <div class="row lx_g32">
                         <?php foreach ($video_list as $item) : ?>
-                            <div class="col-6 col-md-3">
+                            <div class="col-12 col-md-6 col-xl-3">
                                 <div class="lx_video_grid_item">
                                     <?php if (!empty($item['video_iframe'])) : ?>
                                         <div class="lx_video_iframe_vertical">

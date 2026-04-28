@@ -123,55 +123,57 @@ class LX_Menu_Widget extends \Elementor\Widget_Base
         }
         ?>
         <div class="lx_header_wrapper">
-            <?php if ($logo_url) : ?>
-                <div class="lx_header_logo">
-                    <a href="<?php echo esc_url(home_url('/')); ?>">
-                        <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                    </a>
-                </div>
-            <?php endif; ?>
-
-            <div class="lx_header_nav">
-                <div class="lx_menu_container">
-                    <button class="lx_menu_toggler" aria-label="Toggle Menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="lx_menu_offcanvas">
-                        <div class="lx_menu_offcanvas_header">
-                            <button class="lx_menu_close" aria-label="Close Menu">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        <nav class="lx_menu_nav">
-                            <?php
-                            wp_nav_menu([
-                                'menu' => $settings['menu'],
-                                'container' => false,
-                                'menu_class' => 'lx_menu_list',
-                                'fallback_cb' => false,
-                            ]);
-                            ?>
-                        </nav>
-                        
-                        <?php if ($button_text) : ?>
-                            <div class="lx_menu_action_mobile">
-                                <a <?php $this->print_render_attribute_string('button'); ?>>
-                                    <?php echo esc_html($button_text); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
+            <div class="lx_con">
+                <?php if ($logo_url) : ?>
+                    <div class="lx_header_logo">
+                        <a href="<?php echo home_url('/'); ?>">
+                            <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>">
+                        </a>
                     </div>
-                    <div class="lx_menu_backdrop"></div>
-                </div>
-            </div>
+                <?php endif; ?>
 
-            <?php if ($button_text) : ?>
-                <div class="lx_header_action">
-                    <a <?php $this->print_render_attribute_string('button'); ?>>
-                        <?php echo esc_html($button_text); ?>
-                    </a>
+                <div class="lx_header_nav">
+                    <div class="lx_menu_container">
+                        <button class="lx_menu_toggler" aria-label="Toggle Menu">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="lx_menu_offcanvas">
+                            <div class="lx_menu_offcanvas_header">
+                                <button class="lx_menu_close" aria-label="Close Menu">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <nav class="lx_menu_nav">
+                                <?php
+                                wp_nav_menu([
+                                    'menu' => $settings['menu'],
+                                    'container' => false,
+                                    'menu_class' => 'lx_menu_list',
+                                    'fallback_cb' => false,
+                                ]);
+                                ?>
+                            </nav>
+                            
+                            <?php if ($button_text) : ?>
+                                <div class="lx_menu_action_mobile">
+                                    <a <?php $this->print_render_attribute_string('button'); ?>>
+                                        <?php echo $button_text; ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="lx_menu_backdrop"></div>
+                    </div>
                 </div>
-            <?php endif; ?>
+
+                <?php if ($button_text) : ?>
+                    <div class="lx_header_action">
+                        <a <?php $this->print_render_attribute_string('button'); ?>>
+                            <?php echo $button_text; ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
         <?php
     }

@@ -106,7 +106,7 @@ class LX_Process_Steps_Widget extends \Elementor\Widget_Base {
         <section class="lx_wrap lx_process_steps">
             <div class="lx_con">
                 <div class="row justify-content-center mb-5">
-                    <div class="col-lg-10 lx_text_center">
+                    <div class="col-xl-8 lx_text_center">
                         <?php if ($settings['title']) : ?>
                             <h2 class="lx_heading lx_heading_h2 mb-3">
                                 <?php echo nl2br(esc_html($settings['title'])); ?>
@@ -122,13 +122,13 @@ class LX_Process_Steps_Widget extends \Elementor\Widget_Base {
                 </div>
 
                 <?php if (!empty($steps)) : ?>
-                    <div class="row g-4">
+                    <div class="row lx_g32">
                         <?php 
                         $count = 1;
                         foreach ($steps as $item) : 
                             $image_url = !empty($item['step_image']['url']) ? $item['step_image']['url'] : '';
                         ?>
-                            <div class="col-6 col-md-4 col-lg-3">
+                            <div class="col-12 col-md-6 col-xl-3">
                                 <div class="lx_step_card">
                                     <div class="lx_step_image_wrap">
                                         <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($item['step_title']); ?>" loading="lazy">

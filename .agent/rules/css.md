@@ -90,3 +90,28 @@ Chỉ sử dụng **Bootstrap Grid Only** cho việc chia cột trong PHP templa
 - **Tablet (768px - 1199px):** Sử dụng `col-md-*`.
 - **PC (>= 1200px):** Sử dụng `col-xl-*`.
 *(Tuyệt đối bỏ qua và KHÔNG sử dụng các class `col-sm-*` hoặc `col-lg-*` để giữ cấu trúc chia cột đơn giản, thống nhất).*
+
+## Consolidated Grid Patterns (Standard)
+Để đảm bảo tính thẩm mỹ "Premium" và nhất quán cho toàn bộ Kit, mọi widget mới phải tuân thủ:
+
+### 1. Gutters (Khoảng cách cột)
+- Luôn sử dụng class `.lx_g32` thay vì `g-4` mặc định để có khoảng cách **32px** chuẩn giữa các item.
+- Cấu trúc: `<div class="row lx_g32">`.
+
+### 2. Section Header (Tiêu đề Section)
+- Phần tiêu đề và mô tả (Header section) luôn căn giữa và chỉ chiếm **8 cột** trên PC để nội dung không bị quá dài, dễ đọc hơn.
+- Cấu trúc: 
+  ```html
+  <div class="row justify-content-center">
+      <div class="col-xl-8 lx_text_center">
+          <h2 class="lx_heading">...</h2>
+          <p>...</p>
+      </div>
+  </div>
+  ```
+
+### 3. Responsive Columns (Chia cột mặc định)
+Trừ các trường hợp đặc biệt, cấu trúc chia cột chuẩn cho các grid (Lợi ích, Tính năng, Quy trình) là:
+- **Mobile (< 768px):** 1 cột (`col-12`).
+- **Tablet (768px - 1199px):** 2 cột (`col-md-6`).
+- **PC (>= 1200px):** 4 cột (`col-xl-3`).

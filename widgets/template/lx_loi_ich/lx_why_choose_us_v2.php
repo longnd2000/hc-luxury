@@ -127,7 +127,7 @@ class LX_Why_Choose_Us_V2_Widget extends \Elementor\Widget_Base {
         <section class="lx_wrap lx_why_us_v2">
             <div class="lx_con">
                 <div class="row justify-content-center mb-5">
-                    <div class="col-lg-10 lx_text_center">
+                    <div class="col-xl-8 lx_text_center">
                         <?php if ($settings['title']) : ?>
                             <h2 class="lx_heading lx_heading_h2 mb-3">
                                 <?php echo nl2br(esc_html($settings['title'])); ?>
@@ -143,14 +143,14 @@ class LX_Why_Choose_Us_V2_Widget extends \Elementor\Widget_Base {
                 </div>
 
                 <?php if (!empty($features)) : ?>
-                    <div class="row g-4">
+                    <div class="row lx_g32">
                         <?php 
                         $count = 1;
                         foreach ($features as $item) : 
                             $image_url = !empty($item['image']['url']) ? $item['image']['url'] : '';
                             $number = str_pad($count, 2, '0', STR_PAD_LEFT);
                         ?>
-                            <div class="col-6 col-md-4 col-lg-3">
+                            <div class="col-12 col-md-6 col-xl-3">
                                 <div class="lx_why_card_v2">
                                     <div class="lx_why_media_outer">
                                         <div class="lx_why_img_wrap">

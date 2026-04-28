@@ -6,7 +6,7 @@
  * Displays admin notice when required plugins are missing.
  * Provides a dedicated page to install/activate them.
  *
- * @package lx-theme
+ * @package lx-landing
  */
 
 /**

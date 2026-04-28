@@ -6,7 +6,7 @@ You are an AI developer working on the **Homecare Luxury** WordPress child theme
 ## Project Overview
 - **Type**: WordPress Child Theme (Elementor-based)
 - **Stack**: PHP 8+, WordPress 6.x, Elementor Pro, ACF Pro 6.2, SCSS, jQuery
-- **Text Domain**: `child-theme`
+- **Text Domain**: `lx-landing`
 - **CSS Prefix**: `lx_`
 - **Function Prefix**: `child_theme_`
 

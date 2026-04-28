@@ -1,0 +1,140 @@
+.lx_feature_gallery {
+  .lx_gallery_container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .lx_gallery_main {
+    margin-bottom: 30px;
+    
+    .lx_gallery_main_item {
+      outline: none;
+      
+      img {
+        width: 100%;
+        aspect-ratio: 2/1;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+    }
+  }
+
+  .lx_gallery_thumbs {
+    margin: 0 -10px;
+    
+    .lx_gallery_thumb_item {
+      padding: 0 10px;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      .lx_thumb_inner {
+        border: 1px solid #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        opacity: 0.4;
+        filter: blur(1px);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+          aspect-ratio: 2/1;
+          object-fit: cover;
+        }
+      }
+
+      &:hover .lx_thumb_inner {
+        opacity: 0.7;
+        filter: blur(0);
+      }
+    }
+
+    .slick-current,
+    .slick-active.slick-center {
+      .lx_thumb_inner {
+        opacity: 1 !important;
+        filter: blur(0) !important;
+        border-color: #ffffff !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+    }
+  }
+
+  // Arrows positioning for thumbs
+  .lx_gallery_thumbs_wrap {
+    position: relative;
+    padding: 0; // Đã xóa padding để bằng với hình trên
+
+    .slick-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+      &:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      // Triệt để xóa bỏ icon mặc định của Slick Theme
+      &::before,
+      &::after {
+        content: "" !important;
+        display: none !important;
+      }
+
+      i {
+        font-size: 14px;
+        line-height: 1;
+        display: block;
+      }
+
+      &.slick-prev {
+        left: -20px; // Mặc định cho PC (>1200px), nằm thò ra ngoài
+        transform: translateY(-50%);
+        &:hover { transform: translateY(-50%) scale(1.1); }
+
+        @media (max-width: 1199px) {
+          left: -10px; // Cho Tablet, thò ra một chút
+        }
+
+        @media (max-width: 767px) {
+          left: 10px; // Cho Mobile, nằm hẳn bên trong để tránh scroll ngang
+          transform: translateY(-50%);
+        }
+      }
+
+      &.slick-next {
+        right: -20px;
+        transform: translateY(-50%);
+        &:hover { transform: translateY(-50%) scale(1.1); }
+
+        @media (max-width: 1199px) {
+          right: -10px;
+        }
+
+        @media (max-width: 767px) {
+          right: 10px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+}

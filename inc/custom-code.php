@@ -5,7 +5,7 @@
  * 
  * Allows embedding custom scripts in header, body, and footer.
  * 
- * @package lx-theme
+ * @package lx-landing
  */
 
 /**
@@ -25,8 +25,8 @@ add_action('admin_init', 'lx_custom_code_register_settings');
 function lx_custom_code_add_menu()
 {
     add_options_page(
-        __('Chèn Code tùy chỉnh', 'lx-theme'),
-        __('Chèn Code tùy chỉnh', 'lx-theme'),
+        __('Chèn Code tùy chỉnh', 'lx-landing'),
+        __('Chèn Code tùy chỉnh', 'lx-landing'),
         'manage_options',
         'lx-custom-code',
         'lx_render_custom_code_page'
@@ -84,36 +84,36 @@ function lx_render_custom_code_page()
     <div class="wrap lx-code-wrap">
         <h1 class="lx-page-title">
             <span class="dashicons dashicons-code-standards"></span>
-            <?php echo __('Cấu hình Code tùy chỉnh', 'lx-theme'); ?>
+            <?php echo __('Cấu hình Code tùy chỉnh', 'lx-landing'); ?>
         </h1>
 
         <div class="lx-card">
-            <p style="margin-top: 0; color: #475569;"><?php echo __('Sử dụng tính năng này để nhúng các đoạn mã script (GTM, Analytics, Pixel,...) vào website của bạn một cách an toàn.', 'lx-theme'); ?></p>
+            <p style="margin-top: 0; color: #475569;"><?php echo __('Sử dụng tính năng này để nhúng các đoạn mã script (GTM, Analytics, Pixel,...) vào website của bạn một cách an toàn.', 'lx-landing'); ?></p>
             
             <form method="post" action="options.php">
                 <?php settings_fields('lx_custom_code_group'); ?>
                 
                 <div class="lx_field_group">
-                    <label class="lx-field-label"><?php echo __('Header Code (wp_head)', 'lx-theme'); ?></label>
-                    <div class="lx-field-desc"><?php echo __('Chèn vào trước thẻ đóng <code>&lt;/head&gt;</code>. Thường dùng cho Google Tag Manager, CSS tùy chỉnh.', 'lx-theme'); ?></div>
+                    <label class="lx-field-label"><?php echo __('Header Code (wp_head)', 'lx-landing'); ?></label>
+                    <div class="lx-field-desc"><?php echo __('Chèn vào trước thẻ đóng <code>&lt;/head&gt;</code>. Thường dùng cho Google Tag Manager, CSS tùy chỉnh.', 'lx-landing'); ?></div>
                     <textarea name="lx_header_code" class="lx-textarea"><?php echo esc_textarea(get_option('lx_header_code')); ?></textarea>
                 </div>
 
                 <div class="lx_field_group" style="margin-top: 24px;">
-                    <label class="lx-field-label"><?php echo __('Body Opening Code (wp_body_open)', 'lx-theme'); ?></label>
-                    <div class="lx-field-desc"><?php echo __('Chèn ngay sau thẻ mở <code>&lt;body&gt;</code>. Thường dùng cho mãnoscript của Google Tag Manager.', 'lx-theme'); ?></div>
+                    <label class="lx-field-label"><?php echo __('Body Opening Code (wp_body_open)', 'lx-landing'); ?></label>
+                    <div class="lx-field-desc"><?php echo __('Chèn ngay sau thẻ mở <code>&lt;body&gt;</code>. Thường dùng cho mãnoscript của Google Tag Manager.', 'lx-landing'); ?></div>
                     <textarea name="lx_body_code" class="lx-textarea"><?php echo esc_textarea(get_option('lx_body_code')); ?></textarea>
                 </div>
 
                 <div class="lx_field_group" style="margin-top: 24px;">
-                    <label class="lx-field-label"><?php echo __('Footer Code (wp_footer)', 'lx-theme'); ?></label>
-                    <div class="lx-field-desc"><?php echo __('Chèn vào trước thẻ đóng <code>&lt;/body&gt;</code>. Thường dùng cho mã Chat, Pixel hoặc JS tùy chỉnh.', 'lx-theme'); ?></div>
+                    <label class="lx-field-label"><?php echo __('Footer Code (wp_footer)', 'lx-landing'); ?></label>
+                    <div class="lx-field-desc"><?php echo __('Chèn vào trước thẻ đóng <code>&lt;/body&gt;</code>. Thường dùng cho mã Chat, Pixel hoặc JS tùy chỉnh.', 'lx-landing'); ?></div>
                     <textarea name="lx_footer_code" class="lx-textarea"><?php echo esc_textarea(get_option('lx_footer_code')); ?></textarea>
                 </div>
 
                 <div style="margin-top: 32px; border-top: 1px solid #f0f0f1; pt-4">
                     <br>
-                    <?php submit_button(__('Lưu cài đặt', 'lx-theme'), 'primary', 'submit', false, array('class' => 'lx-submit-btn')); ?>
+                    <?php submit_button(__('Lưu cài đặt', 'lx-landing'), 'primary', 'submit', false, array('class' => 'lx-submit-btn')); ?>
                 </div>
             </form>
         </div>
