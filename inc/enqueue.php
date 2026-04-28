@@ -44,14 +44,6 @@ function child_theme_assets(): void
         CHILD_THEME_VERSION
     );
 
-    // Main CSS
-    wp_enqueue_style(
-        'child-theme-main',
-        CHILD_THEME_URL . '/assets/css/main.css',
-        ['child-theme-style'],
-        $ver_main_css
-    );
-
     // Slick CSS
     wp_enqueue_style(
         'child-theme-slick-css',
@@ -91,6 +83,14 @@ function child_theme_assets(): void
         ['jquery'],
         $ver_main_js,
         true
+    );
+
+    // Main CSS (Moved to end to ensure overrides)
+    wp_enqueue_style(
+        'child-theme-main',
+        CHILD_THEME_URL . '/assets/css/main.css',
+        [],
+        $ver_main_css
     );
 }
 add_action('wp_enqueue_scripts', 'child_theme_assets');

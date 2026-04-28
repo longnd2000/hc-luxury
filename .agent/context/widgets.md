@@ -36,13 +36,13 @@ Registered in `widgets/index.php` → `child_theme_register_widget_categories()`
 | Class Name | File | Category | Description |
 |---|---|---|---|
 | `Image_Gallery_Widget` | `image_gallery_widget.php` | `lx_media` → reassign as needed | Image gallery display |
-| `Youtube_Iframe_Slider_Widget` | `youtube_iframe_slider.php` | `lx_media` → reassign as needed | YouTube video slider |
-| `Company_Highlight_Widget` | `company_highlight_widget.php` | `lx_loi_ich` | Company highlights section |
+| `LX_Video_Reviews_Widget` | `lx_video_reviews.php` | `lx_danh_gia` | Video reviews/testimonials slider |
+| `LX_Why_Choose_Us_Widget` | `lx_why_choose_us.php` | `lx_loi_ich` | "Why Choose Us" section with icons and numbers |
 | `featured_posts_widget` | `featured_posts_widget.php` | `lx_dich_vu` | Featured posts display |
 | `category_section_widget` | `category_section_widget.php` | `lx_dich_vu` | Category section with posts |
 | `event_widget` | `event_widget.php` | `lx_dich_vu` | Event listing widget |
 
-> ⚠️ Widgets cũ (`Image_Gallery_Widget`, `Youtube_Iframe_Slider_Widget`) đang dùng category tạm. Cập nhật `get_categories()` trong từng file widget để khớp đúng slug.
+> ⚠️ Widgets cũ (`Image_Gallery_Widget`) đang dùng category tạm. Cập nhật `get_categories()` trong từng file widget để khớp đúng slug.
 
 ---
 

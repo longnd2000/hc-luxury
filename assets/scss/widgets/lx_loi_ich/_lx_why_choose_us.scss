@@ -1,0 +1,92 @@
+/* Widget: LX Why Choose Us */
+.lx_why_choose_us {
+    .lx_why_choose_us_card {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding: 30px !important;
+        background: #fff !important;
+        border: 1px solid rgba(0,0,0,0.05) !important;
+        border-radius: 12px !important;
+        height: 100% !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02) !important;
+
+        &:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+            transform: translateY(-5px) !important;
+        }
+    }
+
+    .lx_why_choose_us_icon {
+        flex-shrink: 0 !important;
+        width: 80px !important;
+        height: 80px !important;
+        background: rgba(var(--lx-primary-color-rgb, 13, 110, 253), 0.05) !important;
+        border: 1px solid var(--lx-primary-color, #0d6efd) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 15px !important;
+
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+            object-fit: contain !important;
+        }
+    }
+
+    .lx_why_choose_us_body {
+        flex-grow: 1 !important;
+    }
+
+    .lx_why_choose_us_meta {
+        margin-bottom: 12px !important;
+    }
+
+    .lx_why_choose_us_number {
+        display: block !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: var(--lx-primary-color, #0d6efd) !important;
+        margin-bottom: 4px !important;
+    }
+
+    .lx_why_choose_us_title {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+    }
+
+    .lx_why_choose_us_desc {
+        font-size: 15px !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+    }
+
+    // Responsive adjustments
+    @media (max-width: 767px) {
+        .lx_why_choose_us_card {
+            padding: 20px !important;
+            gap: 15px !important;
+        }
+        
+        .lx_why_choose_us_icon {
+            width: 60px !important;
+            height: 60px !important;
+            padding: 12px !important;
+        }
+
+        .lx_why_choose_us_title {
+            font-size: 18px !important;
+        }
+    }
+
+    // Header spacing
+    .lx_heading {
+        margin-bottom: 24px !important;
+    }
+}

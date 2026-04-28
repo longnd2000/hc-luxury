@@ -1,9 +1,9 @@
 @import "normalize";
 
 // Dynamic Theme Options Variables (Mapped from CSS Custom Properties)
-$primary: var(--lx-primary-color, #0d6efd);    // Màu chính (Mặc định: Xanh)
+$primary: var(--lx-primary-color, #0d6efd); // Màu chính (Mặc định: Xanh)
 $secondary: var(--lx-secondary-color, #FA8314); // Màu phụ (Mặc định: Cam)
-$content: #000000;                              // Màu nội dung chính
+$content: #000000; // Màu nội dung chính
 $font-main: var(--lx-primary-font, sans-serif);
 
 // Elementor Breakpoints (Sync with Elementor Site Settings)
@@ -18,13 +18,21 @@ $bp-laptop: 1200px;
 body.elementor-page.elementor-default {
   color: $content !important;
   font-family: $font-main !important;
-
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 1.5 !important; // Tiêu chuẩn body text
 
   // Ép buộc font chữ triệt để cho mọi thành phần text của Elementor
-  h1, h2, h3, h4, h5, h6, p, a, li, span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  li,
+  span,
   .elementor-widget-container,
   .elementor-heading-title,
   .elementor-widget-text-editor,
@@ -33,28 +41,44 @@ body.elementor-page.elementor-default {
   }
 
   // Khôi phục font cho các loại Icon (FontAwesome, Eicons) để không bị lỗi hiển thị
-  i, .fa, .fas, .fab, .far, .fal {
+  i,
+  .fa,
+  .fas,
+  .fab,
+  .far,
+  .fal {
     font-family: "Font Awesome 6 Free" !important;
   }
-  .elementor-icon, [class^="eicon-"], [class*=" eicon-"] {
+
+  .elementor-icon,
+  [class^="eicon-"],
+  [class*=" eicon-"] {
     font-family: "eicons" !important;
   }
 
   // Reset Headings with High Priority
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     line-height: 1.3 !important; // Tiêu chuẩn headings
     margin-top: 0 !important;
     margin-bottom: 16px !important; // Cưỡng chế 16px đồng nhất
   }
 
 
-  p, ul, ol {
+  p,
+  ul,
+  ol {
     margin-top: 0 !important;
     margin-bottom: 16px !important; // Cưỡng chế 16px đồng nhất
   }
 
 
-  ul, ol {
+  ul,
+  ol {
     padding-left: 16px;
   }
 
@@ -77,9 +101,17 @@ body.elementor-page.elementor-default {
   }
 
   // ── Typography Utilities ──────────────────────────────────────────────────
-  .lx_text_left   { text-align: left !important; }
-  .lx_text_center { text-align: center !important; }
-  .lx_text_right  { text-align: right !important; }
+  .lx_text_left {
+    text-align: left !important;
+  }
+
+  .lx_text_center {
+    text-align: center !important;
+  }
+
+  .lx_text_right {
+    text-align: right !important;
+  }
 
   // ── Slick Slider Standard UI ─────────────────────────────────────────────
   .slick-slider {
@@ -90,8 +122,8 @@ body.elementor-page.elementor-default {
       width: 44px !important;
       height: 44px !important;
       z-index: 10;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
       display: flex !important;
       align-items: center;
       justify-content: center;
@@ -123,12 +155,18 @@ body.elementor-page.elementor-default {
 
     .slick-prev {
       left: -60px;
-      &::after { content: "\f104"; }
+
+      &::after {
+        content: "\f104";
+      }
     }
 
     .slick-next {
       right: -60px;
-      &::after { content: "\f105"; }
+
+      &::after {
+        content: "\f105";
+      }
     }
 
     .slick-dots {
@@ -155,7 +193,9 @@ body.elementor-page.elementor-default {
           border: none !important;
           font-size: 0;
 
-          &::before { display: none !important; }
+          &::before {
+            display: none !important;
+          }
         }
 
         &.slick-active button {
