@@ -9,6 +9,42 @@
     display: flex;
     align-items: center;
 
+    // Default 
+    text-align: center;
+
+    // Case: Căn trái
+    &.lx_cta_left {
+        text-align: left !important;
+        .lx_cta_content, .lx_cta_title, .lx_cta_desc, .lx_cta_desc p {
+            text-align: left !important;
+        }
+        .lx_cta_action {
+            justify-content: flex-start !important;
+        }
+    }
+
+    // Case: Căn giữa
+    &.lx_cta_center {
+        text-align: center !important;
+        .lx_cta_content, .lx_cta_title, .lx_cta_desc, .lx_cta_desc p {
+            text-align: center !important;
+        }
+        .lx_cta_action {
+            justify-content: center !important;
+        }
+    }
+
+    // Case: Căn phải
+    &.lx_cta_right {
+        text-align: right !important;
+        .lx_cta_content, .lx_cta_title, .lx_cta_desc, .lx_cta_desc p {
+            text-align: right !important;
+        }
+        .lx_cta_action {
+            justify-content: flex-end !important;
+        }
+    }
+
     .lx_cta_overlay {
         position: absolute;
         top: 0;
@@ -22,28 +58,6 @@
     .lx_con {
         position: relative;
         z-index: 2;
-    }
-
-    // Alignment Styles
-    &.lx_cta_left {
-        text-align: left !important;
-        .lx_cta_content { text-align: left !important; }
-        .lx_cta_title, .lx_cta_desc, .lx_cta_desc p { text-align: left !important; }
-        .lx_cta_action { justify-content: flex-start !important; }
-    }
-
-    &.lx_cta_center {
-        text-align: center !important;
-        .lx_cta_content { text-align: center !important; }
-        .lx_cta_title, .lx_cta_desc, .lx_cta_desc p { text-align: center !important; }
-        .lx_cta_action { justify-content: center !important; }
-    }
-
-    &.lx_cta_right {
-        text-align: right !important;
-        .lx_cta_content { text-align: right !important; }
-        .lx_cta_title, .lx_cta_desc, .lx_cta_desc p { text-align: right !important; }
-        .lx_cta_action { justify-content: flex-end !important; }
     }
 
     .lx_cta_content {

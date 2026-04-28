@@ -71,5 +71,27 @@
     if (typeof $.fn.matchHeight === 'function') {
       $('[data-mh]').matchHeight();
     }
+
+    // LX FAQs Accordion Logic
+    $(document).on('click', '.lx_faq_header', function() {
+      var $item = $(this).closest('.lx_faq_item');
+      var $wrapper = $(this).siblings('.lx_faq_content_wrapper');
+      
+      if ($(this).attr('aria-expanded') === 'true') {
+        $(this).attr('aria-expanded', 'false');
+        $item.removeClass('is-active');
+        $wrapper.slideUp(300);
+      } else {
+        // Close other items in the same accordion
+        var $accordion = $(this).closest('.lx_faq_accordion');
+        $accordion.find('.lx_faq_header[aria-expanded="true"]').attr('aria-expanded', 'false');
+        $accordion.find('.lx_faq_item').removeClass('is-active');
+        $accordion.find('.lx_faq_content_wrapper').slideUp(300);
+
+        $(this).attr('aria-expanded', 'true');
+        $item.addClass('is-active');
+        $wrapper.slideDown(300);
+      }
+    });
   });
 })(jQuery);

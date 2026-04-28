@@ -42,6 +42,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_dynamic/lx_archive_title.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_menu.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_footer.php';
+    require_once WIDGETS_PATH . 'lx_faqs/lx_faqs.php';
     require_once WIDGETS_PATH . 'lx_cta/lx_cta.php';
 
 
@@ -65,6 +66,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Author_Box_Widget());
     $widgets_manager->register(new \LX_Related_Posts_Widget());
     $widgets_manager->register(new \LX_Archive_Title_Widget());
+    $widgets_manager->register(new \LX_FAQs_Widget());
     $widgets_manager->register(new \LX_Menu_Widget());
     $widgets_manager->register(new \LX_Footer_Widget());
     $widgets_manager->register(new \LX_CTA_Widget());

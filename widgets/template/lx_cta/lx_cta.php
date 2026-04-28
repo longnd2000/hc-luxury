@@ -20,7 +20,7 @@ class LX_CTA_Widget extends \Elementor\Widget_Base {
     }
 
     protected function _register_controls() {
-        // Content Section
+        // Section Content
         $this->start_controls_section(
             'section_content',
             [
@@ -29,24 +29,11 @@ class LX_CTA_Widget extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
-            'bg_image',
-            [
-                'label' => __('Ảnh nền', 'lx-landing'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $this->add_control(
             'title',
             [
                 'label' => __('Tiêu đề', 'lx-landing'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('HÃY ĐỂ CHÚNG TÔI ĐỒNG HÀNH CÙNG BẠN!', 'lx-landing'),
-                'placeholder' => __('Nhập tiêu đề CTA', 'lx-landing'),
-                'label_block' => true,
+                'default' => __('BẠN ĐÃ SẴN SÀNG ĐỂ BẮT ĐẦU?', 'lx-landing'),
             ]
         );
 
@@ -55,7 +42,7 @@ class LX_CTA_Widget extends \Elementor\Widget_Base {
             [
                 'label' => __('Mô tả', 'lx-landing'),
                 'type' => \Elementor\Controls_Manager::WYSIWYG,
-                'default' => __('Liên hệ ngay hôm nay để nhận tư vấn miễn phí và tìm giải pháp phù hợp nhất.', 'lx-landing'),
+                'default' => __('Liên hệ với chúng tôi ngay hôm nay để nhận được tư vấn chi tiết nhất về dịch vụ.', 'lx-landing'),
             ]
         );
 
@@ -64,14 +51,14 @@ class LX_CTA_Widget extends \Elementor\Widget_Base {
             [
                 'label' => __('Chữ trên nút', 'lx-landing'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('ĐĂNG KÝ NGAY', 'lx-landing'),
+                'default' => __('LIÊN HỆ NGAY', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'btn_link',
             [
-                'label' => __('Liên kết nút', 'lx-landing'),
+                'label' => __('Link nút', 'lx-landing'),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => __('https://your-link.com', 'lx-landing'),
                 'default' => [
@@ -84,23 +71,34 @@ class LX_CTA_Widget extends \Elementor\Widget_Base {
             'alignment',
             [
                 'label' => __('Căn lề', 'lx-landing'),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => __('Bên trái', 'lx-landing'),
-                        'icon' => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Chính giữa', 'lx-landing'),
-                        'icon' => 'eicon-text-align-center',
-                    ],
-                    'right' => [
-                        'title' => __('Bên phải', 'lx-landing'),
-                        'icon' => 'eicon-text-align-right',
-                    ],
-                ],
+                'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'center',
-                'toggle' => false,
+                'options' => [
+                    'left'   => __('Trái', 'lx-landing'),
+                    'center' => __('Giữa', 'lx-landing'),
+                    'right'  => __('Phải', 'lx-landing'),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Section Background
+        $this->start_controls_section(
+            'section_style',
+            [
+                'label' => __('Hình nền', 'lx-landing'),
+            ]
+        );
+
+        $this->add_control(
+            'bg_image',
+            [
+                'label' => __('Chọn ảnh nền', 'lx-landing'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
             ]
         );
 
@@ -119,13 +117,12 @@ class LX_CTA_Widget extends \Elementor\Widget_Base {
             $this->add_render_attribute('wrapper', 'style', 'background-image: url(' . esc_url($bg_image) . ');');
         }
 
-        $align_class = 'text-' . $settings['alignment'];
-        $justify_class = 'justify-content-center'; // Default col-6 is always centered in its container
+        $justify_class = 'justify-content-center';
         if ($settings['alignment'] === 'left') $justify_class = 'justify-content-start';
         if ($settings['alignment'] === 'right') $justify_class = 'justify-content-end';
 
         $btn_link = !empty($settings['btn_link']['url']) ? $settings['btn_link']['url'] : '#';
-        $this->add_render_attribute('button', 'class', 'lx_btn lx_btn_primary'); // Using default primary button
+        $this->add_render_attribute('button', 'class', 'lx_btn lx_btn_primary');
         $this->add_render_attribute('button', 'href', esc_url($btn_link));
         
         if (!empty($settings['btn_link']['is_external'])) {

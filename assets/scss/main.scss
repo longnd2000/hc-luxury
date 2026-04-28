@@ -76,6 +76,11 @@ body.elementor-page.elementor-default {
     }
   }
 
+  // ── Typography Utilities ──────────────────────────────────────────────────
+  .lx_text_left   { text-align: left !important; }
+  .lx_text_center { text-align: center !important; }
+  .lx_text_right  { text-align: right !important; }
+
   // ── Slick Slider Standard UI ─────────────────────────────────────────────
   .slick-slider {
     .slick-arrow {
@@ -177,6 +182,7 @@ body.elementor-page.elementor-default {
   @import 'widgets/lx_khach_hang/main';
   @import 'widgets/lx_gioi_thieu/main';
   @import 'widgets/lx_cta/main';
+  @import 'widgets/lx_faqs/main';
   @import 'widgets/lx_doi_tac/main';
   @import 'widgets/lx_van_de/main';
   @import 'widgets/lx_giai_phap/main';
