@@ -1,0 +1,168 @@
+.lx_hero_slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0 !important; // Override slick default margin-bottom: 30px
+
+    .lx_hero_slider_item.slick-active {
+        .lx_hero_slide_inner {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    }
+
+    .lx_hero_slide {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex !important;
+        align-items: center; // Căn giữa trên dưới
+        background-color: #000;
+        // .lx_wrap handle padding (120px 4%)
+        box-sizing: border-box;
+
+        &_bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        &_overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+            z-index: 2;
+        }
+
+        &_content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            color: #ffffff;
+            // .lx_con handle max-width (1200px)
+        }
+
+        &_inner {
+            max-width: 100%;
+            transition: all 0.5s ease-in-out;
+            transition-delay: 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        &_title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: #ffffff !important;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        &_desc {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+
+        &_action {
+            .lx_btn {
+                padding: 15px 40px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    // Custom Arrows for Banner (Inside & Always Visible)
+    .slick-prev, .slick-next {
+        top: 50%;
+        transform: translateY(-50%) !important;
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease !important;
+        width: 36px !important;
+        height: 36px !important;
+
+        &::after {
+            font-size: 16px !important;
+        }
+    }
+
+    .slick-prev {
+        left: 16px !important; 
+    }
+
+    .slick-next {
+        right: 16px !important; 
+    }
+
+    // Hide arrows on screens < 1200px to avoid overlapping content
+    @media (max-width: 1199px) {
+        .slick-prev, .slick-next {
+            display: none !important;
+        }
+    }
+
+    // Custom Dots for Banner (Inside)
+    .slick-dots {
+        bottom: 30px !important; // 30px from bottom
+
+        li {
+            button {
+                background-color: rgba(255, 255, 255, 0.4) !important;
+                width: 12px !important;
+                height: 12px !important;
+            }
+            &.slick-active button {
+                background-color: var(--lx-primary-color, #0d6efd) !important; // Luôn có màu chủ đạo ở active
+            }
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 991px) {
+        .lx_hero_slide {
+            &_title {
+                font-size: 36px;
+            }
+            &_desc {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media (max-width: 767px) {
+        .lx_hero_slide {
+            height: auto;
+            min-height: 500px;
+            text-align: center;
+
+            &_overlay {
+                background: rgba(0,0,0,0.5);
+            }
+
+            &_title {
+                font-size: 28px;
+            }
+
+            .row {
+                justify-content: center;
+            }
+        }
+
+        .slick-dots {
+            bottom: 20px !important;
+        }
+    }
+}

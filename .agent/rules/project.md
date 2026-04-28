@@ -17,3 +17,12 @@ Luôn sẵn sàng cập nhật các UI Trend mới nhất vào hệ thống Widg
 
 ## 5. Ngôn ngữ & Trải nghiệm Người dùng (Localization)
 - **Tiếng Việt là Mặc định**: Đây là Theme dành riêng cho người dùng Việt Nam. Toàn bộ các text mặc định (default text) hiển thị ra ngoài Frontend hoặc hiển thị trong màn hình Quản trị (ví dụ: "Liên hệ", "Tìm hiểu thêm", "Đọc tiếp"...) **BẮT BUỘC** phải được sử dụng bằng Tiếng Việt để đảm bảo trải nghiệm tốt nhất và dễ hiểu nhất cho khách hàng.
+
+## 6. Bố cục & Hệ thống Grid (Layout & Grid)
+- **Sử dụng Bootstrap Grid**: Khuyến khích sử dụng hệ thống Grid của Bootstrap (`.row`, `.col-*`) bên trong các Widget để phân chia cột nhanh chóng và đồng bộ.
+- **TUYỆT ĐỐI KHÔNG dùng .container**: Không được sử dụng class `.container` hoặc `.container-fluid` bên trong mã nguồn của Widget.
+- **Tiêu chuẩn Container & Spacing (.lx_wrap & .lx_con)**:
+    - **.lx_wrap**: Lớp bao ngoài của Section/Widget, quy định khoảng cách đệm: **Padding: 120px 4% !important**.
+    - **.lx_con**: Lớp khung nội dung nằm trực tiếp sau `.lx_wrap`, quy định độ rộng tối đa: **max-width: 1200px !important** và căn giữa **margin: 0 auto !important**.
+    - Cấu trúc chuẩn: `<section class="lx_wrap"><div class="lx_con"><div class="row">...</div></div></section>`.
+- **Quy tắc Slick Slider**: Khi sử dụng Slick Slider, các item bên trong vòng lặp `foreach` BẮT BUỘC phải được bọc trong một thẻ `div` trung gian (ví dụ: `.lx_slider_item`). Thẻ `div` này đóng vai trò là "container" cho Slick tính toán kích thước, tránh việc các class của Slick (`slick-slide`, `slick-active`) bị ghi đè hoặc xung đột trực tiếp với các class CSS tùy chỉnh của item.

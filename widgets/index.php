@@ -22,6 +22,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     // Banner
     require_once WIDGETS_PATH . 'lx_banner/image_gallery_widget.php';
     require_once WIDGETS_PATH . 'lx_banner/youtube_iframe_slider.php';
+    require_once WIDGETS_PATH . 'lx_banner/lx_hero_slider.php';
 
     // Nghiệp vụ
     require_once WIDGETS_PATH . 'lx_loi_ich/company_highlight_widget.php';
@@ -39,11 +40,13 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_dynamic/lx_related_posts.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_archive_title.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_menu.php';
+    require_once WIDGETS_PATH . 'lx_dynamic/lx_footer.php';
 
 
     // Register widgets
     $widgets_manager->register(new \Image_Gallery_Widget());
     $widgets_manager->register(new \Youtube_Iframe_Slider_Widget());
+    $widgets_manager->register(new \LX_Hero_Slider_Widget());
     $widgets_manager->register(new \Company_Highlight_Widget());
     $widgets_manager->register(new \featured_posts_widget());
     $widgets_manager->register(new \category_section_widget());
@@ -60,6 +63,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Related_Posts_Widget());
     $widgets_manager->register(new \LX_Archive_Title_Widget());
     $widgets_manager->register(new \LX_Menu_Widget());
+    $widgets_manager->register(new \LX_Footer_Widget());
 }
 
 
