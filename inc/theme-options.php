@@ -4,7 +4,7 @@
  * Theme Options Management
  *
  * Provides an ACF Options Page for global theme settings
- * like fonts, colors, and logos.
+ * like fonts and colors.
  *
  * @package Child_Theme
  */
@@ -90,35 +90,6 @@ function lx_register_theme_options_fields()
                     'default_value'  => '#fd7c00',
                     'enable_opacity' => 0,
                     'return_format'  => 'string',
-                ],
-
-                // Tab: Logos
-                [
-                    'key' => 'field_lx_tab_logos',
-                    'label' => __('Logos', 'lx-landing'),
-                    'name' => '',
-                    'type' => 'tab',
-                    'placement' => 'top',
-                    'endpoint' => 0,
-                ],
-                [
-                    'key' => 'field_lx_main_logo',
-                    'label' => __('Logo chính (Main Logo)', 'lx-landing'),
-                    'name' => 'lx_main_logo',
-                    'type' => 'image',
-                    'return_format' => 'array',
-                    'preview_size' => 'medium',
-                    'library' => 'all',
-                ],
-                [
-                    'key' => 'field_lx_negative_logo',
-                    'label' => __('Logo âm bản (Negative Logo)', 'lx-landing'),
-                    'name' => 'lx_negative_logo',
-                    'type' => 'image',
-                    'instructions' => __('Dùng cho Dark mode hoặc nền tối.', 'lx-landing'),
-                    'return_format' => 'array',
-                    'preview_size' => 'medium',
-                    'library' => 'all',
                 ],
 
                 // Tab: Buttons
@@ -399,32 +370,4 @@ function child_theme_acf_load_google_fonts_field(array $field): array
 
 
 
-/**
- * Helper function to retrieve logo
- * 
- * @param string $type 'main' or 'negative'
- * @return string Image HTML or empty string
- */
-function child_theme_get_logo($type = 'main')
-{
-    if (!function_exists('get_field')) {
-        return '';
-    }
 
-    $field_name = ($type === 'negative') ? 'lx_negative_logo' : 'lx_main_logo';
-    $logo_array = get_field($field_name, 'option');
-
-    if ($logo_array && isset($logo_array['url'])) {
-        $alt = !empty($logo_array['alt']) ? esc_attr($logo_array['alt']) : get_bloginfo('name');
-        return sprintf('<img src="%s" alt="%s" width="%s" height="%s" class="lx-logo lx-logo-%s">',
-            esc_url($logo_array['url']),
-            $alt,
-            esc_attr($logo_array['width']),
-            esc_attr($logo_array['height']),
-            esc_attr($type)
-        );
-    }
-
-    // Fallback to text logo if no image is set
-    return '<span class="lx-text-logo">' . get_bloginfo('name') . '</span>';
-}

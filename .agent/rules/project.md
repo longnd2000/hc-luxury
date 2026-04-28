@@ -25,4 +25,7 @@ Luôn sẵn sàng cập nhật các UI Trend mới nhất vào hệ thống Widg
     - **.lx_wrap**: Lớp bao ngoài của Section/Widget, quy định khoảng cách đệm: **Padding: 120px 4% !important**.
     - **.lx_con**: Lớp khung nội dung nằm trực tiếp sau `.lx_wrap`, quy định độ rộng tối đa: **max-width: 1200px !important** và căn giữa **margin: 0 auto !important**.
     - Cấu trúc chuẩn: `<section class="lx_wrap"><div class="lx_con"><div class="row">...</div></div></section>`.
+- **Quy chuẩn Typography dùng chung (Shared Classes)**:
+    - **Tiêu đề Section**: Sử dụng cặp lớp `.lx_heading.lx_heading_h2` (hoặc `h1-h6` tương ứng) để đảm bảo tính nhất quán về font-size, line-height và màu sắc trên toàn trang.
+    - **Nội dung văn bản (WYSIWYG)**: Sử dụng lớp `.lx_text_editor` bọc ngoài phần nội dung trả về từ trình soạn thảo văn bản. Lớp này quản lý font-size (16px), line-height (1.5), màu sắc và định dạng cho link/list chuẩn theme.
 - **Quy tắc Slick Slider**: Khi sử dụng Slick Slider, các item bên trong vòng lặp `foreach` BẮT BUỘC phải được bọc trong một thẻ `div` trung gian (ví dụ: `.lx_slider_item`). Thẻ `div` này đóng vai trò là "container" cho Slick tính toán kích thước, tránh việc các class của Slick (`slick-slide`, `slick-active`) bị ghi đè hoặc xung đột trực tiếp với các class CSS tùy chỉnh của item.

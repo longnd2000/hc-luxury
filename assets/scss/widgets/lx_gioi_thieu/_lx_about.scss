@@ -1,0 +1,52 @@
+.lx_about {
+    // .lx_wrap handle padding (120px 4%)
+    background-color: #ffffff;
+    overflow: hidden;
+
+    // .lx_con handle max-width (1200px)
+
+    .lx_about_content {
+        // Shared Title (.lx_heading.lx_heading_h2) already has styles
+        // We only add specific spacing here if needed
+        .lx_heading {
+            margin-bottom: 24px !important;
+        }
+
+        // Shared Content (.lx_text_editor) already has styles
+        .lx_text_editor {
+            margin-bottom: 32px !important;
+        }
+
+        .lx_about_action {
+            .lx_btn {
+                // Styles inherited from .lx_btn
+            }
+        }
+    }
+
+    .lx_about_image {
+        position: relative;
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px; // Slight rounding for premium feel
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: block;
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 991px) {
+        .lx_about_content {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .lx_about_image {
+            text-align: center;
+        }
+    }
+}

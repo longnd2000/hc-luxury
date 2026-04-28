@@ -69,6 +69,13 @@ body.elementor-page.elementor-default {
     }
   }
 
+  // ── Grid Utilities ───────────────────────────────────────────────────────
+  @media (min-width: 1200px) {
+    .gx-60 {
+      --bs-gutter-x: 60px !important;
+    }
+  }
+
   // ── Slick Slider Standard UI ─────────────────────────────────────────────
   .slick-slider {
     .slick-arrow {
@@ -168,6 +175,8 @@ body.elementor-page.elementor-default {
   @import 'widgets/lx_text_editor/main';
   @import 'widgets/lx_banner/main';
   @import 'widgets/lx_khach_hang/main';
+  @import 'widgets/lx_gioi_thieu/main';
+  @import 'widgets/lx_cta/main';
   @import 'widgets/lx_doi_tac/main';
   @import 'widgets/lx_van_de/main';
   @import 'widgets/lx_giai_phap/main';
