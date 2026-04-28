@@ -114,6 +114,10 @@ body.elementor-page.elementor-default {
   }
 
   // ── Slick Slider Standard UI ─────────────────────────────────────────────
+  .slick-loading .slick-list {
+    background: none !important;
+  }
+
   .slick-slider {
     .slick-arrow {
       background-color: #ffffff !important;

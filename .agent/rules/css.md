@@ -27,8 +27,33 @@ LX Landing là một **Premium Elementor Kit System**. Mục tiêu là tạo ra 
 - **Unique Responsibility**: Mỗi class đại diện cho một thành phần duy nhất, tránh dùng chung class cho các mục đích khác nhau để dễ dàng ghi đè.
 
 ## Structural Rules
-- **NO NESTING**: Không lồng các class con quá sâu trong SCSS. Giữ selector phẳng (Flat) để dễ quản lý độ ưu tiên.
-- **Isolation Policy**: Không áp dụng style tùy biến vào các thẻ nội dung chung chung mà không có prefix `lx_`.
+- **Section Wrapper**: Tất cả các widget dạng section phải được bọc trong cấu trúc:
+  ```html
+  <section class="lx_wrap">
+      <div class="lx_con">
+          <!-- Nội dung widget -->
+      </div>
+  </section>
+  ```
+- **Spacing**: `.lx_wrap` mặc định có `padding: 120px 4% !important`. `.lx_con` có `max-width: 1200px`.
+
+## Slider UI Standards (Slick Slider)
+Để đảm bảo tính nhất quán và không gây lỗi cuộn ngang, mọi slider phải tuân thủ:
+
+### 1. Arrow Positioning (Nút điều hướng)
+- **PC (> 1200px)**: `left/right: -40px` (nằm ngoài khung).
+- **Tablet (768px - 1199px)**: `left/right: -16px` (thò ra một chút nhưng không gây scroll ngang).
+- **Mobile (< 768px)**: `left/right: 10px` (nằm hẳn bên trong khung).
+- **Hover Fix**: Luôn sử dụng `transform: translateY(-50%) scale(1.1) !important` để tránh lỗi "giật" nút.
+
+### 2. Dot Spacing (Chấm phân trang)
+- Khoảng cách mặc định: `bottom: -35px` đến `-50px`.
+- Gap giữa các dots: `10px`.
+
+### 3. Gutter Management (Khoảng cách Item)
+- Slider container: `margin: 0 -15px !important` (hoặc con số tương ứng).
+- Slider item: `padding: 0 15px !important`.
+- **Lưu ý**: Phải bọc nội dung item trong một `div` trống bên ngoài để Slick không can thiệp vào layout của card.
 
 ## Typography Scale (Responsive Heading)
 Cách viết: **Mobile-first** — luôn dùng `min-width: 1200px` cho PC.

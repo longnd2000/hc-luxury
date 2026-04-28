@@ -1,0 +1,86 @@
+/* Widget: LX Video Reviews Grid */
+.lx_video_grid {
+    .lx_video_grid_featured {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        background: #000;
+    }
+
+    .lx_video_iframe_horizontal {
+        position: relative;
+        padding-bottom: 56.25%; // 16:9
+        height: 0;
+        overflow: hidden;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+
+    .lx_video_grid_item {
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        background: #000;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    .lx_video_iframe_vertical {
+        position: relative;
+        padding-bottom: 177.77%; // 9:16
+        height: 0;
+        overflow: hidden;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+
+    .lx_video_placeholder {
+        background: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        gap: 10px;
+
+        i {
+            font-size: 40px;
+        }
+
+        &.horizontal {
+            aspect-ratio: 16/9;
+        }
+
+        &.vertical {
+            aspect-ratio: 9/16;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .lx_video_grid_featured {
+            border-radius: 8px;
+        }
+        .lx_video_grid_item {
+            border-radius: 8px;
+        }
+    }
+}

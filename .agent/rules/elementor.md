@@ -44,6 +44,11 @@ Follow the structure of `widgets/template/duplicate_widget.php` as the master te
 - All styles must be defined using strict SCSS classes starting with the `lx_` prefix (e.g., `lx_card`, `lx_title_primary`).
 - Elementor's sole purpose is to provide the content input (Text, Images, Toggles) and act as a structural drag-and-drop wrapper.
 
+## Slider Configuration (JS)
+- **Synchronization**: `slidesToScroll` phải luôn bằng `slidesToShow` ở mọi breakpoint để đảm bảo hiệu ứng trượt khớp với số lượng item hiển thị.
+- **Initialization**: Luôn sử dụng lệnh `unslick` trước khi khởi tạo lại trong Elementor Editor.
+- **Hooks**: Sử dụng `elementorFrontend.hooks.addAction('frontend/element_ready/...')` thay vì `$(window).on('load')`.
+
 ## Specificity Override
 Elementor injects global heading styles via `.elementor-kit-{id} h1-h6` selectors (specificity `0,1,1`), which override single-class selectors (specificity `0,1,0`). When custom `font-size` or `font-weight` on heading elements is being overridden by Elementor, use `!important` to enforce. This applies to all custom heading classes inside Elementor widget templates and theme templates.
 

@@ -22,10 +22,12 @@ function child_theme_register_custom_widgets($widgets_manager): void
     // Banner
     require_once WIDGETS_PATH . 'lx_banner/image_gallery_widget.php';
     require_once WIDGETS_PATH . 'lx_banner/lx_hero_slider.php';
+    require_once WIDGETS_PATH . 'lx_banner/lx_image_slider.php';
     require_once WIDGETS_PATH . 'lx_gioi_thieu/lx_about.php';
 
     // Nghiệp vụ
     require_once WIDGETS_PATH . 'lx_loi_ich/lx_why_choose_us.php';
+    require_once WIDGETS_PATH . 'lx_loi_ich/lx_why_choose_us_v2.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/featured_posts_widget.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/category_section_widget.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/event_widget.php';
@@ -42,15 +44,20 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_dynamic/lx_menu.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_footer.php';
     require_once WIDGETS_PATH . 'lx_faqs/lx_faqs.php';
+    require_once WIDGETS_PATH . 'lx_quy_trinh/lx_process_steps.php';
     require_once WIDGETS_PATH . 'lx_cta/lx_cta.php';
     require_once WIDGETS_PATH . 'lx_danh_gia/lx_video_reviews.php';
+    require_once WIDGETS_PATH . 'lx_danh_gia/lx_video_reviews_grid.php';
 
 
     // Register widgets
     $widgets_manager->register(new \Image_Gallery_Widget());
     $widgets_manager->register(new \LX_Hero_Slider_Widget());
+    $widgets_manager->register(new \LX_Image_Slider_Widget());
     $widgets_manager->register(new \LX_About_Widget());
     $widgets_manager->register(new \LX_Why_Choose_Us_Widget());
+    $widgets_manager->register(new \LX_Why_Choose_Us_V2_Widget());
+    $widgets_manager->register(new \LX_Process_Steps_Widget());
     $widgets_manager->register(new \featured_posts_widget());
     $widgets_manager->register(new \category_section_widget());
     $widgets_manager->register(new \event_widget());
@@ -70,6 +77,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Footer_Widget());
     $widgets_manager->register(new \LX_CTA_Widget());
     $widgets_manager->register(new \LX_Video_Reviews_Widget());
+    $widgets_manager->register(new \LX_Video_Reviews_Grid_Widget());
 }
 
 
