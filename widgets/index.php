@@ -48,6 +48,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_danh_gia/lx_video_reviews.php';
     require_once WIDGETS_PATH . 'lx_danh_gia/lx_video_reviews_grid.php';
     require_once WIDGETS_PATH . 'lx_tinh_nang/lx_feature_gallery.php';
+    require_once WIDGETS_PATH . 'lx_lien_he/lx_contact_form_image.php';
 
 
     // Register widgets
@@ -78,6 +79,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Video_Reviews_Widget());
     $widgets_manager->register(new \LX_Video_Reviews_Grid_Widget());
     $widgets_manager->register(new \LX_Feature_Gallery_Widget());
+    $widgets_manager->register(new \LX_Contact_Form_Image_Widget());
 }
 
 

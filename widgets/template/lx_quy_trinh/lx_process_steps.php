@@ -12,7 +12,7 @@ class LX_Process_Steps_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-ordered-list';
+        return 'eicon-number-field';
     }
 
     public function get_categories() {
