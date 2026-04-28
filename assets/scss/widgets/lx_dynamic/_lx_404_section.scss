@@ -1,0 +1,112 @@
+.lx_404_section {
+  padding: 80px 0;
+  text-align: center;
+  background-color: #ffffff;
+
+  .lx_404_number {
+    font-size: 150px;
+    font-weight: 800;
+    color: var(--lx-primary-color, #004d40); // Màu chủ đạo
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -5px;
+    
+    @media (max-width: 767px) {
+      font-size: 100px;
+    }
+  }
+
+  .lx_404_image {
+    max-width: 320px;
+    margin: 0 auto 30px;
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .lx_404_content {
+    max-width: 700px;
+    margin: 0 auto;
+
+    .lx_404_title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #000000; // Màu $content
+      margin-bottom: 15px;
+      
+      @media (max-width: 767px) {
+        font-size: 24px;
+      }
+    }
+
+    .lx_404_desc {
+      font-size: 16px;
+      color: #333333; // Màu $content (giảm nhẹ độ đậm)
+      margin-bottom: 40px;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+  }
+
+  .lx_404_btns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    
+    @media (max-width: 575px) {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+      
+      .lx_btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .lx_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    gap: 8px;
+
+    &.lx_btn_primary {
+      background-color: #2563eb;
+      color: #ffffff;
+      border: 1px solid #2563eb;
+      
+      &:hover {
+        background-color: #1d4ed8;
+        border-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      }
+    }
+
+    &.lx_btn_outline {
+      background-color: transparent;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      
+      &:hover {
+        background-color: #f9fafb;
+        border-color: #2563eb;
+        color: #2563eb;
+        transform: translateY(-2px);
+      }
+    }
+
+    i {
+      font-size: 14px;
+    }
+  }
+}
