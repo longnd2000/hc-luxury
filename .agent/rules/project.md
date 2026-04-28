@@ -14,3 +14,6 @@ Xây dựng một "Elementor Kit" cao cấp phục vụ việc tạo Landing Pag
 
 ## 4. Phát triển UI mới
 Luôn sẵn sàng cập nhật các UI Trend mới nhất vào hệ thống Widget để đa dạng hóa kho thành phần, giúp người dùng có nhiều lựa chọn để tạo ra các trang demo ấn tượng.
+
+## 5. Ngôn ngữ & Trải nghiệm Người dùng (Localization)
+- **Tiếng Việt là Mặc định**: Đây là Theme dành riêng cho người dùng Việt Nam. Toàn bộ các text mặc định (default text) hiển thị ra ngoài Frontend hoặc hiển thị trong màn hình Quản trị (ví dụ: "Liên hệ", "Tìm hiểu thêm", "Đọc tiếp"...) **BẮT BUỘC** phải được sử dụng bằng Tiếng Việt để đảm bảo trải nghiệm tốt nhất và dễ hiểu nhất cho khách hàng.

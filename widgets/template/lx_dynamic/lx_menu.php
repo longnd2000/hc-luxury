@@ -45,6 +45,17 @@ class LX_Menu_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'logo',
+            [
+                'label' => __('Logo', 'lx-landing'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
         $menus = $this->get_available_menus();
 
         if (!empty($menus)) {
@@ -70,6 +81,28 @@ class LX_Menu_Widget extends \Elementor\Widget_Base
             );
         }
 
+        $this->add_control(
+            'button_text',
+            [
+                'label' => __('Button Text', 'lx-landing'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('Liên hệ', 'lx-landing'),
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'button_url',
+            [
+                'label' => __('Button URL', 'lx-landing'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => __('https://your-link.com', 'lx-landing'),
+                'default' => [
+                    'url' => '#',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -81,29 +114,64 @@ class LX_Menu_Widget extends \Elementor\Widget_Base
             return;
         }
 
+        $logo_url = !empty($settings['logo']['url']) ? $settings['logo']['url'] : '';
+        $button_text = !empty($settings['button_text']) ? $settings['button_text'] : '';
+        
+        $this->add_render_attribute('button', 'class', ['lx_btn', 'lx_btn_primary']);
+        if (!empty($settings['button_url']['url'])) {
+            $this->add_link_attributes('button', $settings['button_url']);
+        }
         ?>
-        <div class="lx_menu_container">
-            <button class="lx_menu_toggler" aria-label="Toggle Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="lx_menu_offcanvas">
-                <div class="lx_menu_offcanvas_header">
-                    <button class="lx_menu_close" aria-label="Close Menu">
-                        <i class="fas fa-times"></i>
-                    </button>
+        <div class="lx_header_wrapper">
+            <?php if ($logo_url) : ?>
+                <div class="lx_header_logo">
+                    <a href="<?php echo esc_url(home_url('/')); ?>">
+                        <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                    </a>
                 </div>
-                <nav class="lx_menu_nav">
-                    <?php
-                    wp_nav_menu([
-                        'menu' => $settings['menu'],
-                        'container' => false,
-                        'menu_class' => 'lx_menu_list',
-                        'fallback_cb' => false,
-                    ]);
-                    ?>
-                </nav>
+            <?php endif; ?>
+
+            <div class="lx_header_nav">
+                <div class="lx_menu_container">
+                    <button class="lx_menu_toggler" aria-label="Toggle Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="lx_menu_offcanvas">
+                        <div class="lx_menu_offcanvas_header">
+                            <button class="lx_menu_close" aria-label="Close Menu">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <nav class="lx_menu_nav">
+                            <?php
+                            wp_nav_menu([
+                                'menu' => $settings['menu'],
+                                'container' => false,
+                                'menu_class' => 'lx_menu_list',
+                                'fallback_cb' => false,
+                            ]);
+                            ?>
+                        </nav>
+                        
+                        <?php if ($button_text) : ?>
+                            <div class="lx_menu_action_mobile">
+                                <a <?php $this->print_render_attribute_string('button'); ?>>
+                                    <?php echo esc_html($button_text); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="lx_menu_backdrop"></div>
+                </div>
             </div>
-            <div class="lx_menu_backdrop"></div>
+
+            <?php if ($button_text) : ?>
+                <div class="lx_header_action">
+                    <a <?php $this->print_render_attribute_string('button'); ?>>
+                        <?php echo esc_html($button_text); ?>
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
         <?php
     }

@@ -2,6 +2,50 @@
 // CATEGORY: LX --- Dynamic (lx_dynamic)
 // ============================================================
 
+.lx_header_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    .lx_header_logo {
+        flex-shrink: 0;
+        
+        img {
+            height: 60px;
+            width: auto;
+            max-width: 150px;
+            display: block;
+            object-fit: contain;
+        }
+    }
+    
+    .lx_header_nav {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .lx_header_action {
+        flex-shrink: 0;
+    }
+    
+    @media (max-width: 1199px) {
+        justify-content: space-between;
+        
+        .lx_header_nav {
+            justify-content: flex-end;
+        }
+        
+        .lx_header_action {
+            display: none !important;
+        }
+    }
+}
+
 .lx_menu_container {
     // Basic variables for styling
     --lx-menu-text-color: #{$content};
@@ -18,7 +62,7 @@
         padding: 0 !important;
     }
 
-    a {
+    .lx_menu_list a {
         text-decoration: none !important;
         color: var(--lx-menu-text-color) !important;
         font-size: var(--lx-menu-font-size) !important;
@@ -41,7 +85,8 @@
     @media (min-width: 1200px) {
         .lx_menu_toggler,
         .lx_menu_close,
-        .lx_menu_backdrop {
+        .lx_menu_backdrop,
+        .lx_menu_action_mobile {
             display: none !important;
         }
 
@@ -220,6 +265,11 @@
 
         .lx_menu_nav {
             padding: 20px !important;
+        }
+        
+        .lx_menu_action_mobile {
+            padding: 0 20px 20px 20px !important;
+            margin-top: auto !important;
         }
 
         .lx_menu_list {
