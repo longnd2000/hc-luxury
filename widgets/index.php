@@ -29,7 +29,6 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_loi_ich/lx_why_choose_us_v2.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/featured_posts_widget.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/category_section_widget.php';
-    require_once WIDGETS_PATH . 'lx_dich_vu/event_widget.php';
 
     // Theme Builder / Dynamic
     require_once WIDGETS_PATH . 'lx_dynamic/lx_archive_posts.php';
@@ -49,6 +48,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_danh_gia/lx_video_reviews_grid.php';
     require_once WIDGETS_PATH . 'lx_tinh_nang/lx_feature_gallery.php';
     require_once WIDGETS_PATH . 'lx_lien_he/lx_contact_form_image.php';
+    require_once WIDGETS_PATH . 'lx_lien_he/lx_dynamic_form.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_404_section.php';
     require_once WIDGETS_PATH . 'lx_archive/v1.php';
     require_once WIDGETS_PATH . 'lx_single/v1.php';
@@ -63,7 +63,6 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Process_Steps_Widget());
     $widgets_manager->register(new \featured_posts_widget());
     $widgets_manager->register(new \category_section_widget());
-    $widgets_manager->register(new \event_widget());
     $widgets_manager->register(new \LX_Heading_Widget());
     $widgets_manager->register(new \LX_Button_Widget());
     $widgets_manager->register(new \LX_Text_Editor_Widget());
@@ -83,6 +82,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Video_Reviews_Grid_Widget());
     $widgets_manager->register(new \LX_Feature_Gallery_Widget());
     $widgets_manager->register(new \LX_Contact_Form_Image_Widget());
+    $widgets_manager->register(new \LX_Dynamic_Form_Widget());
     $widgets_manager->register(new \LX_404_Section_Widget());
     $widgets_manager->register(new \LX_Archive_V1());
     $widgets_manager->register(new \LX_Single_V1());

@@ -73,8 +73,6 @@ function child_theme_get_breadcrumbs(): string
                 $cat = $cat[0];
                 $output .= '<a href="' . get_category_link($cat->term_id) . '">' . $cat->name . '</a>' . $delimiter;
             }
-        } elseif ($post_type == 'event') {
-             $output .= '<a href="' . get_post_type_archive_link('event') . '">' . __('Sự kiện', 'lx-landing') . '</a>' . $delimiter;
         } else {
             $post_type_obj = get_post_type_object($post_type);
             if ($post_type_obj && $post_type_obj->has_archive) {

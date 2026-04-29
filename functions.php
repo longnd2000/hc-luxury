@@ -38,8 +38,12 @@ $child_theme_inc_files = [
     '/inc/theme-options.php', // ACF Theme Options (Fonts, Colors, Logos)
     '/inc/breadcrumbs.php',   // Global breadcrumbs system
     '/inc/update-checker.php', // Auto-update from GitHub
+    '/inc/form-handler.php',  // AJAX Form Handler
 ];
 
 foreach ($child_theme_inc_files as $file) {
     require_once CHILD_THEME_PATH . $file;
 }
+
+// Disable CF7 Auto-P for cleaner HTML
+add_filter('wpcf7_autop_or_not', '__return_false');

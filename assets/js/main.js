@@ -93,5 +93,57 @@
         $wrapper.slideDown(300);
       }
     });
+    // LX Dynamic Form Logic
+    $(document).on('submit', '.lx_dynamic_form', function(e) {
+      e.preventDefault();
+      
+      var $form = $(this);
+      var $container = $form.closest('.lx_dynamic_form_container');
+      var $btn = $form.find('.lx_btn_submit');
+      var $spinner = $form.find('.lx_spinner');
+      var $response = $form.find('.lx_form_response');
+      
+      // Get settings from data attributes
+      var ajaxData = {
+        action: 'lx_submit_dynamic_form',
+        nonce: $container.data('nonce'),
+        to_email: $container.data('email'),
+        subject: $container.data('subject'),
+        form_title: $container.data('title'),
+        fields: []
+      };
+      
+      // Collect field data
+      $form.find('.lx_form_field input, .lx_form_field select, .lx_form_field textarea').each(function() {
+        var $field = $(this);
+        var label = $form.find('label[for="' + $field.attr('id') + '"]').text().replace('*', '').trim();
+        ajaxData.fields.push({
+          label: label,
+          value: $field.val()
+        });
+      });
+      
+      // UI Reset
+      $btn.prop('disabled', true);
+      $spinner.fadeIn(200);
+      $response.fadeOut(200).removeClass('success error');
+      
+      // AJAX Submission
+      $.post('/wp-admin/admin-ajax.php', ajaxData, function(res) {
+        $spinner.fadeOut(200);
+        $btn.prop('disabled', false);
+        
+        if (res.success) {
+          $response.addClass('success').text($container.data('success')).fadeIn(300);
+          $form[0].reset();
+        } else {
+          $response.addClass('error').text(res.data.message || 'Có lỗi xảy ra.').fadeIn(300);
+        }
+      }).fail(function() {
+        $spinner.fadeOut(200);
+        $btn.prop('disabled', false);
+        $response.addClass('error').text('Lỗi kết nối máy chủ.').fadeIn(300);
+      });
+    });
   });
 })(jQuery);
