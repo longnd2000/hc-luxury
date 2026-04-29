@@ -1,0 +1,9 @@
+// Global Variables
+$primary: var(--lx-primary-color, #0d6efd); // Màu chính (Mặc định: Xanh)
+$content: #000000; // Màu nội dung chính
+$font-main: var(--lx-primary-font, sans-serif);
+
+// Elementor Breakpoints
+$bp-mobile: 767px;
+$bp-tablet: 1024px;
+$bp-laptop: 1200px;

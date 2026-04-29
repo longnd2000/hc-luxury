@@ -50,6 +50,8 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_tinh_nang/lx_feature_gallery.php';
     require_once WIDGETS_PATH . 'lx_lien_he/lx_contact_form_image.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_404_section.php';
+    require_once WIDGETS_PATH . 'lx_archive/v1.php';
+    require_once WIDGETS_PATH . 'lx_single/v1.php';
 
 
     // Register widgets
@@ -82,6 +84,8 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Feature_Gallery_Widget());
     $widgets_manager->register(new \LX_Contact_Form_Image_Widget());
     $widgets_manager->register(new \LX_404_Section_Widget());
+    $widgets_manager->register(new \LX_Archive_V1());
+    $widgets_manager->register(new \LX_Single_V1());
 }
 
 
@@ -120,6 +124,8 @@ function child_theme_register_widget_categories($elements_manager): void
         'lx_cta'              => [__('LX — CTA',           'lx-landing'), 130],
         'lx_lien_he'          => [__('LX — Liên hệ',      'lx-landing'), 140],
         'lx_dynamic'          => [__('LX — Năng động',    'lx-landing'), 150],
+        'lx_archive'          => [__('LX — Archive',     'lx-landing'), 160],
+        'lx_single'           => [__('LX — Single',      'lx-landing'), 170],
     ];
 
     foreach ($categories as $slug => [$title, $priority]) {

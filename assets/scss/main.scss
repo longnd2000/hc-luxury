@@ -1,15 +1,6 @@
 @import "normalize";
 
-// Dynamic Theme Options Variables (Mapped from CSS Custom Properties)
-$primary: var(--lx-primary-color, #0d6efd); // Màu chính (Mặc định: Xanh)
-$secondary: var(--lx-secondary-color, #FA8314); // Màu phụ (Mặc định: Cam)
-$content: #000000; // Màu nội dung chính
-$font-main: var(--lx-primary-font, sans-serif);
-
-// Elementor Breakpoints (Sync with Elementor Site Settings)
-$bp-mobile: 767px;
-$bp-tablet: 1024px;
-$bp-laptop: 1200px;
+@import "variables";
 
 /**
  * SPECIFICITY BOOSTER & GLOBAL OVERRIDES
@@ -46,10 +37,14 @@ body.wp-theme-hello-elementor.elementor-default {
   i,
   .fa,
   .fas,
-  .fab,
   .far,
   .fal {
     font-family: "Font Awesome 6 Free" !important;
+  }
+
+  .fab,
+  .fa-brands {
+    font-family: "Font Awesome 6 Brands" !important;
   }
 
   .elementor-icon,
@@ -124,6 +119,10 @@ body.wp-theme-hello-elementor.elementor-default {
 
   .lx_text_right {
     text-align: right !important;
+  }
+
+  .lx_text_justify {
+    text-align: justify !important;
   }
 
   // ── Slick Slider Standard UI ─────────────────────────────────────────────
@@ -256,6 +255,9 @@ body.wp-theme-hello-elementor.elementor-default {
   @import 'widgets/lx_tinh_nang/lx_feature_gallery';
   @import 'widgets/lx_lien_he/lx_contact_form_image';
   @import 'widgets/lx_dynamic/lx_404_section';
+  @import 'widgets/lx_post_card';
+  @import 'widgets/lx_archive/main';
+  @import 'widgets/lx_single/main';
 
   // ── WordPress Admin Bar Fix ──────────────────────────────────────────────
   // Đảm bảo thanh công cụ của WordPress không bị ảnh hưởng bởi các style trên.

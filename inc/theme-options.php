@@ -82,15 +82,6 @@ function lx_register_theme_options_fields()
                     'enable_opacity' => 0,
                     'return_format'  => 'string',
                 ],
-                [
-                    'key'            => 'field_lx_secondary_color',
-                    'label'          => __('Màu phụ (Secondary Color)', 'lx-landing'),
-                    'name'           => 'lx_secondary_color',
-                    'type'           => 'color_picker',
-                    'default_value'  => '#fd7c00',
-                    'enable_opacity' => 0,
-                    'return_format'  => 'string',
-                ],
 
                 // Tab: Buttons
                 [
@@ -235,7 +226,6 @@ function lx_inject_theme_options_css()
 
     $primary_font    = get_field('lx_primary_font', 'option') ?: 'Inter';
     $primary_color   = get_field('lx_primary_color', 'option') ?: '#0d6efd';
-    $secondary_color = get_field('lx_secondary_color', 'option') ?: '#fd7c00';
 
     // Button Settings
     $btn_font_size     = get_field('lx_btn_font_size', 'option') ?: 15;
@@ -269,7 +259,6 @@ function lx_inject_theme_options_css()
     echo '<style id="lx-dynamic-theme-options">' . "\n";
     echo ':root {' . "\n";
     echo '  --lx-primary-color: ' . esc_attr($primary_color) . ';' . "\n";
-    echo '  --lx-secondary-color: ' . esc_attr($secondary_color) . ';' . "\n";
     echo '  --lx-primary-font: "' . esc_attr($primary_font) . '", sans-serif;' . "\n";
     
     // Global Button Variables

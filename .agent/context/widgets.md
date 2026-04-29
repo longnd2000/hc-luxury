@@ -28,6 +28,7 @@ Registered in `widgets/index.php` → `child_theme_register_widget_categories()`
 | `lx_faqs` | LX — FAQs |
 | `lx_cta` | LX — CTA |
 | `lx_lien_he` | LX — Liên hệ |
+| `lx_archive` | LX — Archive |
 
 ---
 
@@ -45,6 +46,7 @@ Registered in `widgets/index.php` → `child_theme_register_widget_categories()`
 | `featured_posts_widget` | `featured_posts_widget.php` | `lx_dich_vu` | Featured posts display |
 | `category_section_widget` | `category_section_widget.php` | `lx_dich_vu` | Category section with posts |
 | `event_widget` | `event_widget.php` | `lx_dich_vu` | Event listing widget |
+| `LX_Archive_V1` | `v1.php` | `lx_archive` | News archive UI V1 (Slug: lx_archive) |
 
 > ⚠️ Widgets cũ (`Image_Gallery_Widget`) đang dùng category tạm. Cập nhật `get_categories()` trong từng file widget để khớp đúng slug.
 
