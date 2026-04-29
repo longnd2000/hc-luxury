@@ -155,6 +155,8 @@ class LX_Archive_V1 extends \Elementor\Widget_Base
                 ],
             ];
             $display_title = $current_term->name;
+        } elseif (is_search()) {
+            $display_title = __('Tìm kiếm', 'lx-landing');
         } else {
             $display_title = !empty($settings['section_title']) ? $settings['section_title'] : __('Tin tức', 'lx-landing');
         }
@@ -199,7 +201,7 @@ class LX_Archive_V1 extends \Elementor\Widget_Base
                                 $all_link = $blog_page_id ? get_permalink($blog_page_id) : home_url('/');
                             }
                             
-                            $is_all_active = !is_archive() || (isset($_GET['s']) && !empty($_GET['s']));
+                            $is_all_active = !is_category() && !is_tag() && !is_tax() && !is_search();
                             ?>
                             <li>
                                 <a href="<?php echo esc_url($all_link); ?>" class="<?php echo $is_all_active ? 'active' : ''; ?>">
