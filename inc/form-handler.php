@@ -24,15 +24,19 @@ function lx_sync_to_cf7($post_id) {
 
     $post_title = get_the_title($post_id);
     $custom_title = get_field('lx_form_custom_title', $post_id);
-    $form_display_title = !empty($custom_title) ? $custom_title : $post_title;
 
     $fields = get_field('lx_form_fields', $post_id);
     $description = get_field('lx_form_description', $post_id);
     $submit_text = get_field('lx_form_submit_text', $post_id) ?: 'Nhận tư vấn ngay';
+    $enable_recaptcha = get_field('lx_form_enable_recaptcha', $post_id);
 
     // ── Generate CF7 HTML ──────────────────────────────────────────────────
     $cf7_content = '<div class="lx_form_ctf7">' . "\n";
-    $cf7_content .= '    <h3 class="lx_form_title">' . esc_html($form_display_title) . '</h3>' . "\n\n";
+    
+    // Only show title if custom title is set
+    if (!empty($custom_title)) {
+        $cf7_content .= '    <div class="lx_col_12"><h3 class="lx_form_title">' . esc_html($custom_title) . '</h3></div>' . "\n\n";
+    }
 
     if ($fields) {
         foreach ($fields as $index => $field) {
@@ -40,13 +44,15 @@ function lx_sync_to_cf7($post_id) {
             $type = $field['type'];
             $placeholder = $field['placeholder'];
             $required = $field['required'] ? '*' : '';
+            $width = $field['width'] ?? '12';
             $name = 'lx_field_' . sanitize_title($field['label']);
 
-            $cf7_content .= '    <label> ' . esc_html($label) . ($field['required'] ? ' <span class="required">*</span>' : '') . "\n";
+            $cf7_content .= '    <div class="lx_col_' . $width . '">' . "\n";
+            $cf7_content .= '        <label> ' . esc_html($label) . ($field['required'] ? ' <span class="required">*</span>' : '') . "\n";
 
             switch ($type) {
                 case 'textarea':
-                    $cf7_content .= '        [textarea' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
+                    $cf7_content .= '            [textarea' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
                     break;
                 case 'select':
                     $options_arr = explode("\n", str_replace("\r", "", $field['options'] ?? ''));
@@ -57,35 +63,40 @@ function lx_sync_to_cf7($post_id) {
                             $options_str .= ' "' . esc_attr($opt) . '"';
                         }
                     }
-                    $cf7_content .= '        [select' . $required . ' ' . $name . ' first_as_label ' . $options_str . ']' . "\n";
+                    $cf7_content .= '            [select' . $required . ' ' . $name . ' first_as_label ' . $options_str . ']' . "\n";
                     break;
                 case 'tel':
-                    $cf7_content .= '        [tel' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
+                    $cf7_content .= '            [tel' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
                     break;
                 case 'email':
-                    $cf7_content .= '        [email' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
+                    $cf7_content .= '            [email' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
                     break;
                 default:
-                    $cf7_content .= '        [text' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
+                    $cf7_content .= '            [text' . $required . ' ' . $name . ' placeholder "' . esc_attr($placeholder) . '"]' . "\n";
                     break;
             }
-            $cf7_content .= '    </label>' . "\n\n";
+            $cf7_content .= '        </label>' . "\n";
+            $cf7_content .= '    </div>' . "\n\n";
         }
     }
 
     if (!empty($description)) {
-        $cf7_content .= '    <p class="lx_form_note">' . nl2br(esc_html($description)) . '</p>' . "\n\n";
+        $cf7_content .= '    <div class="lx_col_12"><p class="lx_form_note">' . nl2br(esc_html($description)) . '</p></div>' . "\n\n";
     }
 
-    $cf7_content .= '    [submit "' . esc_attr($submit_text) . '"]' . "\n\n";
-    $cf7_content .= '    [response]' . "\n";
+    if ($enable_recaptcha) {
+        $cf7_content .= '    <div class="lx_col_12"><div class="lx_form_recaptcha">[recaptcha]</div></div>' . "\n\n";
+    }
+    
+    $cf7_content .= '    <div class="lx_col_12">[submit "' . esc_attr($submit_text) . '"]</div>' . "\n\n";
+    $cf7_content .= '    <div class="lx_col_12">[response]</div>' . "\n";
     $cf7_content .= '</div>';
 
     // ── Create or Update CF7 ───────────────────────────────────────────────
     $linked_cf7_id = get_post_meta($post_id, 'lx_linked_cf7_id', true);
     
     $cf7_post_data = [
-        'post_title'   => '[LX Sync] ' . $form_display_title,
+        'post_title'   => '[LX Sync] ' . $post_title,
         'post_content' => $cf7_content,
         'post_status'  => 'publish',
         'post_type'    => 'wpcf7_contact_form',

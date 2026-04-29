@@ -43,7 +43,6 @@ add_action('acf/init', function() {
                 'name' => 'lx_form_description',
                 'type' => 'textarea',
                 'rows' => 2,
-                'default_value' => '(*) Home Care cam kết bảo mật thông tin của mẹ và bé. Bằng việc đăng ký, mẹ đồng ý để chúng mình liên hệ hỗ trợ tư vấn tốt nhất.',
             ],
             [
                 'key' => 'field_lx_form_submit_text',
@@ -95,6 +94,17 @@ add_action('acf/init', function() {
                         'ui' => 1,
                     ],
                     [
+                        'key' => 'field_lx_field_width',
+                        'label' => 'Độ rộng',
+                        'name' => 'width',
+                        'type' => 'select',
+                        'choices' => [
+                            '12' => '12 Cột (Đầy đủ)',
+                            '6' => '6 Cột (Một nửa)',
+                        ],
+                        'default_value' => '12',
+                    ],
+                    [
                         'key' => 'field_lx_field_options',
                         'label' => 'Các tùy chọn (Mỗi dòng một mục)',
                         'name' => 'options',
@@ -110,6 +120,15 @@ add_action('acf/init', function() {
                         ],
                     ],
                 ],
+            ],
+            [
+                'key' => 'field_lx_form_enable_recaptcha',
+                'label' => 'Sử dụng reCAPTCHA?',
+                'name' => 'lx_form_enable_recaptcha',
+                'type' => 'true_false',
+                'instructions' => 'Yêu cầu bạn đã cấu hình Integration trong Contact Form 7.',
+                'ui' => 1,
+                'default_value' => 0,
             ],
         ],
         'location' => [
