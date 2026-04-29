@@ -99,9 +99,6 @@
 
   /* ── Main Layout ───────────────────────────────────────────────────── */
   .lx_single_main_wrap {
-    padding-top: 80px !important;
-    padding-bottom: 80px !important;
-
     @media (max-width: 767px) {
       padding-top: 40px !important;
       padding-bottom: 40px !important;
@@ -311,7 +308,6 @@
 
   /* ── Bottom Related Posts ────────────────────────────────────── */
   .lx_single_related_bottom {
-    padding: 80px 4% !important;
     background: #f8f9fa;
 
     .lx_bottom_title {
