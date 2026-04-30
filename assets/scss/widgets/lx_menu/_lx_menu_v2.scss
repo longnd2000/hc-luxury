@@ -1,0 +1,9 @@
+.lx_header_v2 {
+    .lx_header_nav {
+        @media (min-width: 1200px) {
+            flex-grow: 0 !important;
+            margin-left: auto !important;
+            justify-content: flex-end !important;
+        }
+    }
+}

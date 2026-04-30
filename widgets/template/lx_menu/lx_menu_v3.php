@@ -3,16 +3,16 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class LX_Menu_Widget extends \Elementor\Widget_Base
+class LX_Menu_V3_Widget extends \Elementor\Widget_Base
 {
     public function get_name()
     {
-        return 'lx_menu';
+        return 'lx_menu_v3';
     }
 
     public function get_title()
     {
-        return __('LX — Menu', 'lx-landing');
+        return __('LX — Menu V3', 'lx-landing');
     }
 
     public function get_icon()
@@ -22,7 +22,7 @@ class LX_Menu_Widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['lx_dynamic'];
+        return ['lx_menu'];
     }
 
     private function get_available_menus()
@@ -122,7 +122,7 @@ class LX_Menu_Widget extends \Elementor\Widget_Base
             $this->add_link_attributes('button', $settings['button_url']);
         }
         ?>
-        <div class="lx_header_wrapper">
+        <div class="lx_header_wrapper lx_header_v3">
             <div class="lx_con">
                 <?php if ($logo_url) : ?>
                     <div class="lx_header_logo">

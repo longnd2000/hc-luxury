@@ -1,0 +1,100 @@
+.lx_header_v3 {
+    background: transparent !important;
+    padding: 0 !important; // Loại bỏ 4% mặc định
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+
+    .lx_con {
+        max-width: none !important;
+        width: 100% !important;
+        padding: 20px !important; // Chỉ cách các bên 20px
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 80px;
+    }
+
+    .lx_header_logo {
+        flex-shrink: 0;
+        img {
+            height: 50px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+    }
+
+    .lx_header_nav {
+        @media (min-width: 1200px) {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 32px;
+        }
+    }
+
+    .lx_menu_container {
+        // Mặc định cho Mobile là màu đen để hiển thị trên Offcanvas trắng
+        --lx-menu-text-color: #000000;
+        --lx-menu-hover-color: #{$primary};
+        
+        // Chỉ áp dụng màu trắng và shadow cho PC (Menu ngang trên banner)
+        @media (min-width: 1200px) {
+            --lx-menu-text-color: #ffffff;
+            --lx-menu-hover-color: #ffffff;
+
+            .lx_menu_list > li > a {
+                color: #ffffff !important;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 15px !important;
+                letter-spacing: 0.5px;
+                opacity: 0.9;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .lx_menu_list > li.menu-item-has-children > a::after {
+                color: #ffffff !important;
+            }
+        }
+
+        // Submenu trên PC
+        @media (min-width: 1200px) {
+            .sub-menu {
+                li a {
+                    color: #000000 !important;
+                    text-transform: none !important;
+                    font-weight: 400 !important;
+                    opacity: 1 !important;
+                    text-shadow: none !important;
+
+                    &:hover {
+                        color: var(--lx-primary-color, #0d6efd) !important;
+                    }
+                }
+                
+                li.menu-item-has-children > a::after {
+                    color: #000000 !important;
+                }
+            }
+        }
+    }
+
+    .lx_header_action {
+        flex-shrink: 0;
+    }
+
+    @media (max-width: 1199px) {
+        .lx_menu_toggler {
+            color: #ffffff !important; // Nút mở menu vẫn màu trắng để nổi bật trên banner mobile
+        }
+    }
+}

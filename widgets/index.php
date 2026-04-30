@@ -39,7 +39,9 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_dynamic/lx_author_box.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_related_posts.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_archive_title.php';
-    require_once WIDGETS_PATH . 'lx_dynamic/lx_menu.php';
+    require_once WIDGETS_PATH . 'lx_menu/lx_menu.php';
+    require_once WIDGETS_PATH . 'lx_menu/lx_menu_v2.php';
+    require_once WIDGETS_PATH . 'lx_menu/lx_menu_v3.php';
     require_once WIDGETS_PATH . 'lx_dynamic/lx_footer.php';
     require_once WIDGETS_PATH . 'lx_faqs/lx_faqs.php';
     require_once WIDGETS_PATH . 'lx_quy_trinh/lx_process_steps.php';
@@ -76,6 +78,8 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Archive_Title_Widget());
     $widgets_manager->register(new \LX_FAQs_Widget());
     $widgets_manager->register(new \LX_Menu_Widget());
+    $widgets_manager->register(new \LX_Menu_V2_Widget());
+    $widgets_manager->register(new \LX_Menu_V3_Widget());
     $widgets_manager->register(new \LX_Footer_Widget());
     $widgets_manager->register(new \LX_CTA_Widget());
     $widgets_manager->register(new \LX_Video_Reviews_Widget());
@@ -109,6 +113,7 @@ function child_theme_register_widget_categories($elements_manager): void
         'lx_nut'              => [__('LX — Nút',          'lx-landing'), 6],
         'lx_text_editor'      => [__('LX — Văn bản',      'lx-landing'), 7],
         'lx_banner'           => [__('LX — Banner',       'lx-landing'), 10],
+        'lx_menu'             => [__('LX — Menu',         'lx-landing'), 12],
         'lx_gioi_thieu'       => [__('LX — Giới thiệu',   'lx-landing'), 15],
         'lx_khach_hang'       => [__('LX — Khách hàng',   'lx-landing'), 20],
         'lx_doi_tac'          => [__('LX — Đối tác',      'lx-landing'), 30],
