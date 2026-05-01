@@ -20,6 +20,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_banner/lx_banner_v1.php';
     require_once WIDGETS_PATH . 'lx_banner/lx_banner_v2.php';
     require_once WIDGETS_PATH . 'lx_gioi_thieu/lx_gioi_thieu_v1.php';
+    require_once WIDGETS_PATH . 'lx_gia_tri/lx_gia_tri_v1.php';
     require_once WIDGETS_PATH . 'lx_so_lieu/lx_so_lieu_v1.php';
 
     // Nghiệp vụ
@@ -54,6 +55,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Banner_V1_Widget());
     $widgets_manager->register(new \LX_Banner_V2_Widget());
     $widgets_manager->register(new \LX_Gioi_Thieu_V1_Widget());
+    $widgets_manager->register(new \LX_Gia_Tri_V1_Widget());
     $widgets_manager->register(new \LX_So_Lieu_V1_Widget());
     $widgets_manager->register(new \LX_Loi_Ich_V1_Widget());
     $widgets_manager->register(new \LX_Loi_Ich_V2_Widget());
@@ -94,7 +96,8 @@ function child_theme_register_widget_categories($elements_manager): void
         'lx_banner'           => [__('LX - Banner',       'lx-landing'), 10],
         'lx_menu'             => [__('LX - Menu',         'lx-landing'), 12],
         'lx_gioi_thieu'       => [__('LX - Giới thiệu',   'lx-landing'), 15],
-        'lx_so_lieu'          => [__('LX - Số liệu',       'lx-landing'), 16],
+        'lx_gia_tri'          => [__('LX - Giá trị cốt lõi', 'lx-landing'), 17],
+        'lx_so_lieu'          => [__('LX - Số liệu',       'lx-landing'), 18],
         'lx_khach_hang'       => [__('LX - Khách hàng',   'lx-landing'), 20],
         'lx_doi_tac'          => [__('LX - Đối tác',      'lx-landing'), 30],
         'lx_van_de'           => [__('LX - Vấn đề',       'lx-landing'), 40],

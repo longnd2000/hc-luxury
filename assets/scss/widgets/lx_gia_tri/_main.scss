@@ -1,0 +1,97 @@
+// ============================================================
+// WIDGET: LX --- Giá trị cốt lõi (lx_gia_tri_v1)
+// ============================================================
+
+.lx_gia_tri_v1 {
+    .lx_wrap {
+        // Fallback to global rule: 120px 4%
+    }
+
+    // ── Header Section ──────────────────────────────────────────────────────
+    // Follows common classes (lx_heading, lx_text_editor)
+
+    // ── Values Grid ─────────────────────────────────────────────────────────
+    .lx_value_card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px 20px 35px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border-color: var(--lx-primary-color, #0d6efd);
+        }
+
+        .lx_value_number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--lx-primary-color, #0d6efd);
+            line-height: 1;
+        }
+
+        .lx_value_icon_wrap {
+            width: 90px;
+            height: 90px;
+            background-color: #f0f7ff; // Light blue tint
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--lx-primary-color, #0d6efd);
+            
+            i, svg {
+                font-size: 36px;
+                width: 36px;
+                height: 36px;
+                display: block;
+            }
+        }
+
+        .lx_value_title {
+            font-size: 20px !important;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px !important;
+            line-height: 1.3;
+        }
+
+        .lx_value_sep {
+            width: 30px;
+            height: 2px;
+            background-color: var(--lx-primary-color, #0d6efd);
+            margin-bottom: 20px;
+            border-radius: 1px;
+        }
+
+        .lx_value_desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .lx_gia_tri_v1 {
+        .lx_value_card {
+            padding: 30px 15px 25px;
+            
+            .lx_value_title {
+                font-size: 18px !important;
+            }
+        }
+    }
+}
