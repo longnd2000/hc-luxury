@@ -1,0 +1,154 @@
+// ============================================================
+// WIDGET: LX --- Dịch vụ V3 (lx_dich_vu_v3)
+// ============================================================
+
+.lx_dich_vu_v3 {
+    // ── Header Section ──────────────────────────────────────────────────────
+    // Following common classes: lx_heading, lx_text_editor
+    // Manual overrides removed to ensure consistency.
+    
+    // ── Service Card Grid ───────────────────────────────────────────────────
+    .lx_service_card {
+        background: #fff;
+        border-radius: 24px;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #f0f0f0;
+        position: relative;
+        background: var(--item-bg, #fff);
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--item-accent);
+        }
+
+        .lx_card_media {
+            position: relative;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            margin: 10px;
+            border-radius: 20px;
+            
+            img {
+                width: 100%;
+                height: 160px;
+                object-fit: contain;
+                transition: transform 0.5s ease;
+            }
+
+            .lx_card_number {
+                position: absolute;
+                bottom: 10px;
+                right: 20px;
+                font-size: 48px;
+                font-weight: 800;
+                color: var(--item-accent);
+                opacity: 0.1;
+                line-height: 1;
+            }
+        }
+
+        &:hover .lx_card_media img {
+            transform: scale(1.1);
+        }
+
+        .lx_card_body {
+            padding: 16px 20px 24px;
+            text-align: left;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            .lx_item_title {
+                font-size: 20px !important; // Requested: 20px
+                font-weight: 700;
+                color: #000;
+                margin-bottom: 12px !important;
+                line-height: 1.3;
+            }
+
+            .lx_item_sep {
+                width: 35px;
+                height: 3px;
+                background-color: var(--item-accent);
+                margin-bottom: 15px;
+                border-radius: 2px;
+            }
+
+            .lx_item_desc {
+                font-size: 15px;
+                color: #444;
+                line-height: 1.6;
+                margin-bottom: 24px;
+                flex-grow: 1;
+            }
+
+            .lx_item_link {
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 15px;
+                font-weight: 700;
+                text-decoration: none;
+                color: var(--item-accent);
+                transition: all 0.3s ease;
+
+                .lx_icon_arrow {
+                    width: 32px;
+                    height: 32px;
+                    background-color: var(--item-accent);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: transform 0.3s ease;
+
+                    svg {
+                        width: 16px;
+                        height: 16px;
+                    }
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                    .lx_icon_arrow {
+                        transform: translateX(5px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .lx_dich_vu_v3 {
+        .lx_service_card {
+            .lx_card_body {
+                padding: 20px 20px 30px;
+                
+                .lx_item_title {
+                    font-size: 18px !important;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .lx_dich_vu_v3 {
+        .lx_service_card {
+            .lx_card_media {
+                img {
+                    height: 150px;
+                }
+            }
+        }
+    }
+}

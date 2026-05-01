@@ -27,6 +27,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_loi_ich/lx_loi_ich_v2.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/lx_dich_vu_v1.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/lx_dich_vu_v2.php';
+    require_once WIDGETS_PATH . 'lx_dich_vu/lx_dich_vu_v3.php';
 
     // Theme Builder
     require_once WIDGETS_PATH . 'lx_menu/lx_menu_v1.php';
@@ -59,6 +60,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Quy_Trinh_V1_Widget());
     $widgets_manager->register(new \LX_Dich_Vu_V1_Widget());
     $widgets_manager->register(new \LX_Dich_Vu_V2_Widget());
+    $widgets_manager->register(new \LX_Dich_Vu_V3_Widget());
     $widgets_manager->register(new \LX_Tieu_De_V1_Widget());
     $widgets_manager->register(new \LX_Nut_V1_Widget());
     $widgets_manager->register(new \LX_Van_Ban_V1_Widget());

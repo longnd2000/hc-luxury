@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
@@ -13,7 +13,7 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
 
     public function get_title(): string
     {
-        return __('LX â€” Archive V1', 'lx-landing');
+        return __('LX — Archive V1', 'lx-landing');
     }
 
     public function get_icon(): string
@@ -28,36 +28,36 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
 
     protected function register_controls(): void
     {
-        // â”€â”€ Search Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── Search Section ────────────────────────────────────────────────────
         $this->start_controls_section(
             'section_search',
             [
-                'label' => __('Thanh tÃ¬m kiáº¿m', 'lx-landing'),
+                'label' => __('Thanh tìm kiếm', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'search_title',
             [
-                'label'   => __('TiÃªu Ä‘á» tÃ¬m kiáº¿m', 'lx-landing'),
+                'label'   => __('Tiêu đề tìm kiếm', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => __('SEONGON CÃ“ THá»‚ GIÃšP GÃŒ Báº N?', 'lx-landing'),
+                'default' => __('SEONGON CÓ THỂ GIÚP GÌ BẠN?', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'search_placeholder',
             [
-                'label'   => __('Placeholder tÃ¬m kiáº¿m', 'lx-landing'),
+                'label'   => __('Placeholder tìm kiếm', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => __('TÃ¬m kiáº¿m...', 'lx-landing'),
+                'default' => __('Tìm kiếm...', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'search_bg',
             [
-                'label'   => __('áº¢nh ná»n tÃ¬m kiáº¿m', 'lx-landing'),
+                'label'   => __('Ảnh nền tìm kiếm', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -67,31 +67,31 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
-        // â”€â”€ Filter Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── Filter Section ────────────────────────────────────────────────────
         $this->start_controls_section(
             'section_filter',
             [
-                'label' => __('Bá»™ lá»c danh má»¥c', 'lx-landing'),
+                'label' => __('Bộ lọc danh mục', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'show_filter',
             [
-                'label'     => __('Hiá»ƒn thá»‹ bá»™ lá»c', 'lx-landing'),
+                'label'     => __('Hiển thị bộ lọc', 'lx-landing'),
                 'type'      => \Elementor\Controls_Manager::SWITCHER,
                 'default'   => 'yes',
-                'label_on'  => __('Hiá»‡n', 'lx-landing'),
-                'label_off' => __('áº¨n', 'lx-landing'),
+                'label_on'  => __('Hiện', 'lx-landing'),
+                'label_off' => __('Ẩn', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'all_text',
             [
-                'label'     => __('Text "Táº¥t cáº£"', 'lx-landing'),
+                'label'     => __('Text "Tất cả"', 'lx-landing'),
                 'type'      => \Elementor\Controls_Manager::TEXT,
-                'default'   => __('Táº¥t cáº£', 'lx-landing'),
+                'default'   => __('Tất cả', 'lx-landing'),
                 'condition' => ['show_filter' => 'yes'],
             ]
         );
@@ -99,7 +99,7 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'all_link',
             [
-                'label'     => __('Link "Táº¥t cáº£"', 'lx-landing'),
+                'label'     => __('Link "Tất cả"', 'lx-landing'),
                 'type'      => \Elementor\Controls_Manager::URL,
                 'placeholder' => __('https://your-link.com', 'lx-landing'),
                 'default'   => [
@@ -111,20 +111,20 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
-        // â”€â”€ Posts Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── Posts Section ─────────────────────────────────────────────────────
         $this->start_controls_section(
             'section_posts',
             [
-                'label' => __('Danh sÃ¡ch bÃ i viáº¿t', 'lx-landing'),
+                'label' => __('Danh sách bài viết', 'lx-landing'),
             ]
         );
 
         $this->add_control(
             'section_title',
             [
-                'label'   => __('TiÃªu Ä‘á» (Chá»‰ Ã¡p dá»¥ng cho trang Táº¥t cáº£)', 'lx-landing'),
+                'label'   => __('Tiêu đề (Chỉ áp dụng cho trang Tất cả)', 'lx-landing'),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Tin tá»©c', 'lx-landing'),
+                'default' => __('Tin tức', 'lx-landing'),
             ]
         );
 
@@ -156,9 +156,9 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
             ];
             $display_title = $current_term->name;
         } elseif (is_search()) {
-            $display_title = __('TÃ¬m kiáº¿m', 'lx-landing');
+            $display_title = __('Tìm kiếm', 'lx-landing');
         } else {
-            $display_title = !empty($settings['section_title']) ? $settings['section_title'] : __('Tin tá»©c', 'lx-landing');
+            $display_title = !empty($settings['section_title']) ? $settings['section_title'] : __('Tin tức', 'lx-landing');
         }
 
         if (isset($_GET['s']) && !empty($_GET['s'])) {
@@ -170,7 +170,7 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
         ?>
 
         <div class="lx_archive_v1">
-            <!-- â”€â”€ Hero Search Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+            <!-- ── Hero Search Section ──────────────────────────────────────── -->
             <section class="lx_wrap lx_archive_hero" style="background-image: url('<?php echo esc_url($bg_url); ?>');">
                 <div class="lx_con">
                     <h2 class="lx_hero_title"><?php echo esc_html($settings['search_title']); ?></h2>
@@ -178,13 +178,13 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
                         <div class="lx_search_input_wrap">
                             <span class="lx_search_icon"><i class="fas fa-search"></i></span>
                             <input type="text" name="s" placeholder="<?php echo esc_attr($settings['search_placeholder']); ?>" value="<?php echo get_search_query(); ?>">
-                            <button type="submit"><?php _e('TÃ¬m kiáº¿m', 'lx-landing'); ?></button>
+                            <button type="submit"><?php _e('Tìm kiếm', 'lx-landing'); ?></button>
                         </div>
                     </form>
                 </div>
             </section>
 
-            <!-- â”€â”€ Filter Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+            <!-- ── Filter Section ───────────────────────────────────────────── -->
             <?php if ($settings['show_filter'] === 'yes') : ?>
                 <section class="lx_wrap lx_archive_filter_wrap">
                     <div class="lx_con">
@@ -224,7 +224,7 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
                 </section>
             <?php endif; ?>
 
-            <!-- â”€â”€ Post Grid Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+            <!-- ── Post Grid Section ────────────────────────────────────────── -->
             <section class="lx_wrap lx_archive_list_wrap">
                 <div class="lx_con">
                     <div class="lx_archive_title_wrap lx_text_center">
@@ -293,7 +293,7 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
                         </div>
                     <?php else : ?>
                         <div class="lx_no_posts">
-                            <p><?php _e('KhÃ´ng tÃ¬m tháº¥y bÃ i viáº¿t nÃ o.', 'lx-landing'); ?></p>
+                            <p><?php _e('Không tìm thấy bài viết nào.', 'lx-landing'); ?></p>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -302,4 +302,3 @@ class LX_Archive_V1_Widget extends \Elementor\Widget_Base
         <?php
     }
 }
-

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
  if (!defined('ABSPATH')) {
      exit; // Exit if accessed directly
@@ -13,7 +13,7 @@
 
      public function get_title(): string
      {
-         return __('LX â€” Single V1', 'lx-landing');
+         return __('LX — Single V1', 'lx-landing');
      }
 
      public function get_icon(): string
@@ -28,7 +28,7 @@
 
      protected function register_controls(): void
      {
-         // â”€â”€ Sidebar Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         // ── Sidebar Section ──────────────────────────────────────────────────
          $this->start_controls_section(
              'section_sidebar',
              [
@@ -39,44 +39,44 @@
          $this->add_control(
              'sidebar_title',
              [
-                 'label'   => __('TiÃªu Ä‘á» Sidebar', 'lx-landing'),
+                 'label'   => __('Tiêu đề Sidebar', 'lx-landing'),
                  'type'    => \Elementor\Controls_Manager::TEXT,
-                 'default' => __('DANH Má»¤C Ná»”I Báº¬T', 'lx-landing'),
+                 'default' => __('DANH MỤC NỔI BẬT', 'lx-landing'),
              ]
          );
 
          $this->add_control(
              'related_sidebar_title',
              [
-                 'label'   => __('TiÃªu Ä‘á» BÃ i viáº¿t liÃªn quan (Sidebar)', 'lx-landing'),
+                 'label'   => __('Tiêu đề Bài viết liên quan (Sidebar)', 'lx-landing'),
                  'type'    => \Elementor\Controls_Manager::TEXT,
-                 'default' => __('BÃ€I VIáº¾T Má»šI NHáº¤T', 'lx-landing'),
+                 'default' => __('BÀI VIẾT MỚI NHẤT', 'lx-landing'),
              ]
          );
 
          $this->end_controls_section();
 
-         // â”€â”€ Author Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         // ── Author Section ───────────────────────────────────────────────────
          $this->start_controls_section(
              'section_author',
              [
-                 'label' => __('ThÃ´ng tin tÃ¡c giáº£', 'lx-landing'),
+                 'label' => __('Thông tin tác giả', 'lx-landing'),
              ]
          );
 
          $this->add_control(
              'author_name_custom',
              [
-                 'label'       => __('TÃªn tÃ¡c giáº£', 'lx-landing'),
+                 'label'       => __('Tên tác giả', 'lx-landing'),
                  'type'        => \Elementor\Controls_Manager::TEXT,
-                 'placeholder' => __('VÃ­ dá»¥: Admin', 'lx-landing'),
+                 'placeholder' => __('Ví dụ: Admin', 'lx-landing'),
              ]
          );
 
          $this->add_control(
              'author_image',
              [
-                 'label' => __('áº¢nh tÃ¡c giáº£', 'lx-landing'),
+                 'label' => __('Ảnh tác giả', 'lx-landing'),
                  'type'  => \Elementor\Controls_Manager::MEDIA,
              ]
          );
@@ -84,9 +84,9 @@
          $this->add_control(
              'author_bio_custom',
              [
-                 'label'       => __('MÃ´ táº£ tÃ¡c giáº£', 'lx-landing'),
+                 'label'       => __('Mô tả tác giả', 'lx-landing'),
                  'type'        => \Elementor\Controls_Manager::TEXTAREA,
-                 'placeholder' => __('Nháº­p giá»›i thiá»‡u ngáº¯n vá» tÃ¡c giáº£...', 'lx-landing'),
+                 'placeholder' => __('Nhập giới thiệu ngắn về tác giả...', 'lx-landing'),
              ]
          );
 
@@ -128,20 +128,20 @@
 
          $this->end_controls_section();
 
-         // â”€â”€ Bottom Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         // ── Bottom Section ───────────────────────────────────────────────────
          $this->start_controls_section(
              'section_bottom',
              [
-                 'label' => __('Pháº§n dÆ°á»›i bÃ i viáº¿t', 'lx-landing'),
+                 'label' => __('Phần dưới bài viết', 'lx-landing'),
              ]
          );
 
          $this->add_control(
              'related_bottom_title',
              [
-                 'label'   => __('TiÃªu Ä‘á» BÃ i viáº¿t liÃªn quan (DÆ°á»›i)', 'lx-landing'),
+                 'label'   => __('Tiêu đề Bài viết liên quan (Dưới)', 'lx-landing'),
                  'type'    => \Elementor\Controls_Manager::TEXT,
-                 'default' => __('BÃ€I VIáº¾T LIÃŠN QUAN', 'lx-landing'),
+                 'default' => __('BÀI VIẾT LIÊN QUAN', 'lx-landing'),
              ]
          );
 
@@ -153,7 +153,7 @@
          $settings = $this->get_settings_for_display();
 
          if (!is_singular('post')) {
-            echo '<div class="lx_alert">Widget nÃ y chá»‰ hoáº¡t Ä‘á»™ng trong trang chi tiáº¿t bÃ i viáº¿t.</div>';
+            echo '<div class="lx_alert">Widget này chỉ hoạt động trong trang chi tiết bài viết.</div>';
             return;
          }
 
@@ -174,7 +174,7 @@
          ?>
 
          <div class="lx_single_v1">
-             <!-- â”€â”€ Hero Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+             <!-- ── Hero Section ─────────────────────────────────────────── -->
              <header class="lx_wrap lx_single_hero" style="background-image: url('<?php echo esc_url($featured_img); ?>');">
                  <div class="lx_con">
                      <div class="lx_hero_content">
@@ -182,18 +182,18 @@
                          <h1 class="lx_single_title"><?php the_title(); ?></h1>
                          <div class="lx_single_meta">
                              <?php if ($author_name) : ?>
-                                 <span><?php _e('TÃ¡c giáº£:', 'lx-landing'); ?> <?php echo esc_html($author_name); ?></span>
+                                 <span><?php _e('Tác giả:', 'lx-landing'); ?> <?php echo esc_html($author_name); ?></span>
                                  <span class="lx_meta_sep"></span>
                              <?php endif; ?>
-                             <span><?php echo $reading_time; ?> <?php _e('PhÃºt Ä‘á»c', 'lx-landing'); ?></span>
+                             <span><?php echo $reading_time; ?> <?php _e('Phút đọc', 'lx-landing'); ?></span>
                              <span class="lx_meta_sep"></span>
-                             <span><?php _e('NgÃ y Ä‘Äƒng:', 'lx-landing'); ?> <time datetime="<?php echo get_the_date('c'); ?>"><?php echo esc_html($post_date); ?></time></span>
+                             <span><?php _e('Ngày đăng:', 'lx-landing'); ?> <time datetime="<?php echo get_the_date('c'); ?>"><?php echo esc_html($post_date); ?></time></span>
                          </div>
                      </div>
                  </div>
              </header>
 
-             <!-- â”€â”€ Main Content Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+             <!-- ── Main Content Section ─────────────────────────────────────── -->
              <section class="lx_wrap lx_single_main_wrap">
                  <div class="lx_con">
                      <div class="row lx_g40">
@@ -221,7 +221,7 @@
                                              <?php endif; ?>
                                          </div>
                                          <div class="lx_author_info">
-                                             <span class="lx_author_label"><?php _e('TÃ¡c giáº£', 'lx-landing'); ?></span>
+                                             <span class="lx_author_label"><?php _e('Tác giả', 'lx-landing'); ?></span>
                                              <?php if ($author_bio) : ?>
                                                  <p class="lx_author_desc"><?php echo nl2br(esc_html($author_bio)); ?></p>
                                              <?php endif; ?>
@@ -302,7 +302,7 @@
                  </div>
              </section>
 
-             <!-- â”€â”€ Bottom Related Posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+             <!-- ── Bottom Related Posts ────────────────────────────────────── -->
              <section class="lx_wrap lx_single_related_bottom">
                  <div class="lx_con">
                      <h2 class="lx_bottom_title"><?php echo esc_html($settings['related_bottom_title']); ?></h2>

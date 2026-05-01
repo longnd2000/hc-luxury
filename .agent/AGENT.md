@@ -83,3 +83,4 @@ Use `/slash-command` to trigger:
 7. **Update context files** when adding CPTs, ACF fields, components, or widgets.
 8. **No Browser Testing**: Do not use the browser tool to test the frontend/UI. Just write the code; the USER will test it manually (as the site is built with Elementor).
 9. **Ngôn ngữ — Ưu tiên tiếng Việt**: Mọi chuỗi hiển thị với người dùng (label, instructions, description, title của ACF field, widget, category, comment trong template…) phải viết **bằng tiếng Việt**. Chỉ dùng tiếng Anh khi **bắt buộc về mặt kỹ thuật**, ví dụ: tên hàm PHP, slug, CSS class, hook name, key của ACF field, tên file.
+10. **File Encoding (CRITICAL)**: Mọi file PHP phải được lưu ở định dạng **UTF-8 without BOM**. Tuyệt đối không để dính ký tự BOM đầu file vì sẽ làm hỏng header của WordPress và gây lỗi JSON/AJAX.

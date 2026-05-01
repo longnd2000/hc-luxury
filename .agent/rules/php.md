@@ -59,6 +59,18 @@ Each function must have its `add_action()` / `add_filter()` call **immediately a
 ## Internationalization (i18n)
 All static strings in code MUST be wrapped in the translation function: `__('Your Text', 'child-theme')`.
 
+## File Encoding & Formatting
+
+### UTF-8 Without BOM (CRITICAL)
+All PHP files MUST be saved in **UTF-8 without BOM** encoding.
+- **Why**: A Byte Order Mark (BOM) at the start of a PHP file is considered "output" by the PHP interpreter. This causes headers to be sent immediately, which breaks WordPress core functionality (e.g., meta tags jumping into `<body>`, "Headers already sent" errors, and broken AJAX/JSON responses).
+- **Rule**: Never use UTF-8 with BOM. If you encounter a file with BOM, remove it immediately.
+
+### Whitespace & Line Endings
+- Use **LF** (Unix) line endings where possible, or be consistent with the project's existing line endings.
+- Ensure there is **no whitespace** (including blank lines) before the opening `<?php` tag or after the closing `?>` tag (if used).
+- **Recommendation**: Avoid using the closing `?>` tag in pure PHP files to prevent accidental whitespace output.
+
 ## Debugging
 
 - **Standard function**: Always use `write_log()` (defined in `inc/helpers.php`) for debugging. **Never** use `var_dump()`, `print_r()`, `error_log()`, or `echo` for debug output.
