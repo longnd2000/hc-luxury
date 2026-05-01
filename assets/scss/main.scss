@@ -251,12 +251,15 @@ body.wp-theme-hello-elementor.elementor-default {
   @import 'widgets/lx_faqs/main';
   @import 'widgets/lx_cta/main';
   @import 'widgets/lx_lien_he/main';
+  @import 'widgets/lx_so_lieu/main';
   @import 'widgets/lx_menu/main';
-  @import 'widgets/lx_dynamic/main';
+  @import 'widgets/lx_footer/main';
+  @import 'widgets/lx_404/main';
+  @import 'widgets/lx_breadcrumbs/main';
   @import 'widgets/lx_tinh_nang/lx_feature_gallery';
   @import 'widgets/lx_lien_he/lx_contact_form_image';
   @import 'widgets/lx_lien_he/lx_dynamic_form';
-  @import 'widgets/lx_dynamic/lx_404_section';
+
   @import 'widgets/lx_post_card';
   @import 'widgets/lx_archive/main';
   @import 'widgets/lx_single/main';

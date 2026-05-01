@@ -1,0 +1,64 @@
+.lx_stats_wrapper {
+    background-color: var(--lx-primary-color, #0d6efd); // Mặc định là màu chủ đạo
+    padding: 60px 4% !important; // Khoảng cách trên dưới 60px, 2 bên 4% theo quy tắc
+    width: 100%;
+    
+    .lx_stats_grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; // Căn đều 2 bên của section
+        align-items: center;
+        gap: 30px;
+        
+        @media (max-width: 767px) {
+            justify-content: center; // Trên mobile thì căn giữa cho đẹp
+            gap: 40px;
+        }
+    }
+    
+    .lx_stats_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ffffff; // Mặc định là màu trắng
+        flex: 0 1 auto;
+        
+        @media (max-width: 767px) {
+            flex: 1 1 150px;
+        }
+    }
+    
+    .lx_stats_number {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 12px;
+        font-family: $font-main;
+        display: flex;
+        align-items: baseline;
+        color: inherit; // Để nhận màu từ setting hoặc mặc định
+        
+        @media (min-width: 992px) {
+            font-size: 56px;
+        }
+    }
+
+    .lx_stats_suffix {
+        font-size: 0.8em;
+        margin-left: 2px;
+    }
+    
+    .lx_stats_label {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: lowercase;
+        letter-spacing: 0.5px;
+        opacity: 0.95;
+        font-family: $font-main;
+        color: inherit; // Để nhận màu từ setting hoặc mặc định
+        
+        @media (min-width: 992px) {
+            font-size: 16px;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+.lx_breadcrumbs_nav {
+    margin-bottom: 20px;
+    
+    .lx_breadcrumbs_container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: #666;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: var(--lx-primary-color, #0d6efd);
+            text-decoration: underline;
+        }
+    }
+
+    i {
+        font-size: 10px;
+        margin: 0 10px;
+        color: #ccc;
+    }
+
+    .lx_breadcrumb_current {
+        color: #333;
+        font-weight: 500;
+    }
+}
+
+// Support for dark background
+.lx_bg_dark, .elementor-section.lx_bg_dark {
+    .lx_breadcrumbs_nav {
+        .lx_breadcrumbs_container {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        a:hover {
+            color: #ffffff;
+        }
+        
+        i {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .lx_breadcrumb_current {
+            color: #ffffff;
+        }
+    }
+}

@@ -13,6 +13,14 @@ Follow the structure of `widgets/template/duplicate_widget.php` as the master te
 - Use `_register_controls()` for settings and `render()` for frontend output.
 - Implement JS logic using the `elementor/frontend/init` hook (refer to the jQuery pattern in `duplicate_widget.php`).
 
+## Naming Conventions
+- **Naming Rule**: Widgets must be named based on their **Vietnamese Category Name** followed by a version suffix (V1, V2, V3, etc.).
+- **Consistency**: This ensures clarity for the end-user and a predictable file structure for developers.
+- **Title Format**: `LX — {Vietnamese Label} V{Number}` (e.g., `LX — Số liệu V1`).
+- **Slug/Name Format**: `lx_{vietnamese_slug}_v{number}` (e.g., `lx_so_lieu_v1`).
+- **File Name**: `lx_{vietnamese_slug}_v{number}.php`.
+- **Class Name**: `LX_{Vietnamese_Slug}_V{Number}_Widget`.
+
 ## Widget Registration
 - **File Location**: Widget files MUST live in subfolders corresponding to their category: `widgets/template/{lx_category_slug}/{widget_name}.php`.
 - **Registration**: Register in `widgets/index.php` using `$widgets_manager->register(new \Widget_Class())`.
