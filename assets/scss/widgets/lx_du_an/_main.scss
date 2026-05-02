@@ -1,0 +1,257 @@
+// ============================================================
+// WIDGET: LX --- Dự án nổi bật (lx_du_an_v1)
+// ============================================================
+
+.lx_du_an_v1 {
+    // ── Header Container ──────────────────────────────────────────────────
+    .lx_header_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 40px;
+
+        .lx_header_left {
+            max-width: 600px;
+        }
+
+        .lx_subtitle_wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+
+            .lx_subtitle_line {
+                width: 30px;
+                height: 2px;
+                background-color: var(--lx-primary-color, #0d6efd);
+            }
+
+            .lx_subtitle {
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--lx-primary-color, #0d6efd);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+        }
+
+        .lx_heading {
+            margin-bottom: 16px !important;
+        }
+
+        .lx_text_editor p {
+            margin-bottom: 0;
+            color: #000;
+        }
+    }
+
+    // ── Slider Navigation ──────────────────────────────────────────────────
+    .lx_slider_arrows {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 10px;
+
+        .slick-arrow {
+            position: static !important;
+            transform: none !important;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #eee;
+            background: #fff;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: var(--lx-primary-color, #0d6efd);
+                border-color: var(--lx-primary-color, #0d6efd);
+                color: #fff;
+            }
+
+            i {
+                font-size: 14px;
+            }
+
+            &::before {
+                display: none !important; // Hide default slick pseudo-arrows
+            }
+        }
+    }
+
+    // ── Project Grid / Slider ──────────────────────────────────────────────
+    .lx_slider_wrap {
+        position: relative;
+        padding: 40px 0; // Margin top/bottom to prevent shadow clipping
+        margin: -40px 0; // Pull back into flow
+        overflow: hidden; // Keep horizontal inside container
+    }
+
+    .lx_project_slider {
+        // Ensure slides fill height
+        .slick-track {
+            display: flex !important;
+            align-items: stretch;
+        }
+
+        .slick-list {
+            overflow: visible !important; // Show shadow and hover scale
+            margin: 0 -16px; 
+        }
+    }
+
+    .lx_project_slide {
+        padding: 0 16px;
+        height: auto;
+        display: flex !important; // Required for equal height cards
+        
+        & > div {
+            width: 100%;
+            display: flex;
+        }
+    }
+
+    .lx_project_card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid #f0f0f0;
+        --item-accent: var(--lx-primary-color, #0d6efd);
+
+        &:hover {
+            transform: translateY(-10px);
+            border-color: var(--item-accent);
+            box-shadow: 0 20px 40px color-mix(in srgb, var(--item-accent) 20%, transparent);
+            z-index: 10; // Stay on top during zoom
+        }
+
+        .lx_card_media {
+            position: relative;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            padding: 0;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s ease;
+            }
+        }
+
+        &:hover .lx_card_media img {
+            transform: scale(1.1);
+        }
+
+        .lx_card_body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            .lx_item_tag {
+                display: inline-block;
+                padding: 4px 12px;
+                border-radius: 6px;
+                font-size: 11px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                width: fit-content;
+                text-transform: uppercase;
+                background-color: color-mix(in srgb, var(--item-accent) 10%, transparent);
+                color: var(--item-accent);
+            }
+
+            .lx_item_title {
+                font-size: 20px !important;
+                font-weight: 700;
+                color: #000;
+                margin-bottom: 12px !important;
+                line-height: 1.4;
+                transition: color 0.3s ease;
+            }
+
+            &:hover .lx_item_title {
+                color: var(--item-accent);
+            }
+
+            .lx_item_desc {
+                font-size: 14px;
+                color: #000;
+                line-height: 1.6;
+                margin-bottom: 24px;
+                flex-grow: 1;
+            }
+
+            .lx_item_link {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--item-accent);
+                text-decoration: none;
+                transition: all 0.3s ease;
+
+                svg {
+                    width: 16px;
+                    height: 16px;
+                    transition: transform 0.3s ease;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                    gap: 12px;
+                    svg {
+                        transform: translateX(4px);
+                    }
+                }
+            }
+        }
+    }
+
+    // ── Footer Button ─────────────────────────────────────────────────────
+}
+
+// ── Responsive ────────────────────────────────────────────────────────────
+@media (max-width: 991px) {
+    .lx_du_an_v1 {
+        .lx_header_container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+
+            .lx_header_right {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .lx_du_an_v1 {
+        .lx_project_card {
+            .lx_card_body {
+                padding: 20px;
+                
+                .lx_item_title {
+                    font-size: 18px !important;
+                }
+            }
+        }
+    }
+}

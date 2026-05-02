@@ -43,6 +43,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_lien_he/lx_lien_he_v1.php';
     require_once WIDGETS_PATH . 'lx_lien_he/lx_lien_he_v2.php';
     require_once WIDGETS_PATH . 'lx_archive/lx_archive_v1.php';
+    require_once WIDGETS_PATH . 'lx_du_an/lx_du_an_v1.php';
     require_once WIDGETS_PATH . 'lx_single/lx_single_v1.php';
 
     // Core Theme Widgets
@@ -77,6 +78,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Lien_He_V1_Widget());
     $widgets_manager->register(new \LX_Lien_He_V2_Widget());
     $widgets_manager->register(new \LX_Archive_V1_Widget());
+    $widgets_manager->register(new \LX_Du_An_V1_Widget());
     $widgets_manager->register(new \LX_Single_V1_Widget());
 
     // Core Theme Widgets Registration
@@ -105,6 +107,7 @@ function child_theme_register_widget_categories($elements_manager): void
         'lx_loi_ich'          => [__('LX - Lợi ích',      'lx-landing'), 60],
         'lx_tinh_nang'        => [__('LX - Tính năng',    'lx-landing'), 70],
         'lx_dich_vu'          => [__('LX - Dịch vụ',      'lx-landing'), 80],
+        'lx_du_an'            => [__('LX - Dự án',       'lx-landing'), 85],
         'lx_quy_trinh'        => [__('LX - Quy trình',     'lx-landing'), 90],
         'lx_danh_gia'         => [__('LX - Đánh giá',      'lx-landing'), 100],
         'lx_bang_gia'         => [__('LX - Bảng giá',      'lx-landing'), 110],
