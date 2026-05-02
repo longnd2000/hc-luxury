@@ -1,5 +1,126 @@
 // ============================================================
-// CATEGORY: LX - lx_quy_trinh
+// WIDGET: LX --- Quy trình (lx_quy_trinh_v2)
 // ============================================================
 
-@import 'lx_process_steps';
+.lx_quy_trinh_v2 {
+    .lx_step_item {
+        text-align: center;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .lx_step_visual {
+            position: relative;
+            margin-bottom: 25px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .lx_step_number {
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--lx-primary-color, #0d6efd);
+                color: #fff;
+                font-size: 12px;
+                font-weight: 700;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+                border: 3px solid #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .lx_step_icon_circle {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: 1px solid #f0f0f0;
+                background-color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--lx-primary-color, #0d6efd);
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                
+                i, svg {
+                    font-size: 32px;
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+
+            .lx_step_arrow {
+                position: absolute;
+                top: 50%;
+                left: 100%;
+                transform: translateY(-50%) translateX(-12px);
+                z-index: 1;
+                pointer-events: none;
+
+                @media (max-width: 1199px) {
+                    display: none;
+                }
+
+                svg {
+                    width: 40px;
+                    height: 24px;
+                }
+            }
+        }
+
+        &:hover {
+            .lx_step_icon_circle {
+                border-color: var(--lx-primary-color, #0d6efd);
+                transform: translateY(-5px);
+                box-shadow: 0 15px 35px color-mix(in srgb, var(--lx-primary-color, #0d6efd) 15%, transparent);
+            }
+        }
+
+        .lx_step_content {
+            .lx_step_title {
+                font-size: 18px !important;
+                font-weight: 700;
+                color: #000;
+                margin-bottom: 12px !important;
+                line-height: 1.3;
+            }
+
+            .lx_step_desc {
+                font-size: 14px;
+                color: #000;
+                line-height: 1.6;
+            }
+        }
+    }
+}
+
+// ── Responsive ────────────────────────────────────────────────────────────
+@media (max-width: 1199px) {
+    .lx_quy_trinh_v2 {
+        .lx_step_item {
+            margin-bottom: 40px;
+            
+            .lx_step_visual {
+                width: 100px;
+                height: 100px;
+                
+                .lx_step_icon_circle {
+                    i, svg {
+                        font-size: 28px;
+                    }
+                }
+            }
+        }
+    }
+}

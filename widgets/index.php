@@ -1,29 +1,36 @@
 <?php
+
 /**
- * Widget Autoloader & Category Registration
+ * Custom Elementor Widgets registration.
  *
  * @package Child_Theme
  */
 
 if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+    exit; // Exit if accessed directly.
 }
 
-function child_theme_register_custom_widgets($widgets_manager): void
+/**
+ * Register Custom Widgets.
+ */
+function child_theme_register_custom_widgets($widgets_manager)
 {
-    // Tiêu đề, Nút, Văn bản
+    // Define paths
+    if (!defined('WIDGETS_PATH')) {
+        define('WIDGETS_PATH', get_stylesheet_directory() . '/widgets/template/');
+    }
+
+    // Basic Widgets
     require_once WIDGETS_PATH . 'lx_tieu_de/lx_tieu_de_v1.php';
     require_once WIDGETS_PATH . 'lx_nut/lx_nut_v1.php';
     require_once WIDGETS_PATH . 'lx_text_editor/lx_van_ban_v1.php';
 
-    // Banner
+    // Section Widgets
     require_once WIDGETS_PATH . 'lx_banner/lx_banner_v1.php';
     require_once WIDGETS_PATH . 'lx_banner/lx_banner_v2.php';
     require_once WIDGETS_PATH . 'lx_gioi_thieu/lx_gioi_thieu_v1.php';
     require_once WIDGETS_PATH . 'lx_gia_tri/lx_gia_tri_v1.php';
     require_once WIDGETS_PATH . 'lx_so_lieu/lx_so_lieu_v1.php';
-
-    // Nghiệp vụ
     require_once WIDGETS_PATH . 'lx_loi_ich/lx_loi_ich_v1.php';
     require_once WIDGETS_PATH . 'lx_loi_ich/lx_loi_ich_v2.php';
     require_once WIDGETS_PATH . 'lx_dich_vu/lx_dich_vu_v1.php';
@@ -36,6 +43,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_menu/lx_menu_v3.php';
     require_once WIDGETS_PATH . 'lx_faqs/lx_faqs_v1.php';
     require_once WIDGETS_PATH . 'lx_quy_trinh/lx_quy_trinh_v1.php';
+    require_once WIDGETS_PATH . 'lx_quy_trinh/lx_quy_trinh_v2.php';
     require_once WIDGETS_PATH . 'lx_cta/lx_cta_v1.php';
     require_once WIDGETS_PATH . 'lx_danh_gia/lx_danh_gia_v1.php';
     require_once WIDGETS_PATH . 'lx_danh_gia/lx_danh_gia_v2.php';
@@ -44,6 +52,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     require_once WIDGETS_PATH . 'lx_lien_he/lx_lien_he_v2.php';
     require_once WIDGETS_PATH . 'lx_archive/lx_archive_v1.php';
     require_once WIDGETS_PATH . 'lx_du_an/lx_du_an_v1.php';
+    require_once WIDGETS_PATH . 'lx_nang_luc/lx_nang_luc_v1.php';
     require_once WIDGETS_PATH . 'lx_single/lx_single_v1.php';
 
     // Core Theme Widgets
@@ -61,6 +70,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Loi_Ich_V1_Widget());
     $widgets_manager->register(new \LX_Loi_Ich_V2_Widget());
     $widgets_manager->register(new \LX_Quy_Trinh_V1_Widget());
+    $widgets_manager->register(new \LX_Quy_Trinh_V2_Widget());
     $widgets_manager->register(new \LX_Dich_Vu_V1_Widget());
     $widgets_manager->register(new \LX_Dich_Vu_V2_Widget());
     $widgets_manager->register(new \LX_Dich_Vu_V3_Widget());
@@ -79,6 +89,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
     $widgets_manager->register(new \LX_Lien_He_V2_Widget());
     $widgets_manager->register(new \LX_Archive_V1_Widget());
     $widgets_manager->register(new \LX_Du_An_V1_Widget());
+    $widgets_manager->register(new \LX_Nang_Luc_V1_Widget());
     $widgets_manager->register(new \LX_Single_V1_Widget());
 
     // Core Theme Widgets Registration
@@ -89,7 +100,7 @@ function child_theme_register_custom_widgets($widgets_manager): void
 
 add_action('elementor/widgets/register', 'child_theme_register_custom_widgets');
 
-function child_theme_register_widget_categories($elements_manager): void
+function child_theme_register_widget_categories($elements_manager)
 {
     $categories = [
         'lx_tieu_de'          => [__('LX - Tiêu đề',    'lx-landing'), 5],
